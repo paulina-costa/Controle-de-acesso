@@ -1,0 +1,105 @@
+html{
+    padding: 10px;
+    background-color: purple;
+}
+
+.logo{
+    display: flex;
+}
+
+h1{
+    padding-left: 300px;
+    text-align: center;
+    color: black;
+}
+
+.sinopse{
+    background-color: white;
+    font-size: 20px;
+}
+
+.ajusteBotao{
+    padding: 50px;
+    padding-bottom: 100px;
+}
+
+.escolhaBotao{
+    font-family: 'Lemon', serif;
+    font-size: 30px;
+    color: rgb(255, 255, 255);
+    padding-left: 500px;
+    text-decoration: underline;
+}
+
+.bordaChamado{
+    width: 0px;
+    height: 0px;
+    padding-left: 400px;
+}
+
+.bordaChamado :hover{
+    color: rgb(60, 212, 106);
+    background-color: black;
+}
+
+.botaoChamado{
+    border: solid 5px;
+    border-radius: 10px;
+    font-size: 40px;
+    color: black;
+    background-color: white;
+}
+
+.bordaHistorico{
+    width: 0px;
+    height: 0px;
+    padding-left: 700px;
+}
+
+.bordaHistorico :hover{
+    color: rgb(60, 212, 106);
+    background-color: black;
+}
+
+.botaoHistorico{
+    border: solid 5px;
+    border-radius: 10px;
+    font-size: 40px;
+    color: black;
+    background-color: white;
+}
+
+.imagemEscola{
+    padding-right: 273px;
+}
+
+.descricaoEscola{
+    background-color: white;
+    font-size: 20px;
+}
+
+.emailAjuste{
+    padding-top: 20px;
+    padding-left: 600px;
+}
+
+.email{
+    width: 85px;
+    height: 20px;
+    text-align: center;
+    align-items: center;
+    margin-top: 100px;
+    background-color: black;
+    display: flex;
+}
+
+.email :hover{
+    color: white;
+}
+
+#footer{
+    text-align: end;
+    color: white;
+    padding-top: 50px;
+    font-size: 20px;
+}
