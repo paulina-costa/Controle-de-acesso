@@ -1,19 +1,20 @@
 html{
-    padding: 10px;
-    background-image: url(img/LOGO\ 2.jpeg);
-    background-size: cover;
-    background-position: center;
+    padding: 20px;
     border: solid 6px black;
+    background-color: purple;
 }
 
 .logoSite{
     margin: auto;
     display: flex;
+    justify-content: space-between;
 }
 
-.logoImagem{
+.logoSiteImagem{
     position: absolute;
     animation: spin 4s linear infinite;
+    margin: auto;
+    display: flex;
 }
 
 @keyframes spin {
@@ -28,12 +29,12 @@ html{
 
 h1{
     margin: auto;
-    text-align: center;
+    align-items: center;
     color: black;
-    padding-top: 20px;
-    padding-bottom: 15px;
-    width: auto;
+    display: flex;
+    background-color: white;
 }
+
 
 .sinopse{
     background-color: black;
@@ -41,44 +42,28 @@ h1{
     color: white;
 }
 
-.quebra{
-    padding-top: 50px;
-    padding-bottom: 50px;
-}
-
 .ajusteBotao{
     padding: 50px;
     padding-bottom: 150px;
-    border: solid 3px blue;
+    border: solid 3px white;
+    background-image: url(img/bg.jpg);
+    background-size: cover;
 }
 
 .escolhaBotao{
     display: flex;
     justify-content: center;
-    margin: auto;
-    padding-top: 0px;
     font-family: 'Lemon', serif;
     font-size: 30px;
     color: black;
-    padding-left: 0px;
     text-decoration: underline;
-    background-color: blue;
-    width: 350px;
     color: white;
 }
 
 .botoes{
     padding-top: 100px;
-}
-.bordaChamado{
-    width: 0px;
-    height: 0px;
-    padding-left: 350px;
-}
-
-.bordaChamado :hover{
-    color: rgb(60, 212, 106);
-    background-color: black;
+    display: flex;
+    justify-content: space-evenly;
 }
 
 .botaoChamado{
@@ -89,16 +74,11 @@ h1{
     background-color: white;
 }
 
-.bordaHistorico{
-    width: 0px;
-    height: 0px;
-    padding-left: 700px;
-}
-
-.bordaHistorico :hover{
+.bordaChamado :hover{
     color: rgb(60, 212, 106);
     background-color: black;
 }
+
 
 .botaoHistorico{
     border: solid 5px;
@@ -106,6 +86,11 @@ h1{
     font-size: 40px;
     color: black;
     background-color: white;
+}
+
+.bordaHistorico :hover{
+    color: rgb(60, 212, 106);
+    background-color: black;
 }
 
 .imagemEscola{
@@ -118,19 +103,14 @@ h1{
     color: white;
 }
 
-.emailAjuste{
-    padding-top: 20px;
-    padding-left: 600px;
-}
-
 .email{
-    width: 300px;
-    height: 20px;
     text-align: center;
     align-items: center;
     margin-top: 100px;
     display: flex;
     font-size: 30px;
+    justify-content: center;
+    color: white;
 }
 
 .email :hover{
