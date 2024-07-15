@@ -1,7 +1,6 @@
 html{
     padding: 20px;
-    border: solid 6px black;
-    background-color: purple;
+    background-color: #ECECEC;
 }
 
 .logoSite{
@@ -12,7 +11,6 @@ html{
 
 .logoSiteImagem{
     position: absolute;
-    animation: spin 4s linear infinite;
     margin: auto;
     display: flex;
 }
@@ -27,7 +25,7 @@ html{
 }
 
 
-h1{
+.logo h1{
     margin: auto;
     align-items: center;
     color: black;
@@ -35,11 +33,35 @@ h1{
     background-color: white;
 }
 
+.diferenciais, .informativos{
+    text-align: center;
+    margin-top: 1rem;
+    padding: 2rem;
+}
 
-.sinopse{
-    background-color: black;
+.diferenciais h1, .informativos h1{
+    font-size: 36px;
+    color: #242424;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    height: 10px;
+    margin: 5px;
+}
+
+.diferenciais h2, .informativos h2{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #1B8EFF;
+    height: 10px;
+    margin: 0;
+}
+
+.diferenciais p, .informativos p{
     font-size: 20px;
-    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #4C4C4C;
+    margin: 30px;
 }
 
 .ajusteBotao{
@@ -97,12 +119,6 @@ h1{
     padding-right: 273px;
 }
 
-.descricaoEscola{
-    background-color: black;
-    font-size: 20px;
-    color: white;
-}
-
 .email{
     text-align: center;
     align-items: center;
@@ -110,7 +126,7 @@ h1{
     display: flex;
     font-size: 30px;
     justify-content: center;
-    color: white;
+    color: rgb(0, 0, 0);
 }
 
 .email :hover{
