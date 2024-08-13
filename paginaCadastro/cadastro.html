@@ -1,143 +1,150 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="icon" type="image/x-icon" href="img/logo_elechtech.png">
-        <link rel="stylesheet"  type="text/css" href="cadastro.css">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Lemon&display=swap" rel="stylesheet">
-        <title>Área de Cadastro </title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="img/logo_elechtech.png">
+    <link rel="stylesheet" type="text/css" href="cadastro.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lemon&display=swap" rel="stylesheet">
+    <title>Área de Cadastro</title>
+</head>
+<body>
+    <header>
+        <nav class="nav-bar">
+            <div class="logoSebas">
+                <img src="img/Logo_Sebas.png" width="50px" right="40px">
+            </div>
+            <div class="nav-list">
+                <ul>
+                    <li class="nav-item"><a href="#" class="nav-link">Início</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Cadastro</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Histórico</a></li>
+                </ul>
+            </div>
+            <div class="logoSite">
+                <img src="img/logo_elechtech.png" width="50px" right="40px">
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="diferenciais">
+            <h1>Área de Cadastro</h1>
+            <br>
+            <p>Área onde você irá fazer o cadastro do equipamento fazendo uma breve descrição sobre o ocorrido com o dispositivo.</p>
+        </section>
+
+        <section class="formulario">
+            <form action="#" method="post">
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="tipo-chamado">Tipos de chamado:</label>
+                        <select id="tipo-chamado" name="tipo-chamado">
+                            <option value="">Selecione um tipo</option>
+                            <option value="">Selecione um tipo</option>
+                            <option value="">Selecione um tipo</option>
+                            <option value="">Selecione um tipo</option> 
+                        </select>
+                    </div>
         
-    </head>
-    <body>
-
-        <header>
-            <nav class="nav-bar">
-                <div class="logoSebas">
-                    <img src="img/Logo_Sebas.png" width="50px" right="40px">
-                </div>
-                
-                <div class="nav-list">
-                    <ul>
-                        <li class="nav-item"><a href="#" class="nav-link">Início</a></li>
-                        <li class="nav-item"><a href="#" class="nav-link">Cadastro</a></li>
-                        <li class="nav-item"><a href="#" class="nav-link">Histórico</a></li>
-                    </ul>
-                </div>
-    
-                <div class="logoSite">
-                    <img src="img/logo_elechtech.png" width="50px" right="40px">
-                </div>
-            </nav>
-        </header>
-        <main>
-            <section class="diferenciais">
-                <h1>Área de Cadastro</h1>
-                <br>
-                <p>Área onde você irá fazer o cadastro do equipamento fazendo uma breve descrição sobre o ocorrido com o  dispostivo 
-                <br>
-                </p>
-            </section>
-            <div class="areaNavegacao">
-                <div class="nav-esquerda">
-                    <nav class="nav-select-esquerda"> 
-                        <p>
-                            <select name="Tipos de chamado" id="iest">
-                                <option value="Sub">Substituição</option>
-                                <option value="For">Formatação</option>
-                                <option value="Man">Manutenção</option>
-                                <option value="Out">Outros</option>
-                            </select>
-                        </p>
-                    </nav>
-
-                    <br>
-
-                    <nav class="inserirDados">
-                        <label for="iest"><strong>Email:</strong></label><br>
-                        <input type="text" class="inputEstilo" placeholder="nome@exemplo.com"> <br>
-                    
-                        <label for="iest"><strong>Usuário:</strong></label><br>
-                        <input type="text" class="inputEstilo" placeholder="Insira seu nome completo"><br>
-
-                        <label for="iest"><strong>Data:</strong></label><br>
-                        <input type="text" class="inputEstilo" placeholder="Insira a data atual"> 
-                    </nav>
-                </div>
-            
-                <div class="nav-direita">
-                    <nav class="nav-select-direita"> 
-                        <p>
-                            <select name="Nivel de Urgência" id="iest">
-                                <option value="Cri">Crítico</option>
-                                <option value="Alt">Alto</option>
-                                <option value="Med">Médio</option>
-                                <option value="Bai">Baixo</option>
-                            </select>
-                        </p>
-                    </nav>
-
-                    <br>
-
-                    <nav class="selecionarSelects">
-                        <label for="iest"><strong>Setor:</strong></label><br>
-                        <select name="Locais disponiveis" id="iest">
-                            <option value="" selected></option>
-
-                            <option value="Sec">Secretaria</option>
-                            <option value="Sa2">Sala 2</option>
-                            <option value="Pat">Pátio</option>
-                            <option value="Sa5">Sala 5</option>
-                        </select> <br>
-                    
-                        <label for="iest"><strong>Equipamento:</strong></label><br>
-                        <select name="Equipamentos disponiveis" id="iest">
-                            <option value="" selected></option>
-
-                            <option value="Com">Computador</option>
-                            <option value="Mou">Mouse</option>
-                            <option value="Tec">Teclado</option>
-                            <option value="Cai">Alto-Falante</option>
-                            <option value="Est">Estabilizador</option>
-                        </select> <br>
-
-                        <label for="iest"><strong>Responsável:</strong></label><br>
-                        <select name="Profissionais disponiveis" id="iest">
-                            <option value="" selected></option>
+                    <div class="form-group">
+                        <label for="nivel-urgencia">Nível de Urgência:</label>
+                        <select id="nivel-urgencia" name="nivel-urgencia">
+                            <option value="">Selecione o nível</option>
                             
-                            <option value="Dan">Danyel</option>
-                            <option value="Raf">Rafael</option>
+                        </select>
+                    </div>
+        
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" placeholder="Insira seu melhor email" required>
+                    </div>
+        
+                    <div class="form-group">
+                        <label for="setor">Setor:</label>
+                        <select id="setor" name="setor" required>
+                            <option value="">Selecione o setor</option>
+                            
+                        </select>
+                    </div>
+        
+                    <div class="form-group">
+                        <label for="usuario">Usuário:</label>
+                        <input type="text" id="usuario" name="usuario" placeholder="Insira seu nome completo" required>
+                    </div>
+        
+                    <div class="form-group">
+                        <label for="equipamento">Equipamento:</label>
+                        <select id="equipamento" name="equipamento" required>
+                            <option value="">Qual o nome do equipamento?</option>
+                            
+                        </select>
+                    </div>
+        
+                    <div class="form-group">
+                        <label for="data">Data:</label>
+                        <input type="date" id="data" name="data" placeholder="Insira a data atual" required>
+                    </div>
+        
+                    <div class="form-group">
+                        <label for="responsavel">Responsável:</label>
+                        <select id="responsavel" name="responsavel" required>
+                            <option value="">Selecione o profissional</option>
                             <option value="Pau">Paulina</option>
-                        </select> <br> 
-                    </nav>
+                            <option value="Raf">Rafael</option>
+                        </select>
+                    </div>
+        
+                    <div class="form-group descricao">
+                        <label for="descricao">Descrição:</label>
+                        <textarea id="descricao" name="descricao" maxlength="300" placeholder="Faça um breve resumo sobre o problema (Max. 300 caracteres)" required></textarea>
+                        <span id="char-count">0/300</span>
+                    </div>
                 </div>
+        
+                <div class="form-group buttons">
+                    <button type="button" class="btn-voltar">Voltar</button>
+                    <button type="submit" class="btn-salvar">Salvar</button>
+                </div>
+            </form>
+        </section>
+        
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section sobre">
+                <h3>Sobre</h3>
+                <p>Um compromisso inabalável com a excelência acadêmica e a formação integral de seus alunos.</p>
             </div>
-        </main>
-
-        <footer>
-            <div class="footer-container">
-                <div class="footer-section sobre">
-                    <h3>Sobre</h3>
-                    <p>Um compromisso inabalável com a excelência acadêmica e a formação integral de seus alunos.</p>
-                </div>
-
-                <div class="footer-section mapa-do-site">
-                    <h3>Mapa do Site</h3>
-                    <ul>
-                        <li><a href="#">Início</a></li>
-                        <li><a href="#">Cadastro</a></li>
-                        <li><a href="#">Histórico</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-contato">
-                    <h3>Informações de Contato</h3>
-                    <p> <a href="https://www.google.com/maps/place/E.E.E.F.M.+S%C3%A3o+Sebasti%C3%A3o/@-7.2117707,-35.8804125,21z/data=!4m6!3m5!1s0x7ac1e52917e6839:0xbd4d2c16e15fa8b5!8m2!3d-7.2117012!4d-35.8800973!16s%2Fg%2F1trpldrv?entry=ttu"> Estelita Cruz, 307 - Alto Branco, Campina Grande - PB, 58401-470</a></p>
-                    <p>83 3342-2529</p>
-                </div>
+            <div class="footer-section mapa-do-site">
+                <h3>Mapa do Site</h3>
+                <ul>
+                    <li><a href="#">Início</a></li>
+                    <li><a href="#">Cadastro</a></li>
+                    <li><a href="#">Histórico</a></li>
+                </ul>
             </div>
-        </footer>
-    </body>
+            <div class="footer-contato">
+                <h3>Informações de Contato</h3>
+                <p><a href="https://www.google.com/maps/place/E.E.E.F.M.+S%C3%A3o+Sebasti%C3%A3o/@-7.2117707,-35.8804125,21z/data=!4m6!3m5!1s0x7ac1e52917e6839:0xbd4d2c16e15fa8b5!8m2!3d-7.2117012!4d-35.8800973!16s%2Fg%2F1trpldrv?entry=ttu">Estelita Cruz, 307 - Alto Branco, Campina Grande - PB, 58401-470</a></p>
+                <p>83 3342-2529</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Script para contar os caracteres na textarea
+        const descricao = document.getElementById('descricao');
+        const charCount = document.getElementById('char-count');
+
+        descricao.addEventListener('input', () => {
+            charCount.textContent = `${descricao.value.length}/300`;
+        });
+
+    </script>
+</body>
 </html>

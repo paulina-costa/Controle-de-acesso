@@ -1,4 +1,4 @@
-html{
+html {
     background-color: #ECECEC;
 }
 
@@ -19,14 +19,10 @@ header {
     padding: 15px 30px;
 }
 
-.logoSebas{
+.logoSebas,
+.logoSite {
     display: flex;
-    align-items: left;
-}
-
-.logoSite{
-    display: flex;
-    align-items: right;
+    align-items: center;
 }
 
 .nav-list {
@@ -51,82 +47,132 @@ header {
     font-weight: 500;
 }
 
-.diferenciais, .informativos{
+.diferenciais {
     text-align: center;
     margin-top: 16px;
     padding: 32px;
 }
 
-.diferenciais h1, .informativos h1{
+.diferenciais h1 {
     font-size: 36px;
     color: #242424;
-    font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
-    height: 10px;
-    margin: 5px;
 }
 
-.diferenciais h2, .informativos h2{
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 16px;
-    font-weight: 600;
-    color: #1B8EFF;
-    height: 10px;
-    margin: 0;
-}
-
-.diferenciais p, .informativos p{
+.diferenciais p {
     font-size: 20px;
-    font-family: Arial, Helvetica, sans-serif;
     color: #4C4C4C;
     margin: 30px;
 }
 
-.areaNavegacao{
-    display: flex;
-    justify-content: space-evenly;
-    padding-bottom: 10%;
-}
-
-
-
-input{
-    width: 150%;
-    border: none;
-    display: flex;
-    background-color: #0253A4;
-    color: white;
+.formulario {
+    margin: 20px auto;
+    width: 80%;
+    max-width: 800px;
+    background-color: #ECECEC;
+    padding: 20px;
+    border-radius: 10px;
 }
 
 select{
-    display: flex;
-    width: 150%;
-    border:none;
     background-color: #0253A4;
     color: white;
 }
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.form-group.descricao {
+    grid-column: 1 / 3; /* Descrição ocupa as duas colunas */
+}
+
+
+.form-group textarea {
+    resize: none;
+    height: 100px;
+}
+
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    flex-direction:row
+}
+
+.buttons .btn-voltar{
+    width: 20%; /* Ambos os botões ocupam 20% da largura do container, deixando espaço entre eles */
+    padding: 5px 0;
+    font-size: 16px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.buttons .btn-salvar {
+    width: 20%; /* Ambos os botões ocupam 20% da largura do container, deixando espaço entre eles */
+    padding: 5px 0;
+    font-size: 16px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.buttons .btn-voltar {
+    background-color: #ccc;
+    color: #333;
+}
+
+.buttons .btn-salvar {
+    background-color: #0253A4;
+    color: #fff;
+}
+
 
 footer {
     background-color: #0253A4;
     color: #fff;
     padding: 20px 0;
-    border-radius: 25px 25px 0 0; 
+    border-radius: 25px 25px 0 0;
 }
 
-.footer-container h3{
-    margin: 5px 0;
-    font-size: 25px;
-    font-weight: 600;
-    color: #fff;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-.footer-container{
+.footer-container {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
     margin: 0 25px;
     padding: 5px 0;
+}
+
+.footer-container h3 {
+    margin: 5px 0;
+    font-size: 25px;
+    font-weight: 600;
+    color: #fff;
 }
 
 .footer-section {
@@ -139,19 +185,58 @@ footer {
 }
 
 .footer-section ul li {
-    margin-bottom: 3.2%;
+    margin-bottom: 10px;
 }
 
-.footer-section ul li a {
+.footer-section ul li a,
+.footer-contato a {
     color: #fff;
     text-decoration: none;
 }
 
-.footer-contato {
-    margin: 10px;
+
+.custom-select {
+    position: relative;
+    display: inline-block;
+    width: 200px;
 }
 
-.footer-contato a{
-    color: #fff;
-    text-decoration: none;
+.select-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #0253A4;
+    color: white;
+    cursor: pointer;
+}
+
+.dropdown {
+    display: none;
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ccc;
+    width: 100%;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 1;
+}
+
+.dropdown label {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    cursor: pointer;
+    background-color: #fff;
+    color: #333;
+}
+
+.dropdown label:hover {
+    background-color: #ececec;
+}
+
+.dropdown input[type="checkbox"] {
+    margin-right: 10px;
 }
