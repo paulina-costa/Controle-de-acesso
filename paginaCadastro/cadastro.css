@@ -69,7 +69,7 @@ header {
     margin: 20px auto;
     width: 80%;
     max-width: 800px;
-    background-color: #ECECEC;
+    background-color: #dadada9d;
     padding: 20px;
     border-radius: 10px;
 }
@@ -114,26 +114,19 @@ select{
     height: 100px;
 }
 
+#char-count{
+    padding-top: 1%;
+}
 
 .buttons {
     display: flex;
-    justify-content: space-between;
+    gap: 1%; /* Inicialmente define um espaçamento de 10px entre os botões */
     margin-top: 20px;
-    flex-direction:row
 }
 
-.buttons .btn-voltar{
-    width: 20%; /* Ambos os botões ocupam 20% da largura do container, deixando espaço entre eles */
-    padding: 5px 0;
-    font-size: 16px;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
-    text-align: center;
-}
-
+.buttons .btn-voltar,
 .buttons .btn-salvar {
-    width: 20%; /* Ambos os botões ocupam 20% da largura do container, deixando espaço entre eles */
+    width: 20%; /* Define a largura dos botões */
     padding: 5px 0;
     font-size: 16px;
     border: none;
@@ -152,7 +145,6 @@ select{
     color: #fff;
 }
 
-
 footer {
     background-color: #0253A4;
     color: #fff;
@@ -162,7 +154,7 @@ footer {
 
 .footer-container {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     flex-wrap: wrap;
     margin: 0 25px;
     padding: 5px 0;

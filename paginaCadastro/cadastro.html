@@ -33,7 +33,7 @@
         <section class="diferenciais">
             <h1>Área de Cadastro</h1>
             <br>
-            <p>Área onde você irá fazer o cadastro do equipamento fazendo uma breve descrição sobre o ocorrido com o dispositivo.</p>
+            <p>Área onde você irá fazer o cadastro do equipamento <br> fazendo uma breve descrição sobre o ocorrido com o dispositivo.</p>
         </section>
 
         <section class="formulario">
@@ -43,18 +43,22 @@
                     <div class="form-group">
                         <label for="tipo-chamado">Tipos de chamado:</label>
                         <select id="tipo-chamado" name="tipo-chamado">
-                            <option value="">Selecione um tipo</option>
-                            <option value="">Selecione um tipo</option>
-                            <option value="">Selecione um tipo</option>
-                            <option value="">Selecione um tipo</option> 
+                            <option value="">Selecione o tipo do chamado</option>
+                            <option value="Sub">Substituição</option>
+                            <option value="For">Formatação</option>
+                            <option value="Man">Manutenção</option>
+                            <option value="Out">Outros</option> 
                         </select>
                     </div>
         
                     <div class="form-group">
                         <label for="nivel-urgencia">Nível de Urgência:</label>
                         <select id="nivel-urgencia" name="nivel-urgencia">
-                            <option value="">Selecione o nível</option>
-                            
+                            <option value="">Escolha o nível de urgência</option>
+                            <option value="Cri">Crítico</option>
+                            <option value="Alt">Alto</option>
+                            <option value="Med">Médio</option>
+                            <option value="Bai">Baixo</option>
                         </select>
                     </div>
         
@@ -66,8 +70,11 @@
                     <div class="form-group">
                         <label for="setor">Setor:</label>
                         <select id="setor" name="setor" required>
-                            <option value="">Selecione o setor</option>
-                            
+                            <option value="">Qual o setor ?</option>
+                            <option value="Sec">Secretaria</option>
+                            <option value="Inf">Informática</option>
+                            <option value="Bib">Biblioteca</option>
+                            <option value="Sa1">Sala 1</option>
                         </select>
                     </div>
         
@@ -80,7 +87,11 @@
                         <label for="equipamento">Equipamento:</label>
                         <select id="equipamento" name="equipamento" required>
                             <option value="">Qual o nome do equipamento?</option>
-                            
+                            <option value="Com">Computador</option>
+                            <option value="Mou">Mouse</option>
+                            <option value="Tec">Teclado</option>
+                            <option value="Alf">Alto-Falante</option>
+                            <option value="Est">Estabilizador</option>
                         </select>
                     </div>
         
@@ -105,13 +116,13 @@
                     </div>
                 </div>
         
-                <div class="form-group buttons">
+                <div class="
+                buttons">
                     <button type="button" class="btn-voltar">Voltar</button>
                     <button type="submit" class="btn-salvar">Salvar</button>
                 </div>
             </form>
         </section>
-        
     </main>
 
     <footer>
