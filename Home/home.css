@@ -1,5 +1,6 @@
 html{
     background-color: #ECECEC;
+    padding: 0;
 }
 
 * {
@@ -109,7 +110,6 @@ header {
     color: gray;
 }
 
-
 .botaoHistorico{
     flex-direction: column;
     border: none;
@@ -129,43 +129,43 @@ header {
     color: gray;
 }
 
-.update1{
-    padding-bottom: 5%;
+.informativos h3{
+    text-align: justify;
 }
 
-.botaoUpdate1{
+.info-card {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row; 
+    height: auto;
+    width: 60%; 
+    cursor: pointer;
+    background-color: #fff;
+    border-radius: 8px;
+    margin: 20px auto; 
+    box-shadow: 5px 10px 8px rgba(0, 0, 0, 0.3);
+}
+
+.info-icon {
     font-size: 30px;
-    border: none;
-    border-radius: 8px;
-    display: flex;
-    align-items: start;
-    cursor: pointer;
-    box-shadow: 12px 12px 8px rgba(0, 0, 0, 0.3);
+    margin-right: 25px;
+    color: #007bff;
+    align-self: flex-start;
 }
 
-.alinhamento{
-    text-align: left;
-    flex-direction: column;
+.info-card h3 {
+    font-size: 24px;
+    color: #222;
+    font-weight: bold;
+    margin: 0; 
 }
 
-.labelUpdate1{
-    color: gray;
-    font-size: 15px;
-}
-
-.botaoUpdate2{
-    font-size: 40px;
-    border: none;
-    border-radius: 8px;
-    display: flex;
-    align-items: start;
-    cursor: pointer;
-    box-shadow: 12px 12px 8px rgba(0, 0, 0, 0.3);
-}
-
-.labelUpdate2{
-    color: gray;
-    font-size: 15px;
+.info-card p {
+    margin: 5px 0 0; 
+    color: #666;
+    font-size: 14px;
 }
 
 footer {
