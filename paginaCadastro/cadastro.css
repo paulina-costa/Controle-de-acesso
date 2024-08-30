@@ -40,11 +40,23 @@ header {
     margin: 0 15px;
 }
 
-.nav-link {
+.nav-link { /* codigo para outras páginas */
     text-decoration: none;
     font-size: 18px;
     color: #fff;
     font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover { /* codigo para outras páginas */
+    color: #ffcc00; /* Cor do texto ao passar o mouse */
+}
+
+.nav-link[href="cadastro.html"] { /* codigo para outras páginas */  /* adicionem as outras paginas trocando o nome da sua página */
+    text-decoration: underline;
+    text-decoration-color: #fff; /* Cor do sublinhado, pode ajustar conforme necessário */
+    text-decoration-thickness: 3px; /* Espessura do sublinhado */
+    text-underline-offset: 6px; /* Ajuste essa distância conforme preferir */
 }
 
 .diferenciais {
@@ -69,15 +81,20 @@ header {
     margin: 20px auto;
     width: 80%;
     max-width: 800px;
-    background-color: #dadada9d;
+    background-color: #5e5d5d3f;
     padding: 20px;
     border-radius: 10px;
 }
 
 select{
+    color: black
+}
+
+.select-blue {
     background-color: #0253A4;
     color: white;
 }
+
 
 .form-grid {
     display: grid;

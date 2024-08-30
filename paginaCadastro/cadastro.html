@@ -11,6 +11,9 @@
     <title>Área de Cadastro</title>
 </head>
 <body>
+
+    <!--area de navegacao do header -->
+
     <header>
         <nav class="nav-bar">
             <div class="logoSebas">
@@ -18,9 +21,9 @@
             </div>
             <div class="nav-list">
                 <ul>
-                    <li class="nav-item"><a href="#" class="nav-link">Início</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link">Cadastro</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link">Histórico</a></li>
+                    <li class="nav-item"><a href="Home/home.html" class="nav-link" onclick="irParaPagina('Home/home.html')">Início</a></li>
+                    <li class="nav-item"><a href="cadastro.html" class="nav-link" onclick="irParaPagina('cadastro.html')">Cadastro</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link" onclick="irParaPagina('historico.html')">Histórico</a></li>
                 </ul>
             </div>
             <div class="logoSite">
@@ -29,21 +32,29 @@
         </nav>
     </header>
 
+    <!--area de navegacao do header-->
+
     <main>
+
+        <!--titulo e descricao-->
+
         <section class="diferenciais">
             <h1>Área de Cadastro</h1>
             <br>
             <p>Área onde você irá fazer o cadastro do equipamento <br> fazendo uma breve descrição sobre o ocorrido com o dispositivo.</p>
         </section>
 
+        <!--titulo e descricao-->
+
+        <!--Area de formulario-->
         <section class="formulario">
             <form action="#" method="post">
-
+                <!--botoes selects e inputs-->
                 <div class="form-grid">
                     <div class="form-group">
                         <label for="tipo-chamado">Tipos de chamado:</label>
-                        <select id="tipo-chamado" name="tipo-chamado">
-                            <option disable selected>Selecione o tipo do chamado</option>
+                        <select id="tipo-chamado" name="tipo-chamado" class="select-blue">
+                            <option disabled selected>Selecione o tipo do chamado</option>
                             <option value="Sub">Substituição</option>
                             <option value="For">Formatação</option>
                             <option value="Man">Manutenção</option>
@@ -53,8 +64,8 @@
         
                     <div class="form-group">
                         <label for="nivel-urgencia">Nível de Urgência:</label>
-                        <select id="nivel-urgencia" name="nivel-urgencia">
-                            <option disable selected>Selecione o nível de urgência</option>
+                        <select id="nivel-urgencia" name="nivel-urgencia" class="select-blue">
+                            <option disabled selected>Selecione o nível de urgência</option>
                             <option value="Cri">Crítico</option>
                             <option value="Alt">Alto</option>
                             <option value="Med">Médio</option>
@@ -70,7 +81,7 @@
                     <div class="form-group">
                         <label for="setor">Setor:</label>
                         <select id="setor" name="setor" required>
-                            <option disable selected> Selecione o setor</option>
+                            <option disabled selected> Selecione o setor</option>
                             <option value="Sec">Secretaria</option>
                             <option value="Inf">Informática</option>
                             <option value="Bib">Biblioteca</option>
@@ -86,7 +97,7 @@
                     <div class="form-group">
                         <label for="equipamento">Equipamento:</label>
                         <select id="equipamento" name="equipamento" required>
-                            <option disable selected>Selecione o nome do equipamento</option>
+                            <option disabled selected>Selecione o nome do equipamento</option>
                             <option value="Com">Computador</option>
                             <option value="Mou">Mouse</option>
                             <option value="Tec">Teclado</option>
@@ -103,7 +114,7 @@
                     <div class="form-group">
                         <label for="responsavel">Responsável:</label>
                         <select id="responsavel" name="responsavel" required>
-                            <option disable selected>Selecione o profissional disponível</option>
+                            <option disabled selected>Selecione o profissional disponível</option>
                             <option value="Pau">Paulina</option>
                             <option value="Raf">Rafael</option>
                         </select>
@@ -116,15 +127,19 @@
                     </div>
                 </div>
         
-                <div class="
-                buttons">
+                <div class="buttons">
                     <button type="button" class="btn-voltar">Voltar</button>
                     <button type="submit" class="btn-salvar">Salvar</button>
                 </div>
+                <!--botoes selects e inputs-->
             </form>
         </section>
+
+        <!--Area de formulario-->
+
     </main>
 
+    <!--rodapé com informacoes de contato-->
     <footer>
         <div class="footer-container">
             <div class="footer-section sobre">
@@ -134,9 +149,9 @@
             <div class="footer-section mapa-do-site">
                 <h3>Mapa do Site</h3>
                 <ul>
-                    <li><a href="#">Início</a></li>
-                    <li><a href="#">Cadastro</a></li>
-                    <li><a href="#">Histórico</a></li>
+                    <li class="nav-item"><a href="Home/home.html" class="nav-link" onclick="irParaPagina('Home/home.html')">Início</a></li>
+                    <li class="nav-item"><a href="cadastro.html" class="nav-link" onclick="irParaPagina('cadastro.html')">Cadastro</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link" onclick="irParaPagina('historico.html')">Histórico</a></li>
                 </ul>
             </div>
             <div class="footer-contato">
@@ -146,6 +161,7 @@
             </div>
         </div>
     </footer>
+    <!--rodapé com informacoes de contato-->
 
     <script>
         // Script para contar os caracteres na textarea
