@@ -52,7 +52,7 @@ header {
     color: #ffcc00; /* Cor do texto ao passar o mouse */
 }
 
-.nav-link[href="cadastro.html"] { /* codigo para outras páginas */  /* adicionem as outras paginas trocando o nome da sua página */
+.nav-link[href="../paginaCadastro/cadastro.html"] { /* codigo para outras páginas */  /* adicionem as outras paginas trocando o nome da sua página */
     text-decoration: underline;
     text-decoration-color: #fff; /* Cor do sublinhado, pode ajustar conforme necessário */
     text-decoration-thickness: 3px; /* Espessura do sublinhado */
@@ -153,7 +153,7 @@ select{
 }
 
 .buttons .btn-voltar {
-    background-color: #ccc;
+    background-color: #ffffff;
     color: #0253A4
 }
 

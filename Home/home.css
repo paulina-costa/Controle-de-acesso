@@ -55,11 +55,23 @@ header {
 }
 
 /* Estilos para os links de navegação */
-.nav-link {
+.nav-link { /* codigo para outras páginas */
     text-decoration: none;
     font-size: 18px;
     color: #fff;
     font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover { /* codigo para outras páginas */
+    color: #ffcc00; /* Cor do texto ao passar o mouse */
+}
+
+.nav-link[href="../Home/home.html"] { /* codigo para outras páginas */  /* adicionem as outras paginas trocando o nome da sua página */
+    text-decoration: underline;
+    text-decoration-color: #fff; /* Cor do sublinhado, pode ajustar conforme necessário */
+    text-decoration-thickness: 3px; /* Espessura do sublinhado */
+    text-underline-offset: 6px; /* Ajuste essa distância conforme preferir */
 }
 
 /* Estilos para as seções diferenciais e informativos */
@@ -159,7 +171,12 @@ header {
     font-size: 30px;
     margin-right: 25px;
     color: #007bff;
-    align-self: flex-start;
+}
+
+/* Remove o sublinhado dos links dentro dos cartões de informações */
+.info-card a {
+    text-decoration: none;
+    color: inherit; /* Mantém a cor do texto */
 }
 
 /* Estilos para os títulos dentro dos cartões de informações */
