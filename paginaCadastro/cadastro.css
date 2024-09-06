@@ -154,7 +154,13 @@ select{
 
 .buttons .btn-voltar {
     background-color: #ECECEC;
-    color: #0253A4
+    color: #0253A4;
+    display: block;
+}
+
+.buttons a{
+    text-decoration: none;
+    color: #0253A4;
 }
 
 .buttons .btn-salvar {
