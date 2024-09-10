@@ -110,39 +110,48 @@ header {
 }
 
 /* Estilos para os botões */
-.botoes{
+.botoes {
     margin: auto;
     display: flex;
     justify-content: center; /* Centraliza os cards no contêiner */
     flex-wrap: wrap;
-    gap: 85px; /* Espaçamento entre os cards */
+    gap: 45px; /* Espaçamento entre os cards */
 }
 
 /* Estilos para os botões específicos */
-.botaoChamado, .botaoHistorico{
+.botaoChamado, .botaoHistorico {
     display: flex;
     flex-direction: column; /* Alinha os itens verticalmente dentro do card */
     align-items: center; /* Centraliza itens horizontalmente */
-    justify-content: space-between; /* Distribui o espaço entre os itens */
-    padding: 6px;
+    justify-content: center; /* Centraliza o conteúdo verticalmente */
+    padding: 20px; /* Ajuste o padding para espaçar melhor o conteúdo */
     border: none;
     border-radius: 8px;
     font-size: 30px;
     font-weight: 600;
     background-color: white;
-    height: 250px;
-    width: 240px;
+    height: 260px;
+    width: 250px;
     cursor: pointer;
     box-shadow: 5px 10px 8px rgba(0, 0, 0, 0.2);
+    text-align: center; /* Centraliza o texto dentro do card */
+    box-sizing: border-box; /* Inclui padding e border no tamanho total do card */
 }
 
 /* Estilos para os parágrafos dentro dos botões */
-.bordaHistorico p, .bordaChamado p{
+.bordaHistorico p, .bordaChamado p {
     font-size: 18px;
     font-weight: 400;
     color: gray;
-    margin-top: 25px; /* Espaço entre o ícone e o texto */
-    text-align: left;
+    margin-top: 15px; /* Reduziu o espaço entre o ícone e o texto */
+    text-align: center; /* Centraliza o texto dentro do parágrafo */
+}
+
+/* Estilo específico para as bordas dos contêineres */
+.bordaHistorico, .bordaChamado {
+    border: 1px solid #ddd; /* Adiciona uma borda leve ao redor do card */
+    border-radius: 8px; /* Certifica-se de que a borda tem a mesma forma arredondada */
+    box-sizing: border-box; /* Inclui padding e border no tamanho total */
 }
 
 /* Estilos para o título de nível 3 nos informativos */
