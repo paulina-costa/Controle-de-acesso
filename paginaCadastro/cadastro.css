@@ -90,11 +90,6 @@ select{
     color: black
 }
 
-.select-blue {
-    background-color: #0253A4;
-    color: white;
-}
-
 
 .form-grid {
     display: grid;
