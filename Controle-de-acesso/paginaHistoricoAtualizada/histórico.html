@@ -2,52 +2,36 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="img/logo_elechtech.png">
-    <link rel="stylesheet" type="text/css" href="cadastro.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lemon&display=swap" rel="stylesheet">
-    <title>Área de Cadastro</title>
+    <link rel="stylesheet" href="./src/css/style.css">
+    <link rel="stylesheet" href="./src/css/reset.css">
+    <title>Histórico</title>
 </head>
 <body>
-
-    <!--area de navegacao do header -->
-
     <header>
         <nav class="nav-bar">
             <div class="logoSebas">
-                <img src="img/Logo_Sebas.png" width="50px" right="40px">
+                <img src="src/img/Logo_Sebas.png" width="50px" right="40px">
             </div>
             <div class="nav-list">
                 <ul>
-                    <li class="nav-item"><a href="../Home/home.html" class="nav-link">Início</a></li>
-                    <li class="nav-item"><a href="../paginaCadastro/cadastro.html" class="nav-link">Cadastro</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Início</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Cadastro</a></li>
                     <li class="nav-item"><a href="#" class="nav-link">Histórico</a></li>
                 </ul>
             </div>
             <div class="logoSite">
-                <img src="img/logo_elechtech.png" width="50px" right="40px">
+                <img src="src/img/logo_elechtech.png" width="50px" right="40px">
             </div>
         </nav>
     </header>
-
-    <!--area de navegacao do header-->
-
     <main>
-
-        <!--titulo e descricao-->
-
-        <section class="diferenciais">
-            <h1>Área de Cadastro</h1>
-            <br>
-            <p>Área onde você irá fazer o cadastro do equipamento <br> fazendo uma breve descrição sobre o ocorrido com o dispositivo.</p>
-        </section>
-
-        <!--titulo e descricao-->
-
-        <!--Area de formulario-->
-        <section class="formulario">
+        <div class="descricao">
+            <h1 class="tituloDescricao">Histórico</h1>
+            <p>Área onde você pode visualizar todos os chamados, sejam eles, em andamento, concluído ou não concluído.</p>
+        </div>
+        <section class="formularioHistorico">
             <form action="#" method="post">
                 <!--botoes selects e inputs-->
                 <div class="form-grid">
@@ -61,7 +45,7 @@
                             <option value="Out">Outros</option> 
                         </select>
                     </div>
-        
+
                     <div class="form-group">
                         <label for="nivel-urgencia">Nível de Urgência:</label>
                         <select id="nivel-urgencia" name="nivel-urgencia" class="select-blue">
@@ -72,12 +56,7 @@
                             <option value="Bai">Baixo</option>
                         </select>
                     </div>
-        
-                    <div class="form-group">
-                        <label for="email">Email:</label>
-                        <input type="email" id="email" name="email" placeholder="Insira seu melhor email" required>
-                    </div>
-        
+
                     <div class="form-group">
                         <label for="setor">Setor:</label>
                         <select id="setor" name="setor" required>
@@ -88,12 +67,7 @@
                             <option value="Sa1">Sala 1</option>
                         </select>
                     </div>
-        
-                    <div class="form-group">
-                        <label for="usuario">Usuário:</label>
-                        <input type="text" id="usuario" name="usuario" placeholder="Insira seu nome completo" required>
-                    </div>
-        
+
                     <div class="form-group">
                         <label for="equipamento">Equipamento:</label>
                         <select id="equipamento" name="equipamento" required>
@@ -105,42 +79,61 @@
                             <option value="Est">Estabilizador</option>
                         </select>
                     </div>
-        
+
                     <div class="form-group">
                         <label for="data">Data:</label>
-                        <input type="date" id="data" name="data" placeholder="Insira a data atual" required>
+                        <select id="data" name="data" required>
+                            <option disabled selected>Selecione a data mais proxima</option>
+                            <option value="Dia">Ultimos 30 dias</option>
+                            <option value="Mes">Ultimos 6 meses</option>
+                            <option value="Ano">Mais de 1 ano</option>
+                        </select>
                     </div>
-        
+
+                    <div class="form-group">
+                        <label for="resolucao">Resolução:</label>
+                        <select id="resolucao" name="resolucao" required>
+                            <option disabled selected>Selecione a resolução</option>
+                            <option value="Dia">Concluido</option>
+                            <option value="Mes">Em Andamento</option>
+                            <option value="Ano">Não Concluido</option>
+                        </select>
+                    </div>
+
                     <div class="form-group">
                         <label for="responsavel">Responsável:</label>
                         <select id="responsavel" name="responsavel" required>
                             <option disabled selected>Selecione o profissional disponível</option>
                             <option value="Pau">Paulina</option>
                             <option value="Raf">Rafael</option>
+                            <option value="Isa">Isack</option>
                         </select>
                     </div>
-        
-                    <div class="form-group descricao">
-                        <label for="descricao">Descrição:</label>
-                        <textarea id="descricao" name="descricao" maxlength="300" placeholder="Faça um breve resumo sobre o problema (Max. 300 caracteres)" required></textarea>
-                        <span id="char-count">0/300</span>
-                    </div>
                 </div>
-                <a href="../Home/home.html">
-                    <div class="buttons">
-                        <button type="button" class="btn-voltar"> Voltar</button>
-                        <button type="submit" class="btn-salvar">Salvar</button>
-                    </div>
-                </a>
-                <!--botoes selects e inputs-->
-            </form>
+
+            <div class="filtrar">
+                <button class="btnFiltrar">Filtrar</button>
+            </div>
+
         </section>
-
-        <!--Area de formulario-->
-
+        <section>
+            <table border="1" style="text-align: center;">
+                <tr>
+                    <th>Tipo do Chamado</th>
+                    <th>Nível de Urgência</th>
+                    <th>Setor</th>
+                    <th>Equipamento</th>
+                    <th>Responsavel</th>
+                    <th>Data</th>
+                    <th>Resolução</th>
+                </tr>
+                
+            </table>
+        </section>
+        <a href="../Home/home.html">
+            <div class="btn">Voltar</div>
+        </a>
     </main>
-
-    <!--rodapé com informacoes de contato-->
     <footer>
         <div class="footer-container">
             <div class="footer-section sobre">
@@ -150,29 +143,17 @@
             <div class="footer-section mapa-do-site">
                 <h3>Mapa do Site</h3>
                 <ul>
-                    <li class="nav-item"><a href="../Home/home.html" class="nav-link" >Início</a></li>
-                    <li class="nav-item"><a href="../paginaCadastro/cadastro.html" class="nav-link">Cadastro</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link">Histórico</a></li>
+                    <li><a href="#">Início</a></li>
+                    <li><a href="#">Cadastro</a></li>
+                    <li><a href="#">Histórico</a></li>
                 </ul>
             </div>
             <div class="footer-contato">
                 <h3>Informações de Contato</h3>
-                <p><a href="https://www.google.com/maps/place/E.E.E.F.M.+S%C3%A3o+Sebasti%C3%A3o/@-7.2117707,-35.8804125,21z/data=!4m6!3m5!1s0x7ac1e52917e6839:0xbd4d2c16e15fa8b5!8m2!3d-7.2117012!4d-35.8800973!16s%2Fg%2F1trpldrv?entry=ttu">Estelita Cruz, 307 - Alto Branco, Campina Grande - PB, 58401-470</a></p>
-                <p>83 3342-2529</p>
+                <p> <a href="https://www.google.com/maps/place/E.E.E.F.M.+S%C3%A3o+Sebasti%C3%A3o/@-7.2117707,-35.8804125,21z/data=!4m6!3m5!1s0x7ac1e52917e6839:0xbd4d2c16e15fa8b5!8m2!3d-7.2117012!4d-35.8800973!16s%2Fg%2F1trpldrv?entry=ttu"> Estelita Cruz, 307 - Alto Branco, Campina Grande - PB, 58401-470</a></p>
+                <p>83 98822-6899</p>
             </div>
         </div>
     </footer>
-    <!--rodapé com informacoes de contato-->
-
-    <script>
-        // Script para contar os caracteres na textarea
-        const descricao = document.getElementById('descricao');
-        const charCount = document.getElementById('char-count');
-
-        descricao.addEventListener('input', () => {
-            charCount.textContent = `${descricao.value.length}/300`;
-        });
-
-    </script>
 </body>
 </html>
