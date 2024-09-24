@@ -1,217 +1,222 @@
 * {
-    
-    padding: 0;
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
+    padding: 0; /* Remove o preenchimento padrão de todos os elementos */
+    margin: 0; /* Remove as margens padrão de todos os elementos */
+    font-family: Arial, Helvetica, sans-serif; /* Define a fonte padrão para todo o documento */
 }
 
 header {
-    background-color: #0253A4;
-    border-bottom: 5px solid #000D53;
+    background-color: #0253A4; /* Cor de fundo azul para o cabeçalho */
+    border-bottom: 5px solid #000D53; /* Borda inferior preta no cabeçalho */
 }
 
 .nav-bar {
-    display: flex;
-    justify-content: space-between;
-    padding: 15px 30px;
+    display: flex; /* Usa flexbox para alinhar os itens na barra de navegação */
+    justify-content: space-between; /* Espaça os elementos da barra de navegação uniformemente */
+    padding: 15px 30px; /* Adiciona preenchimento ao redor da barra de navegação */
 }
 
-.logoSebas{
-    display: flex;
-    align-items: left;
+.logoSebas {
+    display: flex; /* Usa flexbox para alinhar os elementos da logo */
+    align-items: left; /* Alinha os itens à esquerda (mas deveria ser `flex-start` para funcionar corretamente) */
 }
 
-.logoSite{
-    display: flex;
-    align-items: right;
+.logoSite {
+    display: flex; /* Usa flexbox para alinhar os elementos da logo */
+    align-items: right; /* Alinha os itens à direita (mas deveria ser `flex-end` para funcionar corretamente) */
 }
 
 .nav-list {
-    display: flex;
-    align-items: center;
+    display: flex; /* Usa flexbox para alinhar a lista de navegação */
+    align-items: center; /* Alinha verticalmente os itens da lista de navegação */
 }
 
 .nav-list ul {
-    display: flex;
-    justify-content: center;
-    list-style: none;
+    display: flex; /* Flexbox para alinhar os itens da lista horizontalmente */
+    justify-content: center; /* Centraliza os itens da lista */
+    list-style: none; /* Remove as bolinhas da lista padrão */
 }
 
 .nav-item {
-    margin: 0 15px;
+    margin: 0 15px; /* Espaçamento horizontal entre os itens de navegação */
 }
 
-.nav-link {
-    text-decoration: none;
-    font-size: 18px;
-    color: #fff;
-    font-weight: 500;
+.nav-link { 
+    text-decoration: none; /* Remove o sublinhado dos links */
+    font-size: 18px; /* Define o tamanho da fonte dos links */
+    color: #fff; /* Define a cor branca para os links */
+    font-weight: 500; /* Define o peso da fonte */
+    transition: color 0.3s ease; /* Animação suave ao mudar a cor dos links */
+}
+
+.nav-link:hover { 
+    color: #ffcc00; /* Muda a cor do link ao passar o mouse */
+}
+
+.nav-link[href="../paginaHistoricoAtualizada/histórico.html"] {
+    text-decoration: underline; /* Sublinha o link para uma página específica */
+    text-decoration-color: #fff; /* Cor do sublinhado */
+    text-decoration-thickness: 3px; /* Define a espessura do sublinhado */
+    text-underline-offset: 6px; /* Define a distância entre o sublinhado e o texto */
 }
 
 /*--------------------------------------------------------------------------------------------------------------------*/
 main {
-    background-color: #e6e6e6;
+    background-color: #e6e6e6; /* Cor de fundo cinza claro para o conteúdo principal */
 }
 
-.descricao{
-    justify-content: center;
-    text-align: center;
-    margin: 5px;
-    margin-top: 30px;
+.descricao {
+    justify-content: center; /* Centraliza o conteúdo */
+    text-align: center; /* Centraliza o texto */
+
 }
 
-.tituloDescricao{
-    margin: 20px;
-    font-size:larger;
+.tituloDescricao {
+    margin-top: 20px;
+    font-size: 36px;
+    color: #242424;
+    font-weight: bold;
+}
+
+.descricao p{
+    font-size: 20px;
+    color: #4C4C4C;
+    margin: 0px;
+    
 }
 
 /* Estilo para a seção */
 section {
     background-color: #cfcfcf; /* Fundo cinza claro */
-    border-radius: 15px;
-    margin: 50px;
-    padding: 20px; /* Adicionado para espaçamento interno */
+    border-radius: 15px; /* Arredonda os cantos da seção */
+    margin: 50px; /* Margem ao redor da seção */
+    padding: 20px; /* Espaçamento interno */
 }
 
 .form-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 25px;
+    display: grid; /* Usa grid layout */
+    grid-template-columns: 1fr 1fr; /* Define duas colunas de igual largura */
+    gap: 25px; /* Espaçamento entre os itens */
 }
 
 .form-group {
-    display: flex;
-    flex-direction: column;
+    display: flex; /* Usa flexbox para alinhar os itens */
+    flex-direction: column; /* Alinha os elementos verticalmente */
 }
 
 .form-group label {
-    font-weight: bold;
-    margin-bottom: 5px;
+    font-weight: bold; /* Destaca os rótulos dos campos */
+    margin-bottom: 5px; /* Espaçamento entre o rótulo e o campo */
 }
 
 .form-group input,
 .form-group select,
 .form-group textarea {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
+    padding: 10px; /* Preenchimento dentro dos campos */
+    border: 1px solid #ccc; /* Borda cinza clara */
+    border-radius: 5px; /* Arredonda os cantos dos campos */
+    font-size: 16px; /* Define o tamanho da fonte dos campos */
 }
 
 /* Estilo para o container do botão "Filtrar" */
 .filtrar {
     position: relative;
-    margin-top: 20px; /* Espaço acima do botão "Filtrar" */
+    margin-top: 20px; /* Espaçamento acima do botão "Filtrar" */
     text-align: right; /* Alinha o botão à direita */
 }
 
 /* Estilo para o botão "Filtrar" */
 .btnFiltrar {
-    width: 20%; /* Define a largura dos botões */
-    padding: 5px 0;
-    font-size: 16px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    text-align: center;
-    color: #cfcfcf;
-    background-color:#0253A4;
-    margin: 30px;
+    width: 15%; /* Define a largura do botão */
+    padding: 5px 0; /* Preenchimento interno do botão */
+    font-size: 16px; /* Tamanho da fonte do botão */
+    border: none; /* Remove a borda padrão */
+    border-radius: 20px; /* Arredonda os cantos do botão */
+    cursor: pointer; /* Cursor em formato de mão ao passar o mouse */
+    text-align: center; /* Centraliza o texto no botão */
+    color: #cfcfcf; /* Cor do texto */
+    background-color: #0253A4; /* Cor de fundo do botão */
+    margin: 30px 50px; /* Espaçamento ao redor do botão */
 }
 
-table{
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    margin: auto;
-    width: fit-content;
-    border: 5cap;
-    padding: 30px;
+table {
+    display: flex; /* Flexbox aplicado, mas deveria usar `table` como display para tabelas */
+    justify-content: center; /* Centraliza a tabela */
+    align-items: center; /* Centraliza os itens verticalmente */
+    margin: auto; /* Centraliza a tabela horizontalmente */
+    width: fit-content; /* Ajusta a largura ao conteúdo */
+    border: 5cap; /* Parece incorreto, pode ser um erro de digitação */
+    padding: 30px; /* Preenchimento ao redor da tabela */
 }
 
-table th{
-    padding: 10px;
-    background-color: #0253A4;
-    color: #ffffff;
+table th {
+    padding: 5px 40px; /* Preenchimento no cabeçalho da tabela */
+    background-color: #0253A4; /* Fundo azul para o cabeçalho */
+    color: #ffffff; /* Texto branco no cabeçalho */
 }
 
-table td{
-    padding: 10px;
-    background-color: #ffffff;
-    color: #000000;
+table td {
+    padding: 5px 40px; /* Preenchimento nas células */
+    background-color: #ffffff; /* Fundo branco nas células */
+    color: #000000; /* Texto preto nas células */
 }
 
-table th,td{
-    border: 5px solid;
-    border: 0cap;
+table th, td {
+    border: 5px solid; /* Define a borda de 5px nas células */
+    border: 0cap; /* Este valor de borda parece incorreto */
 }
 
-.btn{
-    width: 15%;
-    font-size: 16px;
-    padding: 5px 0;
-    margin: 30px 50px;
-    color: #0253A4;
-    background-color:#cfcfcf;
-    border: 1px solid 0cap;
-    border-radius: 20px;
-    text-align: center;
-    user-select: none;
-    cursor: pointer;
-}
-
-.btn:hover{
-    background-color: #0253A4;
-    color: #ffffff;
+.btn {
+    width: 15%; /* Define a largura do botão */
+    font-size: 16px; /* Tamanho da fonte do botão */
+    padding: 5px 0; /* Preenchimento interno */
+    margin: 30px 50px; /* Espaçamento ao redor do botão */
+    color: #0253A4; /* Cor do texto */
+    background-color: #cfcfcf; /* Cor de fundo do botão */
+    border: 1px solid 0cap; /* Borda com valor incorreto */
+    border-radius: 20px; /* Arredonda os cantos do botão */
+    text-align: center; /* Centraliza o texto */
+    user-select: none; /* Impede a seleção do texto do botão */
+    cursor: pointer; /* Cursor de mão ao passar o mouse */
 }
 
 /*--------------------------------------------------------------------------------------------------------------------*/
 footer {
-    background-color: #0253A4;
-    color: #fff;
-    padding: 20px 0;
-    border-radius: 25px 25px 0 0; 
+    background-color: #0253A4; /* Cor de fundo azul do rodapé */
+    color: #fff; /* Cor do texto no rodapé */
+    padding: 20px 0; /* Preenchimento no rodapé */
+    border-radius: 25px 25px 0 0; /* Arredonda os cantos superiores */
 }
 
-.footer-container h3{
-    margin: 5px 0;
-    font-size: 25px;
-    font-weight: 600;
-    color: #fff;
-    font-family: Arial, Helvetica, sans-serif;
+.footer-container {
+    display: flex; /* Usa flexbox para alinhar os itens do rodapé */
+    justify-content: space-evenly; /* Distribui os itens igualmente */
+    flex-wrap: wrap; /* Permite quebra de linha quando necessário */
+    margin: 0 25px; /* Margens laterais */
+    padding: 5px 0; /* Preenchimento superior e inferior */
 }
 
-.footer-container{
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    margin: 0 25px;
-    padding: 5px 0;
+.footer-container h3 {
+    margin: 5px 0; /* Margem ao redor do título */
+    font-size: 25px; /* Tamanho da fonte do título */
+    font-weight: 600; /* Peso da fonte */
+    color: #fff; /* Cor do texto */
 }
 
 .footer-section {
-    flex: 1;
-    margin: 10px;
+    flex: 1; /* Cada seção ocupa a mesma largura */
+    margin: 10px; /* Espaçamento ao redor das seções */
 }
 
 .footer-section ul {
-    list-style: none;
+    list-style: none; /* Remove as bolinhas da lista */
 }
 
 .footer-section ul li {
-    margin-bottom: 10px;
+    margin-bottom: 10px; /* Espaçamento entre os itens da lista */
 }
 
-.footer-section ul li a {
-    color: #fff;
-    text-decoration: none;
-}
-
-.footer-contato {
-    margin: 10px;
-}
-
-.footer-contato a{
-    color: #fff;
-    text-decoration: none;
+.footer-section ul li a,
+.footer-contato a {
+    color: #fff; /* Cor branca para os links */
+    text-decoration: none; /* Remove o sublinhado dos links */
 }

@@ -1,118 +1,118 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./src/css/style.css">
-    <link rel="stylesheet" href="./src/css/reset.css">
-    <title>Histórico</title>
+    <meta charset="UTF-8"> <!-- Definindo a codificação de caracteres -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- Compatibilidade com o Internet Explorer -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Responsividade em dispositivos móveis -->
+    <link rel="stylesheet" href="./src/css/style.css"> <!-- Link para o arquivo de estilo principal -->
+    <link rel="stylesheet" href="./src/css/reset.css"> <!-- Link para o arquivo de reset de estilos -->
+    <title>Histórico</title> <!-- Título da página -->
 </head>
 <body>
     <header>
         <nav class="nav-bar">
             <div class="logoSebas">
-                <img src="src/img/Logo_Sebas.png" width="50px" right="40px">
+                <img src="src/img/Logo_Sebas.png" width="50px" right="40px"> <!-- Imagem do logo Sebas -->
             </div>
             <div class="nav-list">
                 <ul>
-                    <li class="nav-item"><a href="#" class="nav-link">Início</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link">Cadastro</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link">Histórico</a></li>
+                    <li class="nav-item"><a href="../Home/home.html" class="nav-link">Início</a></li> <!-- Link para a página inicial -->
+                    <li class="nav-item"><a href="../paginaCadastro/cadastro.html" class="nav-link">Cadastro</a></li> <!-- Link para a página de cadastro -->
+                    <li class="nav-item"><a href="../paginaHistoricoAtualizada/histórico.html" class="nav-link">Histórico</a></li> <!-- Link para a página de histórico -->
                 </ul>
             </div>
             <div class="logoSite">
-                <img src="src/img/logo_elechtech.png" width="50px" right="40px">
+                <img src="src/img/logo_elechtech.png" width="50px" right="40px"> <!-- Imagem do logo Elechtech -->
             </div>
         </nav>
     </header>
     <main>
         <div class="descricao">
             <h1 class="tituloDescricao">Histórico</h1>
-            <p>Área onde você pode visualizar todos os chamados, sejam eles, em andamento, concluído ou não concluído.</p>
+            <br>
+            <p>Área onde você pode visualizar todos os chamados, sejam eles, em andamento, concluído ou não concluído.</p> <!-- Descrição da área de histórico -->
+            
         </div>
         <section class="formularioHistorico">
-            <form action="#" method="post">
-                <!--botoes selects e inputs-->
+            <form action="#" method="post"> <!-- Início do formulário de filtro de histórico -->
                 <div class="form-grid">
                     <div class="form-group">
                         <label for="tipo-chamado">Tipos de chamado:</label>
                         <select id="tipo-chamado" name="tipo-chamado">
                             <option disabled selected>Selecione o tipo do chamado</option>
-                            <option value="Sub">Substituição</option>
-                            <option value="For">Formatação</option>
-                            <option value="Man">Manutenção</option>
-                            <option value="Out">Outros</option> 
-                        </select>
+                            <option value="Substituição">Substituição</option>
+                            <option value="Formatação">Formatação</option>
+                            <option value="Manutenção">Manutenção</option>
+                            <option value="Outros">Outros</option> 
+                        </select> <!-- Campo de seleção de tipo de chamado -->
                     </div>
 
                     <div class="form-group">
                         <label for="nivel-urgencia">Nível de Urgência:</label>
                         <select id="nivel-urgencia" name="nivel-urgencia" class="select-blue">
                             <option disabled selected>Selecione o nível de urgência</option>
-                            <option value="Cri">Crítico</option>
-                            <option value="Alt">Alto</option>
-                            <option value="Med">Médio</option>
-                            <option value="Bai">Baixo</option>
-                        </select>
+                            <option value="Crítico">Crítico</option>
+                            <option value="Alto">Alto</option>
+                            <option value="Médio">Médio</option>
+                            <option value="Baixo">Baixo</option>
+                        </select> <!-- Campo de seleção de nível de urgência -->
                     </div>
 
                     <div class="form-group">
                         <label for="setor">Setor:</label>
                         <select id="setor" name="setor" required>
-                            <option disabled selected> Selecione o setor</option>
-                            <option value="Sec">Secretaria</option>
-                            <option value="Inf">Informática</option>
-                            <option value="Bib">Biblioteca</option>
-                            <option value="Sa1">Sala 1</option>
-                        </select>
+                            <option disabled selected>Selecione o setor</option>
+                            <option value="Secretaria">Secretaria</option>
+                            <option value="Pátio">Pátio</option>
+                            <option value="Sala 5">Sala 5</option>
+                            <option value="Sala 2">Sala 2</option>
+                        </select> <!-- Campo de seleção de setor -->
                     </div>
 
                     <div class="form-group">
                         <label for="equipamento">Equipamento:</label>
                         <select id="equipamento" name="equipamento" required>
                             <option disabled selected>Selecione o nome do equipamento</option>
-                            <option value="Com">Computador</option>
-                            <option value="Mou">Mouse</option>
-                            <option value="Tec">Teclado</option>
-                            <option value="Alf">Alto-Falante</option>
-                            <option value="Est">Estabilizador</option>
-                        </select>
+                            <option value="Computador">Computador</option>
+                            <option value="Mouse">Mouse</option>
+                            <option value="Teclado">Teclado</option>
+                            <option value="Alto-Falante">Alto-Falante</option>
+                            <option value="Estabilizador">Estabilizador</option>
+                        </select> <!-- Campo de seleção de equipamento -->
                     </div>
 
                     <div class="form-group">
                         <label for="data">Data:</label>
                         <select id="data" name="data" required>
-                            <option disabled selected>Selecione a data mais proxima</option>
-                            <option value="Dia">Ultimos 30 dias</option>
-                            <option value="Mes">Ultimos 6 meses</option>
+                            <option disabled selected>Selecione a data mais próxima</option>
+                            <option value="Dia">Últimos 30 dias</option>
+                            <option value="Mes">Últimos 6 meses</option>
                             <option value="Ano">Mais de 1 ano</option>
-                        </select>
+                        </select> <!-- Campo de seleção de data -->
                     </div>
 
                     <div class="form-group">
                         <label for="resolucao">Resolução:</label>
                         <select id="resolucao" name="resolucao" required>
                             <option disabled selected>Selecione a resolução</option>
-                            <option value="Dia">Concluido</option>
-                            <option value="Mes">Em Andamento</option>
-                            <option value="Ano">Não Concluido</option>
-                        </select>
+                            <option value="Concluído">Concluído</option>
+                            <option value="Em andamento">Em andamento</option>
+                            <option value="Não Concluído">Não Concluído</option>
+                        </select> <!-- Campo de seleção de resolução do chamado -->
                     </div>
 
                     <div class="form-group">
                         <label for="responsavel">Responsável:</label>
                         <select id="responsavel" name="responsavel" required>
                             <option disabled selected>Selecione o profissional disponível</option>
-                            <option value="Pau">Paulina</option>
-                            <option value="Raf">Rafael</option>
-                            <option value="Isa">Isack</option>
-                        </select>
+                            <option value="1">Paulina</option>
+                            <option value="2">Rafael</option>
+                        </select> <!-- Campo de seleção do responsável -->
                     </div>
                 </div>
 
             <div class="filtrar">
-                <button class="btnFiltrar">Filtrar</button>
+                <button class="btnFiltrar">Filtrar</button> <!-- Botão de filtrar -->
             </div>
 
         </section>
@@ -123,35 +123,34 @@
                     <th>Nível de Urgência</th>
                     <th>Setor</th>
                     <th>Equipamento</th>
-                    <th>Responsavel</th>
+                    <th>Responsável</th>
                     <th>Data</th>
                     <th>Resolução</th>
                 </tr>
-                
-            </table>
+            </table> <!-- Início da tabela de exibição de chamados -->
         </section>
         <a href="../Home/home.html">
-            <div class="btn">Voltar</div>
+            <div class="btn">Voltar</div> <!-- Botão de voltar -->
         </a>
     </main>
     <footer>
         <div class="footer-container">
             <div class="footer-section sobre">
                 <h3>Sobre</h3>
-                <p>Um compromisso inabalável com a excelência acadêmica e a formação integral de seus alunos.</p>
+                <p>Um compromisso inabalável com a excelência acadêmica e a formação integral de seus alunos.</p> <!-- Informações sobre o site -->
             </div>
             <div class="footer-section mapa-do-site">
                 <h3>Mapa do Site</h3>
                 <ul>
-                    <li><a href="#">Início</a></li>
-                    <li><a href="#">Cadastro</a></li>
-                    <li><a href="#">Histórico</a></li>
-                </ul>
+                    <li class="nav-item"><a href="../Home/home.html" class="nav-link" >Início</a></li>
+                    <li class="nav-item"><a href="../paginaCadastro/cadastro.html" class="nav-link">Cadastro</a></li>
+                    <li class="nav-item"><a href="../paginaHistoricoAtualizada/histórico.html" class="nav-link">Histórico</a></li>
+                </ul> <!-- Links de navegação no rodapé -->
             </div>
             <div class="footer-contato">
                 <h3>Informações de Contato</h3>
-                <p> <a href="https://www.google.com/maps/place/E.E.E.F.M.+S%C3%A3o+Sebasti%C3%A3o/@-7.2117707,-35.8804125,21z/data=!4m6!3m5!1s0x7ac1e52917e6839:0xbd4d2c16e15fa8b5!8m2!3d-7.2117012!4d-35.8800973!16s%2Fg%2F1trpldrv?entry=ttu"> Estelita Cruz, 307 - Alto Branco, Campina Grande - PB, 58401-470</a></p>
-                <p>83 98822-6899</p>
+                <p><a href="https://www.google.com/maps/place/E.E.E.F.M.+S%C3%A3o+Sebasti%C3%A3o/@-7.2117707,-35.8804125,21z/data=!4m6!3m5!1s0x7ac1e52917e6839:0xbd4d2c16e15fa8b5!8m2!3d-7.2117012!4d-35.8800973!16s%2Fg%2F1trpldrv?entry=ttu">Estelita Cruz, 307 - Alto Branco, Campina Grande - PB, 58401-470</a></p>
+                <p>83 3342-2529</p> <!-- Informação de contato e localização -->
             </div>
         </div>
     </footer>
