@@ -1,0 +1,264 @@
+/*Estilo geral para o html*/
+html{
+    background-color: #ECECEC;
+    padding: 0;
+}
+
+/* Reset de estilos para todos os elementos */
+* {
+    padding: 0;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Estilos para o cabeçalho */
+header {
+    background-color: #0253A4;
+    border-bottom: 5px solid #000D53;
+}
+
+/* Estilos para a barra de navegação */
+.nav-bar {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 30px;
+}
+
+/* Estilo para o contêiner do logo Sebas */
+.logoSebas{
+    display: flex;
+    align-items: left;
+}
+
+/* Estilo para o contêiner do logo do site */
+.logoSite{
+    display: flex;
+    align-items: right;
+}
+
+/* Estilos para a lista de navegação */
+.nav-list {
+    display: flex;
+    align-items: center;
+}
+
+/* Estilos para a lista desordenada dentro da barra de navegação */
+.nav-list ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+}
+
+/* Estilos para os itens de navegação */
+.nav-item {
+    margin: 0 15px;
+}
+
+/* Estilos para os links de navegação */
+.nav-link { /* codigo para outras páginas */
+    text-decoration: none;
+    font-size: 18px;
+    color: #fff;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover { /* codigo para outras páginas */
+    color: #ffcc00; /* Cor do texto ao passar o mouse */
+}
+
+.nav-link[href="../Home/home.html"] { /* codigo para outras páginas */  /* adicionem as outras paginas trocando o nome da sua página */
+    text-decoration: underline;
+    text-decoration-color: #fff; /* Cor do sublinhado, pode ajustar conforme necessário */
+    text-decoration-thickness: 3px; /* Espessura do sublinhado */
+    text-underline-offset: 6px; /* Ajuste essa distância conforme preferir */
+}
+
+/* Estilos para as seções diferenciais e informativos */
+.diferenciais, .informativos{
+    text-align: center;
+    margin-top: 16px;
+    padding: 32px;
+}
+
+/* Estilos para os títulos principais */
+.diferenciais h1, .informativos h1{
+    font-size: 36px;
+    color: #242424;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    height: 10px;
+    margin: 10px;
+}
+
+/* Estilos para os subtítulos */
+.diferenciais h2, .informativos h2{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #0253A4;
+    height: 10px;
+    margin: 0;
+}
+
+/* Estilos para os parágrafos */
+.diferenciais p, .informativos p{
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #4C4C4C;
+    margin: 40px;
+}
+
+/* Estilos para os botões */
+.botoes {
+    margin: auto;
+    display: flex;
+    justify-content: center; /* Centraliza os cards no contêiner */
+    flex-wrap: wrap;
+    gap: 45px; /* Espaçamento entre os cards */
+}
+
+/* Estilos para os botões específicos */
+.botaoChamado, .botaoHistorico {
+    display: flex;
+    flex-direction: column; /* Alinha os itens verticalmente dentro do card */
+    align-items: center; /* Centraliza itens horizontalmente */
+    justify-content: center; /* Centraliza o conteúdo verticalmente */
+    padding: 20px; /* Ajuste o padding para espaçar melhor o conteúdo */
+    border: none;
+    border-radius: 8px;
+    font-size: 30px;
+    font-weight: 600;
+    background-color: white;
+    height: 260px;
+    width: 250px;
+    cursor: pointer;
+    box-shadow: 5px 10px 8px rgba(0, 0, 0, 0.2);
+    text-align: center; /* Centraliza o texto dentro do card */
+    box-sizing: border-box; /* Inclui padding e border no tamanho total do card */
+}
+
+/* Estilos para os parágrafos dentro dos botões */
+.bordaHistorico p, .bordaChamado p {
+    font-size: 18px;
+    font-weight: 400;
+    color: gray;
+    margin-top: 15px; /* Reduziu o espaço entre o ícone e o texto */
+    text-align: center; /* Centraliza o texto dentro do parágrafo */
+}
+
+/* Estilo específico para as bordas dos contêineres */
+.bordaHistorico, .bordaChamado {
+    border: 1px solid #ddd; /* Adiciona uma borda leve ao redor do card */
+    border-radius: 8px; /* Certifica-se de que a borda tem a mesma forma arredondada */
+    box-sizing: border-box; /* Inclui padding e border no tamanho total */
+}
+
+/* Estilos para o título de nível 3 nos informativos */
+.informativos h3{
+    text-align: justify;
+}
+
+/* Estilos para os cartões de informações */
+.info-card {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row; 
+    height: auto;
+    width: 60%; 
+    cursor: pointer;
+    background-color: #fff;
+    border-radius: 8px;
+    margin: 20px auto; 
+    box-shadow: 5px 10px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Estilos para o ícone dentro dos cartões de informações */
+.info-icon {
+    font-size: 30px;
+    margin-right: 25px;
+    color: #007bff;
+}
+
+/* Remove o sublinhado dos links dentro dos cartões de informações */
+.info-card a {
+    text-decoration: none;
+    color: inherit; /* Mantém a cor do texto */
+}
+
+/* Estilos para os títulos dentro dos cartões de informações */
+.info-card h3 {
+    font-size: 24px;
+    color: #222;
+    font-weight: bold;
+    margin: 0; 
+}
+
+/* Estilos para os parágrafos dentro dos cartões de informações */
+.info-card p {
+    margin: 5px 0 0; 
+    color: #666;
+    font-size: 14px;
+}
+
+/* Estilos para o rodapé */
+footer {
+    justify-content: space-evenly;
+    background-color: #0253A4;
+    color: #fff;
+    padding: 20px 0;
+    border-radius: 25px 25px 0 0; 
+}
+
+/* Estilos para os títulos dentro do contêiner do rodapé */
+.footer-container h3{
+    margin: 5px 0;
+    font-size: 25px;
+    font-weight: 600;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Estilos para o contêiner do rodapé */
+.footer-container{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: 0 25px;
+    padding: 5px 0;
+}
+
+/* Estilos para as seções dentro do rodapé */
+.footer-section {
+    flex: 1;
+    margin: 10px;
+}
+
+/* Estilos para a lista desordenada dentro do rodapé */
+.footer-section ul {
+    list-style: none;
+}
+
+/* Estilos para os itens de lista dentro do rodapé */
+.footer-section ul li {
+    margin-bottom: 10px;
+}
+
+/* Estilos para os links dentro dos itens de lista no rodapé */
+.footer-section ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Estilos para a seção de contato no rodapé */
+.footer-contato {
+    margin: 10px;
+}
+
+/* Estilos para os links de contato no rodapé */
+.footer-contato a{
+    color: #fff;
+    text-decoration: none;
+}
