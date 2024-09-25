@@ -1,28 +1,28 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8"> <!-- Definindo a codificação de caracteres -->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- Compatibilidade com o Internet Explorer -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Responsividade em dispositivos móveis -->
-    <link rel="stylesheet" href="./src/css/style.css"> <!-- Link para o arquivo de estilo principal -->
-    <link rel="stylesheet" href="./src/css/reset.css"> <!-- Link para o arquivo de reset de estilos -->
-    <title>Histórico</title> <!-- Título da página -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./src/css/style.css">
+    <link rel="stylesheet" href="./src/css/reset.css">
+    <title>Histórico</title>
 </head>
 <body>
     <header>
         <nav class="nav-bar">
             <div class="logoSebas">
-                <img src="src/img/Logo_Sebas.png" width="50px" right="40px"> <!-- Imagem do logo Sebas -->
+                <img src="src/img/Logo_Sebas.png" width="50px">
             </div>
             <div class="nav-list">
                 <ul>
-                    <li class="nav-item"><a href="../Home/home.html" class="nav-link">Início</a></li> <!-- Link para a página inicial -->
-                    <li class="nav-item"><a href="../paginaCadastro/cadastro.html" class="nav-link">Cadastro</a></li> <!-- Link para a página de cadastro -->
-                    <li class="nav-item"><a href="../paginaHistoricoAtualizada/histórico.html" class="nav-link">Histórico</a></li> <!-- Link para a página de histórico -->
+                    <li class="nav-item"><a href="../Home/home.html" class="nav-link">Início</a></li>
+                    <li class="nav-item"><a href="../paginaCadastro/cadastro.html" class="nav-link">Cadastro</a></li>
+                    <li class="nav-item"><a href="../paginaHistoricoAtualizada/histórico.html" class="nav-link">Histórico</a></li>
                 </ul>
             </div>
             <div class="logoSite">
-                <img src="src/img/logo_elechtech.png" width="50px" right="40px"> <!-- Imagem do logo Elechtech -->
+                <img src="src/img/logo_elechtech.png" width="50px">
             </div>
         </nav>
     </header>
@@ -30,12 +30,12 @@
         <div class="descricao">
             <h1 class="tituloDescricao">Histórico</h1>
             <br>
-            <p>Área onde você pode visualizar todos os chamados, sejam eles, em andamento, concluído ou não concluído.</p> <!-- Descrição da área de histórico -->
-            
+            <p>Área onde você pode visualizar todos os chamados, sejam eles, em andamento, concluído ou não concluído.</p>
         </div>
         <section class="formularioHistorico">
-            <form action="#" method="post"> <!-- Início do formulário de filtro de histórico -->
+            <form id="filterForm">
                 <div class="form-grid">
+                    <!-- Campos de seleção -->
                     <div class="form-group">
                         <label for="tipo-chamado">Tipos de chamado:</label>
                         <select id="tipo-chamado" name="tipo-chamado">
@@ -44,115 +44,148 @@
                             <option value="Formatação">Formatação</option>
                             <option value="Manutenção">Manutenção</option>
                             <option value="Outros">Outros</option> 
-                        </select> <!-- Campo de seleção de tipo de chamado -->
+                        </select>
                     </div>
-
+                    <!-- Outros campos de seleção -->
                     <div class="form-group">
                         <label for="nivel-urgencia">Nível de Urgência:</label>
-                        <select id="nivel-urgencia" name="nivel-urgencia" class="select-blue">
+                        <select id="nivel-urgencia" name="nivel-urgencia">
                             <option disabled selected>Selecione o nível de urgência</option>
                             <option value="Crítico">Crítico</option>
                             <option value="Alto">Alto</option>
                             <option value="Médio">Médio</option>
                             <option value="Baixo">Baixo</option>
-                        </select> <!-- Campo de seleção de nível de urgência -->
+                        </select>
                     </div>
-
                     <div class="form-group">
                         <label for="setor">Setor:</label>
-                        <select id="setor" name="setor" required>
+                        <select id="setor" name="setor">
                             <option disabled selected>Selecione o setor</option>
                             <option value="Secretaria">Secretaria</option>
                             <option value="Pátio">Pátio</option>
                             <option value="Sala 5">Sala 5</option>
                             <option value="Sala 2">Sala 2</option>
-                        </select> <!-- Campo de seleção de setor -->
+                        </select>
                     </div>
-
                     <div class="form-group">
                         <label for="equipamento">Equipamento:</label>
-                        <select id="equipamento" name="equipamento" required>
+                        <select id="equipamento" name="equipamento">
                             <option disabled selected>Selecione o nome do equipamento</option>
                             <option value="Computador">Computador</option>
                             <option value="Mouse">Mouse</option>
                             <option value="Teclado">Teclado</option>
                             <option value="Alto-Falante">Alto-Falante</option>
                             <option value="Estabilizador">Estabilizador</option>
-                        </select> <!-- Campo de seleção de equipamento -->
+                        </select>
                     </div>
-
-                    <div class="form-group">
-                        <label for="data">Data:</label>
-                        <select id="data" name="data" required>
-                            <option disabled selected>Selecione a data mais próxima</option>
-                            <option value="Dia">Últimos 30 dias</option>
-                            <option value="Mes">Últimos 6 meses</option>
-                            <option value="Ano">Mais de 1 ano</option>
-                        </select> <!-- Campo de seleção de data -->
-                    </div>
-
-                    <div class="form-group">
-                        <label for="resolucao">Resolução:</label>
-                        <select id="resolucao" name="resolucao" required>
-                            <option disabled selected>Selecione a resolução</option>
-                            <option value="Concluído">Concluído</option>
-                            <option value="Em andamento">Em andamento</option>
-                            <option value="Não Concluído">Não Concluído</option>
-                        </select> <!-- Campo de seleção de resolução do chamado -->
-                    </div>
-
-                    <div class="form-group">
-                        <label for="responsavel">Responsável:</label>
-                        <select id="responsavel" name="responsavel" required>
-                            <option disabled selected>Selecione o profissional disponível</option>
-                            <option value="1">Paulina</option>
-                            <option value="2">Rafael</option>
-                        </select> <!-- Campo de seleção do responsável -->
-                    </div>
+                    <!-- Adicione outros selects se necessário -->
                 </div>
+                <div class="filtrar">
+                    <button type="button" class="btnFiltrar" onclick="filtrarChamados()">Filtrar</button>
 
-            <div class="filtrar">
-                <button class="btnFiltrar">Filtrar</button> <!-- Botão de filtrar -->
-            </div>
-
+                </div>
+            </form>
         </section>
         <section>
             <table border="1" style="text-align: center;">
-                <tr>
-                    <th>Tipo do Chamado</th>
-                    <th>Nível de Urgência</th>
-                    <th>Setor</th>
-                    <th>Equipamento</th>
-                    <th>Responsável</th>
-                    <th>Data</th>
-                    <th>Resolução</th>
-                </tr>
-            </table> <!-- Início da tabela de exibição de chamados -->
+                <thead>
+                    <tr>
+                        <th>Tipo do Chamado</th>
+                        <th>Nível de Urgência</th>
+                        <th>Setor</th>
+                        <th>Equipamento</th>
+                        <th>Responsável</th>
+                        <th>Data</th>
+                        <th>Resolução</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                    <!-- Resultados da filtragem aparecerão aqui -->
+                </tbody>
+            </table>
         </section>
         <a href="../Home/home.html">
-            <div class="btn">Voltar</div> <!-- Botão de voltar -->
+            <div class="btn">Voltar</div>
         </a>
     </main>
     <footer>
         <div class="footer-container">
             <div class="footer-section sobre">
                 <h3>Sobre</h3>
-                <p>Um compromisso inabalável com a excelência acadêmica e a formação integral de seus alunos.</p> <!-- Informações sobre o site -->
+                <p>Um compromisso inabalável com a excelência acadêmica e a formação integral de seus alunos.</p>
             </div>
             <div class="footer-section mapa-do-site">
                 <h3>Mapa do Site</h3>
                 <ul>
-                    <li class="nav-item"><a href="../Home/home.html" class="nav-link" >Início</a></li>
+                    <li class="nav-item"><a href="../Home/home.html" class="nav-link">Início</a></li>
                     <li class="nav-item"><a href="../paginaCadastro/cadastro.html" class="nav-link">Cadastro</a></li>
                     <li class="nav-item"><a href="../paginaHistoricoAtualizada/histórico.html" class="nav-link">Histórico</a></li>
-                </ul> <!-- Links de navegação no rodapé -->
+                </ul>
             </div>
             <div class="footer-contato">
                 <h3>Informações de Contato</h3>
-                <p><a href="https://www.google.com/maps/place/E.E.E.F.M.+S%C3%A3o+Sebasti%C3%A3o/@-7.2117707,-35.8804125,21z/data=!4m6!3m5!1s0x7ac1e52917e6839:0xbd4d2c16e15fa8b5!8m2!3d-7.2117012!4d-35.8800973!16s%2Fg%2F1trpldrv?entry=ttu">Estelita Cruz, 307 - Alto Branco, Campina Grande - PB, 58401-470</a></p>
-                <p>83 3342-2529</p> <!-- Informação de contato e localização -->
+                <p><a href="#">Endereço</a></p>
+                <p>Telefone</p>
             </div>
         </div>
     </footer>
+
+    <script>
+        // Função para fazer a requisição e preencher a tabela
+        async function filtrarChamados() {
+    const formData = new FormData(document.getElementById('filterForm'));
+    const filterData = {};
+    
+    // Converte os dados do formulário em um objeto para enviar na requisição
+    formData.forEach((value, key) => {
+        filterData[key] = value;
+    });
+
+    try {
+        const response = await fetch('http://localhost:3000/filtros', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(filterData) // Envia os filtros selecionados
+        });
+
+        if (!response.ok) {
+            throw new Error('Erro ao buscar os dados filtrados');
+        }
+
+        const data = await response.json();
+        const tableBody = document.getElementById('tableBody');
+        
+        // Limpa a tabela antes de preenchê-la com novos dados
+        tableBody.innerHTML = '';
+
+        // Verifica se há dados no resultado
+        if (data && data.data.length > 0) {
+            // Preenche a tabela com os resultados filtrados
+            data.data.forEach(item => {
+                const row = `<tr>
+                    <td>${item.tiposDoChamado}</td>
+                    <td>${item.nivelDeUrgencia}</td>
+                    <td>${item.setor}</td>
+                    <td>${item.nomeEquipamento}</td>
+                    <td>${item.FK_tecnicoResponsavelPeloChamado}</td>
+                    <td>${new Date(item.datas).toLocaleDateString()}</td>
+                    <td>${item.resolucao}</td>
+                </tr>`;
+                tableBody.insertAdjacentHTML('beforeend', row);
+            });
+        } else {
+            // Se não houver resultados, mostra uma mensagem
+            const emptyRow = `<tr><td colspan="7">Nenhum chamado encontrado.</td></tr>`;
+            tableBody.insertAdjacentHTML('beforeend', emptyRow);
+        }
+
+    } catch (error) {
+        console.error('Erro ao filtrar chamados:', error);
+    }
+}
+
+    </script>
 </body>
 </html>
