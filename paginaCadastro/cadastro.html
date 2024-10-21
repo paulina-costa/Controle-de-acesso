@@ -52,7 +52,7 @@
                 <!--botoes selects e inputs-->
                 <div class="form-grid">
                     <div class="form-group">
-                        <label for="tipo-chamado">Tipos de chamado:</label>
+                        <label for="tipo-chamado">Tipos de chamado <span class="required">*</span></label>
                         <select id="tipo-chamado" name="tipo-chamado" required>
                             <option disabled selected>Selecione o tipo do chamado</option>
                             <option value="Substituição">Substituição</option>
@@ -63,7 +63,7 @@
                     </div>
         
                     <div class="form-group">
-                        <label for="nivel-urgencia">Nível de Urgência:</label>
+                        <label for="nivel-urgencia">Nível de Urgência <span class="required">*</span></label>
                         <select id="nivel-urgencia" name="nivel-urgencia" class="select-blue" required>
                             <option disabled selected>Selecione o nível de urgência</option>
                             <option value="Crítico">Crítico</option>
@@ -74,12 +74,12 @@
                     </div>
         
                     <div class="form-group">
-                        <label for="email">Email:</label>
+                        <label for="email">Email <span class="required">*</span></label>
                         <input type="email" id="email" name="email" placeholder="Insira seu melhor email" required>
                     </div>
         
                     <div class="form-group">
-                        <label for="setor">Setor:</label>
+                        <label for="setor">Setor <span class="required">*</span></label>
                         <select id="setor" name="setor" required>
                             <option disabled selected> Selecione o setor</option>
                             <option value="Secretaria">Secretaria</option>
@@ -90,12 +90,12 @@
                     </div>
         
                     <div class="form-group">
-                        <label for="usuario">Usuário:</label>
+                        <label for="usuario">Usuário</label>
                         <input type="text" id="usuario" name="usuario" placeholder="Insira seu nome completo" required>
                     </div>
         
                     <div class="form-group">
-                        <label for="equipamento">Equipamento:</label>
+                        <label for="equipamento">Equipamento <span class="required">*</span></label>
                         <select id="equipamento" name="equipamento" required>
                             <option disabled selected>Selecione o nome do equipamento</option>
                             <option value="Computador">Computador</option>
@@ -107,12 +107,12 @@
                     </div>
         
                     <div class="form-group">
-                        <label for="data">Data:</label>
+                        <label for="data">Data <span class="required">*</span></label>
                         <input type="date" id="data" name="data" placeholder="Insira a data atual" required>
                     </div>
         
                     <div class="form-group">
-                        <label for="responsavel">Responsável:</label>
+                        <label for="responsavel">Responsável <span class="required">*</span></label>
                         <select id="responsavel" name="responsavel" required>
                             <option disabled selected>Selecione o profissional disponível</option>
                             <option value="1">Paulina</option>
@@ -121,7 +121,7 @@
                     </div>
         
                     <div class="form-group descricao">
-                        <label for="descricao">Descrição:</label>
+                        <label for="descricao">Descrição <span class="required">*</span></label>
                         <textarea id="descricao" name="descricao" maxlength="300" placeholder="Faça um breve resumo sobre o problema (Max. 300 caracteres)" required></textarea>
                         <span id="char-count">0/300</span>
                     </div>
@@ -150,9 +150,9 @@
             <div class="footer-section mapa-do-site">
                 <h3>Mapa do Site</h3>
                 <ul>
-                    <li class="nav-item"><a href="../Home/home.html" class="nav-link" >Início</a></li>
-                    <li class="nav-item"><a href="../paginaCadastro/cadastro.html" class="nav-link">Cadastro</a></li>
-                    <li class="nav-item"><a href="../paginaHistoricoAtualizada/histórico.html" class="nav-link">Histórico</a></li>
+                    <li class="naveg-item"><a href="../Home/home.html" class="nav-link" >Início</a></li>
+                    <li class="naveg-item"><a href="../paginaCadastro/cadastro.html" class="nav-link">Cadastro</a></li>
+                    <li class="naveg-item"><a href="../paginaHistoricoAtualizada/histórico.html" class="nav-link">Histórico</a></li>
                 </ul>
             </div>
             <div class="footer-contato">
