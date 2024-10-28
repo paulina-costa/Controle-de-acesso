@@ -15,7 +15,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const resultado = await response.json();
             if (response.ok) {
-                alert('Cadastro enviado com sucesso!');
+                alert('Cadastro enviado com sucesso!'); // Exibe a mensagem de sucesso
+
+                // Redireciona para a página inicial após 2 segundos
+                setTimeout(() => {
+                    window.location.href = '../Home/home.html'; // Caminho para a página inicial
+                }, 2000);
+
                 form.reset(); // Limpa o formulário após envio
             } else {
                 alert('Erro ao enviar cadastro: ' + resultado.erro + '\nDetalhes: ' + (resultado.detalhes || 'Nenhum detalhe fornecido'));
@@ -25,6 +31,45 @@ document.addEventListener('DOMContentLoaded', () => {
             alert('Erro na conexão com o servidor');
         }
     };
+
+    // Função para buscar e exibir o histórico de chamados
+    const buscarHistorico = async () => {
+        try {
+            const response = await fetch('http://localhost:3000/filtros', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({}) // Envia um filtro vazio para buscar todos os registros
+            });
+
+            const data = await response.json();
+            const tableBody = document.getElementById('tableBody');
+
+            // Limpa a tabela antes de preencher
+            tableBody.innerHTML = '';
+
+            // Preencher a tabela com os resultados
+            data.data.forEach(item => {
+                const row = `<tr>
+                    <td>${item.tiposDoChamado}</td>
+                    <td>${item.nivelDeUrgencia}</td>
+                    <td>${item.setor}</td>
+                    <td>${item.nomeEquipamento}</td>
+                    <td>${item.FK_tecnicoResponsavelPeloChamado}</td>
+                    <td>${new Date(item.datas).toLocaleDateString()}</td>
+                    <td>${item.resolucao}</td>
+                </tr>`;
+                tableBody.insertAdjacentHTML('beforeend', row);
+            });
+
+        } catch (error) {
+            console.error('Erro ao buscar histórico:', error);
+        }
+    };
+
+    // Executa a função para buscar o histórico ao carregar a página
+    buscarHistorico();
 
     // Manipulação do envio do formulário
     form.addEventListener('submit', (event) => {

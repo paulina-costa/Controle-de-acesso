@@ -160,58 +160,58 @@
     </footer>
 
     <script>
-    // Função para fazer a requisição e preencher a tabela
-    async function filtrarChamados() {
-        const formData = new FormData(document.getElementById('filterForm'));
-        const filterData = {};
-        
-        // Converta os dados do formulário em um objeto
-        formData.forEach((value, key) => {
-            filterData[key] = value;
-        });
-
-        try {
-            const response = await fetch('http://localhost:3000/filtros', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(filterData)
-            });
-
-            if (!response.ok) {
-                throw new Error('Erro ao buscar os dados filtrados');
-            }
-
-            const data = await response.json();
-            const tableBody = document.getElementById('tableBody');
+        // Função para fazer a requisição e preencher a tabela
+        async function filtrarChamados() {
+            const formData = new FormData(document.getElementById('filterForm'));
+            const filterData = {};
             
-            // Limpa a tabela antes de preencher
-            tableBody.innerHTML = '';
-
-            // Preencher a tabela com os resultados
-            data.data.forEach(item => {
-                const row = `<tr>
-                    <td>${item.tiposDoChamado}</td>
-                    <td>${item.nivelDeUrgencia}</td>
-                    <td>${item.setor}</td>
-                    <td>${item.nomeEquipamento}</td>
-                    <td>${item.FK_tecnicoResponsavelPeloChamado}</td>
-                    <td>${new Date(item.datas).toLocaleDateString()}</td>
-                    <td>${item.resolucao}</td>
-                </tr>`;
-                tableBody.insertAdjacentHTML('beforeend', row);
+            // Converta os dados do formulário em um objeto
+            formData.forEach((value, key) => {
+                filterData[key] = value;
             });
-
-        } catch (error) {
-            console.error('Erro ao filtrar chamados:', error);
+    
+            try {
+                const response = await fetch('http://localhost:3000/filtros', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(filterData)
+                });
+    
+                if (!response.ok) {
+                    throw new Error('Erro ao buscar os dados filtrados');
+                }
+    
+                const data = await response.json();
+                const tableBody = document.getElementById('tableBody');
+                
+                // Limpa a tabela antes de preencher
+                tableBody.innerHTML = '';
+    
+                // Preencher a tabela com os resultados
+                data.data.forEach(item => {
+                    const row = `<tr>
+                        <td>${item.tiposDoChamado}</td>
+                        <td>${item.nivelDeUrgencia}</td>
+                        <td>${item.setor}</td>
+                        <td>${item.nomeEquipamento}</td>
+                        <td>${item.FK_tecnicoResponsavelPeloChamado}</td>
+                        <td>${new Date(item.datas).toLocaleDateString()}</td>
+                        <td>${item.resolucao}</td>
+                    </tr>`;
+                    tableBody.insertAdjacentHTML('beforeend', row);
+                });
+    
+            } catch (error) {
+                console.error('Erro ao filtrar chamados:', error);
+            }
         }
-    }
-
-    // Executa a função automaticamente ao carregar a página
-    document.addEventListener('DOMContentLoaded', () => {
-        filtrarChamados();
-    });
+    
+        // Executa a função automaticamente ao carregar a página
+        document.addEventListener('DOMContentLoaded', () => {
+            filtrarChamados();
+        });
     </script>
 </body>
 </html>
