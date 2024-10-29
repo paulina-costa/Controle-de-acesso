@@ -88,12 +88,25 @@ main {
 }
 
 /* Seção */
+.formularioHistorico {
+    background-color: #cfcfcf;
+    border-radius: 15px;
+    margin: 50px;
+    padding-left: 2%;
+    padding-right: 2%;
+    padding-top: 2%;
+    padding-bottom: 0.5%;
+}
+
 section {
     background-color: #cfcfcf;
     border-radius: 15px;
     margin: 50px;
     padding: 20px;
 }
+
+
+
 
 /* Layout do formulário */
 .form-grid {
