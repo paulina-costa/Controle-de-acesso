@@ -170,6 +170,12 @@ tbody {
     display: table-row-group; /* Garante que o corpo da tabela seja tratado corretamente */
 }
 
+.icon {
+    margin-right: 9%;
+    margin-left: 9%;
+}
+
+
 /* Estilo dos botões */
 .btn {
     width: 15%;

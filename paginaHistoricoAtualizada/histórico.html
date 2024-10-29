@@ -7,6 +7,7 @@
     <link rel="icon" type="image/x-icon" href="src/img/logo_elechtech.png">
     <link rel="stylesheet" href="./src/css/style.css">
     <link rel="stylesheet" href="./src/css/reset.css">
+    <script src="./script.js"></script>
     <title>Histórico</title>
 </head>
 <body>
@@ -47,7 +48,6 @@
                             <option value="Outros">Outros</option> 
                         </select>
                     </div>
-                    <!-- Outros campos de seleção -->
                     <div class="form-group">
                         <label for="nivel-urgencia">Nível de Urgência:</label>
                         <select id="nivel-urgencia" name="nivel-urgencia">
@@ -80,16 +80,6 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="Responsável">Responsável:</label>
-                        <select id="FK_tecnicoResponsavelPeloChamado" name="FK_tecnicoResponsavelPeloChamado">
-                            <option disabled selected>Selecione o responsável</option>
-                            <option value="1">Paulina</option>
-                            <option value="2">Rafael</option>
-                            <option value="3">Isack</option>
-                            <option value="4">Danyel</option>>
-                        </select>
-                    </div>
-                    <div class="form-group">
                         <label for="Resolução">Resolução:</label>
                         <select id="resolucao" name="resolucao">
                             <option disabled selected>Selecione a resolução</option>
@@ -98,7 +88,6 @@
                             <option value="Não concluído">Não concluído</option>
                         </select>
                     </div>
-                    <!-- Novo campo de seleção para data -->
                     <div class="form-group">
                         <label for="datas">Filtrar por Data:</label>
                         <select id="datas" name="datas">
@@ -110,7 +99,6 @@
                             <option value="1ano">Último 1 ano</option>
                         </select>
                     </div>
-                    <!-- Adicione outros selects se necessário -->
                 </div>
                 <div class="filtrar">
                     <button type="button" class="btnFiltrar" onclick="filtrarChamados()">Filtrar</button>
@@ -125,9 +113,9 @@
                         <th>Nível de Urgência</th>
                         <th>Setor</th>
                         <th>Equipamento</th>
-                        <th>Responsável</th>
                         <th>Data</th>
                         <th>Resolução</th>
+                        <th>Ações</th>
                     </tr>
                 </thead>
                 <tbody id="tableBody">
@@ -160,64 +148,5 @@
             </div>
         </div>
     </footer>
-
-    <script>
-        // Função para fazer a requisição e preencher a tabela
-        async function filtrarChamados() {
-            const formData = new FormData(document.getElementById('filterForm'));
-            const filterData = {};
-
-            formData.forEach((value, key) => {
-                filterData[key] = value;
-            });
-
-            try {
-                const response = await fetch('http://localhost:3000/filtros', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(filterData)
-                });
-
-                if (!response.ok) {
-                    throw new Error('Erro ao buscar os dados filtrados');
-                }
-
-                const data = await response.json();
-                const tableBody = document.getElementById('tableBody');
-
-                // Limpa a tabela antes de preencher
-                tableBody.innerHTML = '';
-
-                // Verifica se há resultados e preenche a tabela
-                if (data.data.length > 0) {
-                    data.data.forEach(item => {
-                        const row = `<tr>
-                            <td>${item.tiposDoChamado}</td>
-                            <td>${item.nivelDeUrgencia}</td>
-                            <td>${item.setor}</td>
-                            <td>${item.nomeEquipamento}</td>
-                            <td>${item.FK_tecnicoResponsavelPeloChamado}</td>
-                            <td>${new Date(item.datas).toLocaleDateString()}</td>
-                            <td>${item.resolucao}</td>
-                        </tr>`;
-                        tableBody.insertAdjacentHTML('beforeend', row);
-                    });
-                } else {
-                    // Exibe mensagem de nenhum resultado encontrado
-                    tableBody.innerHTML = `<tr><td colspan="7">Nenhum resultado encontrado</td></tr>`;
-                }
-
-            } catch (error) {
-                console.error('Erro ao filtrar chamados:', error);
-            }
-        }
-
-        // Executa a função automaticamente ao carregar a página
-        document.addEventListener('DOMContentLoaded', () => {
-            filtrarChamados();
-        });
-    </script>
 </body>
 </html>
