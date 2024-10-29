@@ -12,23 +12,29 @@ document.addEventListener('DOMContentLoaded', () => {
                 },
                 body: JSON.stringify(dadosFormulario),
             });
-
+    
             const resultado = await response.json();
+            const mensagemEnvio = document.getElementById('mensagem-envio'); // Seleciona a mensagem de envio
+    
             if (response.ok) {
-                alert('Cadastro enviado com sucesso!'); // Exibe a mensagem de sucesso
-
+                mensagemEnvio.textContent = 'Cadastro enviado com sucesso!'; // Atualiza o texto da mensagem
+                mensagemEnvio.style.display = 'block'; // Torna a mensagem visível
+    
                 // Redireciona para a página inicial após 2 segundos
                 setTimeout(() => {
                     window.location.href = '../Home/home.html'; // Caminho para a página inicial
                 }, 2000);
-
+    
                 form.reset(); // Limpa o formulário após envio
             } else {
-                alert('Erro ao enviar cadastro: ' + resultado.erro + '\nDetalhes: ' + (resultado.detalhes || 'Nenhum detalhe fornecido'));
+                mensagemEnvio.textContent = 'Erro ao enviar cadastro: ' + resultado.erro + '\nDetalhes: ' + (resultado.detalhes || 'Nenhum detalhe fornecido');
+                mensagemEnvio.style.display = 'block'; // Torna a mensagem visível
             }
         } catch (error) {
             console.error('Erro ao enviar os dados:', error);
-            alert('Erro na conexão com o servidor');
+            const mensagemEnvio = document.getElementById('mensagem-envio');
+            mensagemEnvio.textContent = 'Erro na conexão com o servidor';
+            mensagemEnvio.style.display = 'block'; // Torna a mensagem visível
         }
     };
 
