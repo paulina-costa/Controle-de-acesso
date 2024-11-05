@@ -1,5 +1,3 @@
-<<<<<<< Updated upstream
-=======
 async function filtrarChamados() {
     const formData = new FormData(document.getElementById('filterForm'));
     const filterData = {};
@@ -81,4 +79,3 @@ async function excluirChamado(id) {
 document.addEventListener('DOMContentLoaded', () => {
     filtrarChamados();
 });
->>>>>>> Stashed changes
