@@ -158,6 +158,7 @@
             </div>
         </div>
     </footer>
+<<<<<<< Updated upstream
 
     <script>
         // Função para fazer a requisição e preencher a tabela
@@ -215,5 +216,37 @@
             }
         }
     </script>
+=======
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const chamadoId = urlParams.get('id');
+        
+            if (chamadoId) {
+                try {
+                    const response = await fetch(`http://localhost:3000/filtros/${chamadoId}`);
+                    if (!response.ok) throw new Error('Erro ao carregar os dados do chamado');
+        
+                    const chamado = await response.json();
+                    preencherFormulario(chamado);
+                } catch (error) {
+                    console.error('Erro ao carregar dados do chamado:', error);
+                }
+            }
+        });
+        
+        function preencherFormulario(chamado) {
+            document.getElementById('nomeUsuario').value = chamado.nomeUsuario;
+            document.getElementById('setor').value = chamado.setor;
+            document.getElementById('tiposDoChamado').value = chamado.tiposDoChamado;
+            document.getElementById('nivelDeUrgencia').value = chamado.nivelDeUrgencia;
+            document.getElementById('nomeEquipamento').value = chamado.nomeEquipamento;
+            document.getElementById('FK_tecnicoResponsavelPeloChamado').value = chamado.FK_tecnicoResponsavelPeloChamado;
+            document.getElementById('email').value = chamado.email;
+            document.getElementById('descricao').value = chamado.descricao;
+            document.getElementById('datas').value = new Date(chamado.datas).toISOString().split('T')[0];
+        }
+        </script>
+>>>>>>> Stashed changes
 </body>
 </html>
