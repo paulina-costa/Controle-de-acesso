@@ -105,7 +105,7 @@ main {
 .form-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 8%;
+    gap: 2%;
 }
 
 .form-group {
