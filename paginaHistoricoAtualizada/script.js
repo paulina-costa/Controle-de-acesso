@@ -37,7 +37,7 @@ async function filtrarChamados() {
                         <a href="../paginaEdicao/edicao.html?id=${item.id}">
                         <img src="src/img/pencil.png" alt="Editar" class="icon" width="18.4" height="18.4">
                         </a>
-                        <img src="src/img/trash-can.png" alt="Excluir" class="icon" width="18.4" height="18.4" onclick="excluirChamado(${item.id})">
+                        <img src="src/img/trash-can.png" alt="Excluir" class="icon" width="18.4" height="18.4" onclick="abrirModalExclusao(${item.id})">
                     </td>
                 </tr>`;
 
@@ -49,6 +49,36 @@ async function filtrarChamados() {
 
     } catch (error) {
         console.error('Erro ao filtrar chamados:', error);
+    }
+}
+
+function abrirModalExclusao(id) {
+    const modal = document.getElementById('confirmModal');
+    const confirmButton = document.getElementById('confirmDeleteBtn');
+    const cancelButton = document.getElementById('cancelDeleteBtn');
+    const closeButton = document.querySelector('.close-btn');
+    
+    modal.style.display = 'block';
+
+    // Define a ação para o botão de confirmação
+    confirmButton.onclick = async function() {
+        modal.style.display = 'none'; // Fecha o modal após a confirmação
+        await excluirChamado(id);
+    };
+
+    // Ação para cancelar e fechar o modal
+    cancelButton.onclick = closeModal;
+    closeButton.onclick = closeModal;
+
+    // Fechar o modal se clicar fora dele
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            closeModal();
+        }
+    };
+
+    function closeModal() {
+        modal.style.display = 'none';
     }
 }
 
@@ -65,7 +95,6 @@ async function excluirChamado(id) {
             // Se a exclusão for bem-sucedida, removemos a linha da tabela
             const row = document.getElementById(`chamado-${id}`);
             row.remove();
-
             alert('Chamado excluído com sucesso!');
         } else {
             throw new Error('Erro ao excluir chamado');
@@ -75,6 +104,7 @@ async function excluirChamado(id) {
         alert('Erro ao excluir chamado. Tente novamente mais tarde.');
     }
 }
+
 
 document.addEventListener('DOMContentLoaded', () => {
     filtrarChamados();
