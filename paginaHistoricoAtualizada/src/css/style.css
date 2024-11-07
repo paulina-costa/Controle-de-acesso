@@ -123,7 +123,7 @@ main {
 .form-group textarea {
     padding: 10px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 8px;
     font-size: 16px;
 }
 
@@ -140,7 +140,7 @@ main {
     padding: 0.3%;
     font-size: 16px;
     border: none;
-    border-radius: 20px;
+    border-radius: 8px;
     cursor: pointer;
     text-align: center;
     color: #ffffff;
@@ -154,7 +154,7 @@ table {
     border-collapse: collapse; /* Remove os espaços entre as células da tabela */
     margin: auto;
     border: 1px solid #000000; /* Borda azul ao redor da tabela */
-    border-radius: 15px; /* Bordas arredondadas */
+    border-radius: 8px; /* Bordas arredondadas */
     overflow: hidden; /* Garante que o arredondamento funcione corretamente */
 }
 
@@ -195,7 +195,7 @@ tbody {
     margin: 2% 0% 0% 1%;
     color: #0253A4;
     background-color: #ffffff;
-    border-radius: 20px;
+    border-radius: 8px;
     text-align: center;
     cursor: pointer;
 }
