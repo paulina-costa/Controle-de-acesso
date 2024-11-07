@@ -83,7 +83,7 @@ header {
     max-width: 800px;
     background-color: #5e5d5d3f;
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 8px;
 }
 
 select{
@@ -117,7 +117,7 @@ select{
 .form-group textarea {
     padding: 10px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 8px;
     font-size: 16px;
 }
 
@@ -147,7 +147,7 @@ select{
     padding: 5px 0;
     font-size: 16px;
     border: none;
-    border-radius: 20px;
+    border-radius: 8px;
     cursor: pointer;
     text-align: center;
 }
@@ -226,7 +226,7 @@ footer {
     align-items: center;
     padding: 10px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 8px;
     background-color: #0253A4;
     color: white;
     cursor: pointer;
