@@ -89,14 +89,14 @@ main {
 /* Seção */
 .formularioHistorico {
     background-color: #cfcfcf;
-    border-radius: 15px;
-    margin: 50px;
+    border-radius: 8px;
+    margin: 20px 50px;
     padding: 1.5% 1% 0%;
 }
 
 .tabelaHistorico {
     background-color: #cfcfcf;
-    border-radius: 15px;
+    border-radius: 8px;
     margin: 0px 50px 50px 50px;
     padding: 1.8%;
 }
@@ -192,7 +192,7 @@ tbody {
     width: 10%;
     font-size: 16px;
     padding: 0.3%;
-    margin: 2% 0% 0% 1%;
+    margin: 2% 0% 0% 0%;
     color: #0253A4;
     background-color: #ffffff;
     border-radius: 8px;
