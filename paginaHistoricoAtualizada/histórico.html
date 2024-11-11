@@ -7,7 +7,7 @@
     <link rel="icon" type="image/x-icon" href="src/img/logo_elechtech.png">
     <link rel="stylesheet" href="./src/css/style.css">
     <link rel="stylesheet" href="./src/css/reset.css">
-    <script src="./script.js"></script>
+    <script src="./script.js" defer></script>
     <title>Histórico</title>
 </head>
 <body>
@@ -37,7 +37,6 @@
         <section class="formularioHistorico">
             <form id="filterForm">
                 <div class="form-grid">
-                    <!-- Campos de seleção -->
                     <div class="form-group">
                         <label for="tipo-chamado">Tipos de chamado</label>
                         <select id="tipo-chamado" name="tipo-chamado">
@@ -75,7 +74,7 @@
                             <option value="Computador">Computador</option>
                             <option value="Mouse">Mouse</option>
                             <option value="Teclado">Teclado</option>
-                            <option value="Alto-Falante">Alto-Falante</option>
+                            <option value="Alto-falante">Alto-falante</option>
                             <option value="Estabilizador">Estabilizador</option>
                         </select>
                     </div>
@@ -101,6 +100,7 @@
                     </div>
                 </div>
                 <div class="filtrar">
+                    <button onclick="carregarChamados()">Limpar Filtros</button>
                     <button type="button" class="btnFiltrar" onclick="filtrarChamados()">Filtrar</button>
                 </div>
             </form>
@@ -136,7 +136,6 @@
                 <button id="cancelDeleteBtn" class="btn-cancel">Cancelar</button>
             </div>
         </div>
-
     </main>
     <footer>
         <div class="footer-container">
@@ -160,34 +159,51 @@
         </div>
     </footer>
     <script>
-        document.addEventListener('DOMContentLoaded', async () => {
-            const urlParams = new URLSearchParams(window.location.search);
-            const chamadoId = urlParams.get('id');
-        
-            if (chamadoId) {
-                try {
-                    const response = await fetch(`http://localhost:3000/filtros/${chamadoId}`);
-                    if (!response.ok) throw new Error('Erro ao carregar os dados do chamado');
-        
-                    const chamado = await response.json();
-                    preencherFormulario(chamado);
-                } catch (error) {
-                    console.error('Erro ao carregar dados do chamado:', error);
-                }
+        // Função para carregar os chamados do banco de dados
+        async function carregarChamados() {
+            try {
+                const response = await fetch('http://localhost:3000/chamados'); // Substitua pela URL correta do seu backend
+                if (!response.ok) throw new Error('Erro ao carregar os chamados.');
+
+                const chamados = await response.json(); // Recebe os dados no formato JSON
+
+                // Limpa a tabela antes de preenchê-la
+                const tableBody = document.getElementById('tableBody');
+                tableBody.innerHTML = '';
+
+                // Preenche a tabela com os dados dos chamados
+                chamados.forEach(chamado => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${chamado.tipoChamado}</td>
+                        <td>${chamado.nivelUrgencia}</td>
+                        <td>${chamado.setor}</td>
+                        <td>${chamado.equipamento}</td>
+                        <td>${new Date(chamado.data).toLocaleDateString()}</td>
+                        <td>${chamado.resolucao}</td>
+                        <td>
+                            <a href="edicao.html?id=${chamado.id}" class="btn-editar">Editar</a>
+                            <button class="btn-excluir" onclick="confirmarExclusao(${chamado.id})">Excluir</button>
+                        </td>
+                    `;
+                    tableBody.appendChild(row);
+                });
+            } catch (error) {
+                console.error('Erro ao carregar os chamados:', error);
             }
-        });
-        
-        function preencherFormulario(chamado) {
-            document.getElementById('nomeUsuario').value = chamado.nomeUsuario;
-            document.getElementById('setor').value = chamado.setor;
-            document.getElementById('tiposDoChamado').value = chamado.tiposDoChamado;
-            document.getElementById('nivelDeUrgencia').value = chamado.nivelDeUrgencia;
-            document.getElementById('nomeEquipamento').value = chamado.nomeEquipamento;
-            document.getElementById('FK_tecnicoResponsavelPeloChamado').value = chamado.FK_tecnicoResponsavelPeloChamado;
-            document.getElementById('email').value = chamado.email;
-            document.getElementById('descricao').value = chamado.descricao;
-            document.getElementById('datas').value = new Date(chamado.datas).toISOString().split('T')[0];
         }
-        </script>
+
+        function limparFiltros() {
+            const selects = document.querySelectorAll('#filterForm select');
+            selects.forEach(select => select.selectedIndex = 0);  // Limpa os filtros do formulário
+
+            // Limpa a tabela
+            const tableBody = document.getElementById('tableBody');
+            tableBody.innerHTML = '';
+
+            // Chama a função que carrega todos os chamados
+            carregarChamados();
+        }
+    </script>
 </body>
 </html>
