@@ -100,7 +100,7 @@
                     </div>
                 </div>
                 <div class="filtrar">
-                    <button onclick="carregarChamados()">Limpar Filtros</button>
+                    <button onclick="carregarChamados()" class="btnLimparFiltros">Limpar Filtros</button>
                     <button type="button" class="btnFiltrar" onclick="filtrarChamados()">Filtrar</button>
                 </div>
             </form>
@@ -132,8 +132,8 @@
                 <span class="close-btn">&times;</span>
                 <h2>Confirmar Exclusão</h2>
                 <p>Tem certeza de que deseja excluir este chamado? Esta ação não pode ser desfeita.</p>
-                <button id="confirmDeleteBtn" class="btn-confirm">Confirmar</button>
                 <button id="cancelDeleteBtn" class="btn-cancel">Cancelar</button>
+                <button id="confirmDeleteBtn" class="btn-confirm">Confirmar</button>
             </div>
         </div>
     </main>
@@ -158,52 +158,5 @@
             </div>
         </div>
     </footer>
-    <script>
-        // Função para carregar os chamados do banco de dados
-        async function carregarChamados() {
-            try {
-                const response = await fetch('http://localhost:3000/chamados'); // Substitua pela URL correta do seu backend
-                if (!response.ok) throw new Error('Erro ao carregar os chamados.');
-
-                const chamados = await response.json(); // Recebe os dados no formato JSON
-
-                // Limpa a tabela antes de preenchê-la
-                const tableBody = document.getElementById('tableBody');
-                tableBody.innerHTML = '';
-
-                // Preenche a tabela com os dados dos chamados
-                chamados.forEach(chamado => {
-                    const row = document.createElement('tr');
-                    row.innerHTML = `
-                        <td>${chamado.tipoChamado}</td>
-                        <td>${chamado.nivelUrgencia}</td>
-                        <td>${chamado.setor}</td>
-                        <td>${chamado.equipamento}</td>
-                        <td>${new Date(chamado.data).toLocaleDateString()}</td>
-                        <td>${chamado.resolucao}</td>
-                        <td>
-                            <a href="edicao.html?id=${chamado.id}" class="btn-editar">Editar</a>
-                            <button class="btn-excluir" onclick="confirmarExclusao(${chamado.id})">Excluir</button>
-                        </td>
-                    `;
-                    tableBody.appendChild(row);
-                });
-            } catch (error) {
-                console.error('Erro ao carregar os chamados:', error);
-            }
-        }
-
-        function limparFiltros() {
-            const selects = document.querySelectorAll('#filterForm select');
-            selects.forEach(select => select.selectedIndex = 0);  // Limpa os filtros do formulário
-
-            // Limpa a tabela
-            const tableBody = document.getElementById('tableBody');
-            tableBody.innerHTML = '';
-
-            // Chama a função que carrega todos os chamados
-            carregarChamados();
-        }
-    </script>
 </body>
 </html>
