@@ -27,7 +27,7 @@
                 <p class="subtitle">Preencha os dados para criar sua conta</p>
                 
                 <div class="form-group">
-                    <label for="nome">Nome</label>
+                    <label for="nomeUsuario">Nome</label>
                     <input type="text" id="nome" placeholder="Digite seu nome">
                 </div>
                 
@@ -53,4 +53,53 @@
         </div>
     </div>
 </body>
+
+<script>
+    document.querySelector('.confirm-button').addEventListener('click', async (event) => {
+        event.preventDefault(); // Previne o comportamento padrão do link
+
+        // Captura os valores dos campos do formulário
+        const nomeUsuario = document.getElementById('nome').value;
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('senha').value;
+        const confirmPassword = document.getElementById('confirma-senha').value;
+
+        // Verifica se as senhas coincidem
+        if (password !== confirmPassword) {
+            alert('As senhas não coincidem.');
+            return;
+        }
+
+        try {
+            // Faz a requisição POST para o endpoint do back-end
+            const response = await fetch('http://localhost:3000/cadastro', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email, nomeUsuario, password }),
+            });
+
+            // Analisa a resposta do back-end
+            const result = await response.json();
+
+            if (response.ok) {
+                alert(result.message); // Sucesso
+                window.location.href = '../paginaLogin/login.html'; // Redireciona para a página de login
+            } else {
+                alert(result.error); // Exibe o erro retornado
+            }
+        } catch (error) {
+            console.error('Erro ao cadastrar:', error);
+            alert('Ocorreu um erro ao cadastrar. Tente novamente mais tarde.');
+        }
+    });
+
+    // Opção para o botão "Cancelar"
+    document.querySelector('.cancel-button').addEventListener('click', (event) => {
+        event.preventDefault(); // Previne comportamento padrão do link
+        window.location.href = '../paginaLogin/login.html'; // Redireciona para a página de login
+    });
+</script>
+
 </html>
