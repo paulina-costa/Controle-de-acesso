@@ -38,76 +38,109 @@
                 
                 <div class="form-group">
                     <label for="senha">Senha</label>
-                    <input type="password" id="senha" placeholder="Digite sua senha">
+                    <div class="input-container">
+                        <input type="password" id="senha" placeholder="Digite sua senha">
+                        <img id="toggle-senha" src="../CadastroUsuario/img/eye-closed.png" alt="Mostrar senha" class="eye-icon"> <!-- Ícone de olho fechado -->
+                    </div>
                 </div>
 
                 <div class="form-group">
                     <label for="confirma-senha">Confirmar Senha</label>
-                    <input type="password" id="confirma-senha" placeholder="Digite sua senha novamente">
+                    <div class="input-container">
+                        <input type="password" id="confirma-senha" placeholder="Digite sua senha novamente">
+                        <img id="toggle-confirma-senha" src="../CadastroUsuario/img/eye-closed.png" alt="Mostrar senha" class="eye-icon"> <!-- Ícone de olho fechado -->
+                    </div>
                 </div>
+                
                 <a href="../paginaLogin/login.html">
-                <button class="confirm-button">Confirmar</button>
-                <button class="cancel-button">Cancelar</button>
+                    <button class="confirm-button">Confirmar</button>
+                    <button class="cancel-button">Cancelar</button>
                 </a>
             </div>
         </div>
     </div>
-</body>
 
-<script>
-   document.querySelector('.confirm-button').addEventListener('click', async (event) => {
-    event.preventDefault(); // Previne o comportamento padrão do link
+    <script>
+        // Função para alternar entre mostrar e esconder senha
+        function togglePassword(inputId, iconId) {
+            const senhaInput = document.getElementById(inputId);
+            const icon = document.getElementById(iconId);
+            const tipoAtual = senhaInput.type;
 
-    // Captura os valores dos campos do formulário
-    const nomeUsuario = document.getElementById('nome').value;
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('senha').value;
-    const confirmPassword = document.getElementById('confirma-senha').value;
+            // Alterna entre 'password' e 'text'
+            if (tipoAtual === 'password') {
+                senhaInput.type = 'text'; // Mostra a senha
+                icon.src = '../CadastroUsuario/img/eye-open.png'; // Altera para o ícone do olho aberto
+                icon.alt = 'Esconder senha'; // Alterar o texto alternativo para acessibilidade
+            } else {
+                senhaInput.type = 'password'; // Esconde a senha
+                icon.src = '../CadastroUsuario/img/eye-closed.png'; // Altera para o ícone do olho fechado
+                icon.alt = 'Mostrar senha'; // Alterar o texto alternativo para acessibilidade
+            }
+        }
 
-    // Regex para validar o nome
-    const nomeRegex = /^[a-zA-ZÀ-ÿ]+(\s+[a-zA-ZÀ-ÿ]+)+$/;
-    if (!nomeRegex.test(nomeUsuario)) {
-        alert('O nome deve conter pelo menos duas palavras e não pode conter números.');
-        return;
-    }
-
-    // Regex para validar o e-mail
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-        alert('Por favor, insira um e-mail válido.');
-        return;
-    }
-
-    // Verifica se as senhas coincidem
-    if (password !== confirmPassword) {
-        alert('As senhas não coincidem.');
-        return;
-    }
-
-    try {
-        // Faz a requisição POST para o endpoint do back-end
-        const response = await fetch('http://localhost:3000/cadastro', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ email, nomeUsuario, password }),
+        // Adiciona o evento de click para mostrar/ocultar a senha
+        document.getElementById('toggle-senha').addEventListener('click', function() {
+            togglePassword('senha', 'toggle-senha');
         });
 
-        // Analisa a resposta do back-end
-        const result = await response.json();
+        document.getElementById('toggle-confirma-senha').addEventListener('click', function() {
+            togglePassword('confirma-senha', 'toggle-confirma-senha');
+        });
 
-        if (response.ok) {
-            alert(result.message); // Sucesso
-            window.location.href = '../paginaLogin/login.html'; // Redireciona para a página de login
-        } else {
-            alert(result.error); // Exibe o erro retornado
-        }
-    } catch (error) {
-        console.error('Erro ao cadastrar:', error);
-        alert('Ocorreu um erro ao cadastrar. Tente novamente mais tarde.');
-    }
-});
-</script>
+        document.querySelector('.confirm-button').addEventListener('click', async (event) => {
+            event.preventDefault(); // Previne o comportamento padrão do link
 
+            // Captura os valores dos campos do formulário
+            const nomeUsuario = document.getElementById('nome').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('senha').value;
+            const confirmPassword = document.getElementById('confirma-senha').value;
+
+            // Regex para validar o nome
+            const nomeRegex = /^[a-zA-ZÀ-ÿ]+(\s+[a-zA-ZÀ-ÿ]+)+$/;
+            if (!nomeRegex.test(nomeUsuario)) {
+                alert('O nome deve conter pelo menos duas palavras e não pode conter números.');
+                return;
+            }
+
+            // Regex para validar o e-mail
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert('Por favor, insira um e-mail válido.');
+                return;
+            }
+
+            // Verifica se as senhas coincidem
+            if (password !== confirmPassword) {
+                alert('As senhas não coincidem.');
+                return;
+            }
+
+            try {
+                // Faz a requisição POST para o endpoint do back-end
+                const response = await fetch('http://localhost:3000/cadastro', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ email, nomeUsuario, password } ),
+                });
+
+                // Analisa a resposta do back-end
+                const result = await response.json();
+
+                if (response.ok) {
+                    alert(result.message); // Sucesso
+                    window.location.href = '../paginaLogin/login.html'; // Redireciona para a página de login
+                } else {
+                    alert(result.error); // Exibe o erro retornado
+                }
+            } catch (error) {
+                console.error('Erro ao cadastrar:', error);
+                alert('Ocorreu um erro ao cadastrar. Tente novamente mais tarde.');
+            }
+        });
+    </script>
+</body>
 </html>
