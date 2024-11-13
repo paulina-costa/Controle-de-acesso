@@ -7,6 +7,7 @@
     <link rel="icon" type="image/x-icon" href="src/img/logo_elechtech.png">
     <link rel="stylesheet" href="./src/css/style.css">
     <link rel="stylesheet" href="./src/css/reset.css">
+    <script src="./script.js" defer></script>
     <title>Histórico</title>
 </head>
 <body>
@@ -36,9 +37,8 @@
         <section class="formularioHistorico">
             <form id="filterForm">
                 <div class="form-grid">
-                    <!-- Campos de seleção -->
                     <div class="form-group">
-                        <label for="tipo-chamado">Tipos de chamado:</label>
+                        <label for="tipo-chamado">Tipos de chamado</label>
                         <select id="tipo-chamado" name="tipo-chamado">
                             <option disabled selected>Selecione o tipo do chamado</option>
                             <option value="Substituição">Substituição</option>
@@ -47,9 +47,8 @@
                             <option value="Outros">Outros</option> 
                         </select>
                     </div>
-                    <!-- Outros campos de seleção -->
                     <div class="form-group">
-                        <label for="nivel-urgencia">Nível de Urgência:</label>
+                        <label for="nivel-urgencia">Nível de Urgência</label>
                         <select id="nivel-urgencia" name="nivel-urgencia">
                             <option disabled selected>Selecione o nível de urgência</option>
                             <option value="Crítico">Crítico</option>
@@ -69,26 +68,18 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="equipamento">Equipamento:</label>
+                        <label for="equipamento">Equipamento</label>
                         <select id="equipamento" name="equipamento">
                             <option disabled selected>Selecione o nome do equipamento</option>
                             <option value="Computador">Computador</option>
                             <option value="Mouse">Mouse</option>
                             <option value="Teclado">Teclado</option>
-                            <option value="Alto-Falante">Alto-Falante</option>
+                            <option value="Alto-falante">Alto-falante</option>
                             <option value="Estabilizador">Estabilizador</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="Responsável">Responsável:</label>
-                        <select id="FK_tecnicoResponsavelPeloChamado" name="FK_tecnicoResponsavelPeloChamado">
-                            <option disabled selected>Selecione o responsável</option>
-                            <option value="1">Paulina</option>
-                            <option value="2">Rafael</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="Resolução">Resolução:</label>
+                        <label for="Resolução">Resolução</label>
                         <select id="resolucao" name="resolucao">
                             <option disabled selected>Selecione a resolução</option>
                             <option value="Em andamento">Em andamento</option>
@@ -96,9 +87,8 @@
                             <option value="Não concluído">Não concluído</option>
                         </select>
                     </div>
-                    <!-- Novo campo de seleção para data -->
                     <div class="form-group">
-                        <label for="datas">Filtrar por Data:</label>
+                        <label for="datas">Filtrar por Data</label>
                         <select id="datas" name="datas">
                             <option disabled selected>Selecione o período</option>
                             <option value="7dias">Últimos 7 dias</option>
@@ -108,14 +98,14 @@
                             <option value="1ano">Último 1 ano</option>
                         </select>
                     </div>
-                    <!-- Adicione outros selects se necessário -->
                 </div>
                 <div class="filtrar">
+                    <button onclick="carregarChamados()" class="btnLimparFiltros">Limpar Filtros</button>
                     <button type="button" class="btnFiltrar" onclick="filtrarChamados()">Filtrar</button>
                 </div>
             </form>
         </section>
-        <section>
+        <section class="tabelaHistorico">
             <table border="1" style="text-align: center;">
                 <thead>
                     <tr>
@@ -123,19 +113,29 @@
                         <th>Nível de Urgência</th>
                         <th>Setor</th>
                         <th>Equipamento</th>
-                        <th>Responsável</th>
                         <th>Data</th>
                         <th>Resolução</th>
+                        <th>Ações</th>
                     </tr>
                 </thead>
                 <tbody id="tableBody">
                     <!-- Resultados da filtragem aparecerão aqui -->
                 </tbody>
             </table>
+            <a href="../Home/home.html">
+                <div class="btn">Voltar</div>
+            </a>
         </section>
-        <a href="../Home/home.html">
-            <div class="btn">Voltar</div>
-        </a>
+        <!-- Modal de Confirmação -->
+        <div id="confirmModal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn">&times;</span>
+                <h2>Confirmar Exclusão</h2>
+                <p>Tem certeza de que deseja excluir este chamado? Esta ação não pode ser desfeita.</p>
+                <button id="cancelDeleteBtn" class="btn-cancel">Cancelar</button>
+                <button id="confirmDeleteBtn" class="btn-confirm">Confirmar</button>
+            </div>
+        </div>
     </main>
     <footer>
         <div class="footer-container">
@@ -146,9 +146,9 @@
             <div class="footer-section mapa-do-site">
                 <h3>Mapa do Site</h3>
                 <ul>
-                    <li class="nav-item"><a href="../Home/home.html" class="nav-link">Início</a></li>
-                    <li class="nav-item"><a href="../paginaCadastro/cadastro.html" class="nav-link">Cadastro</a></li>
-                    <li class="nav-item"><a href="../paginaHistoricoAtualizada/histórico.html" class="nav-link">Histórico</a></li>
+                    <li class="naveg-item"><a href="../Home/home.html" class="nav-link">Início</a></li>
+                    <li class="naveg-item"><a href="../paginaCadastro/cadastro.html" class="nav-link">Cadastro</a></li>
+                    <li class="naveg-item"><a href="../paginaHistoricoAtualizada/histórico.html" class="nav-link">Histórico</a></li>
                 </ul>
             </div>
             <div class="footer-contato">
@@ -158,7 +158,6 @@
             </div>
         </div>
     </footer>
-<<<<<<< Updated upstream
 
     <script>
         // Função para fazer a requisição e preencher a tabela
@@ -216,37 +215,5 @@
             }
         }
     </script>
-=======
-    <script>
-        document.addEventListener('DOMContentLoaded', async () => {
-            const urlParams = new URLSearchParams(window.location.search);
-            const chamadoId = urlParams.get('id');
-        
-            if (chamadoId) {
-                try {
-                    const response = await fetch(`http://localhost:3000/filtros/${chamadoId}`);
-                    if (!response.ok) throw new Error('Erro ao carregar os dados do chamado');
-        
-                    const chamado = await response.json();
-                    preencherFormulario(chamado);
-                } catch (error) {
-                    console.error('Erro ao carregar dados do chamado:', error);
-                }
-            }
-        });
-        
-        function preencherFormulario(chamado) {
-            document.getElementById('nomeUsuario').value = chamado.nomeUsuario;
-            document.getElementById('setor').value = chamado.setor;
-            document.getElementById('tiposDoChamado').value = chamado.tiposDoChamado;
-            document.getElementById('nivelDeUrgencia').value = chamado.nivelDeUrgencia;
-            document.getElementById('nomeEquipamento').value = chamado.nomeEquipamento;
-            document.getElementById('FK_tecnicoResponsavelPeloChamado').value = chamado.FK_tecnicoResponsavelPeloChamado;
-            document.getElementById('email').value = chamado.email;
-            document.getElementById('descricao').value = chamado.descricao;
-            document.getElementById('datas').value = new Date(chamado.datas).toISOString().split('T')[0];
-        }
-        </script>
->>>>>>> Stashed changes
 </body>
 </html>

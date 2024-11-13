@@ -83,13 +83,18 @@ header {
     max-width: 800px;
     background-color: #5e5d5d3f;
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 8px;
 }
 
 select{
     color: black
 }
 
+.required {
+    color: red;
+    font-weight: bold;
+    font-size: 20px;
+}
 
 .form-grid {
     display: grid;
@@ -112,7 +117,7 @@ select{
 .form-group textarea {
     padding: 10px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 8px;
     font-size: 16px;
 }
 
@@ -142,13 +147,13 @@ select{
     padding: 5px 0;
     font-size: 16px;
     border: none;
-    border-radius: 20px;
+    border-radius: 8px;
     cursor: pointer;
     text-align: center;
 }
 
 .buttons .btn-voltar {
-    background-color: #ECECEC;
+    background-color: #ffffff;
     color: #0253A4;
     display: block;
 }
@@ -160,7 +165,7 @@ a{
 
 .buttons .btn-salvar {
     background-color: #0253A4;
-    color: #fff;
+    color: #ffffff;
 }
 
 footer {
@@ -183,6 +188,10 @@ footer {
     font-size: 25px;
     font-weight: 600;
     color: #fff;
+}
+
+.footer-section .nav-link {
+    text-decoration: none; /* Remove sublinhado do rodapé */
 }
 
 .footer-section {
@@ -217,7 +226,7 @@ footer {
     align-items: center;
     padding: 10px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 8px;
     background-color: #0253A4;
     color: white;
     cursor: pointer;

@@ -118,41 +118,55 @@ header {
     gap: 45px; /* Espaçamento entre os cards */
 }
 
-/* Estilos para os botões específicos */
-.botaoChamado, .botaoHistorico {
-    display: flex;
-    flex-direction: column; /* Alinha os itens verticalmente dentro do card */
-    align-items: center; /* Centraliza itens horizontalmente */
-    justify-content: center; /* Centraliza o conteúdo verticalmente */
-    padding: 20px; /* Ajuste o padding para espaçar melhor o conteúdo */
-    border: none;
+.bordaHistorico, .bordaChamado {
+    border: 1px solid #ddd;
     border-radius: 8px;
-    font-size: 30px;
-    font-weight: 600;
-    background-color: white;
-    height: 260px;
+    box-sizing: border-box;
+    padding: 30px; /* Espaçamento uniforme em todos os lados */
     width: 250px;
-    cursor: pointer;
+    height: 260px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     box-shadow: 5px 10px 8px rgba(0, 0, 0, 0.2);
-    text-align: center; /* Centraliza o texto dentro do card */
-    box-sizing: border-box; /* Inclui padding e border no tamanho total do card */
+    background-color: white;
 }
 
-/* Estilos para os parágrafos dentro dos botões */
-.bordaHistorico p, .bordaChamado p {
+.botaoChamado, .botaoHistorico {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: none;
+    font-size: 24px;
+    font-weight: 600;
+    cursor: pointer;
+    text-align: center;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+}
+
+.botaoChamado img, .botaoHistorico img {
+    margin-bottom: 5px;
+}
+
+.titulo {
+    font-size: 24px;
+    font-weight: 600;
+    margin-top: 10px;
+    line-height: 1.2;
+}
+
+.descricao {
     font-size: 18px;
     font-weight: 400;
     color: gray;
-    margin-top: 15px; /* Reduziu o espaço entre o ícone e o texto */
-    text-align: center; /* Centraliza o texto dentro do parágrafo */
+    margin-top: 8px;
+    text-align: center;
 }
 
-/* Estilo específico para as bordas dos contêineres */
-.bordaHistorico, .bordaChamado {
-    border: 1px solid #ddd; /* Adiciona uma borda leve ao redor do card */
-    border-radius: 8px; /* Certifica-se de que a borda tem a mesma forma arredondada */
-    box-sizing: border-box; /* Inclui padding e border no tamanho total */
-}
 
 /* Estilos para o título de nível 3 nos informativos */
 .informativos h3{
@@ -208,7 +222,7 @@ footer {
     justify-content: space-evenly;
     background-color: #0253A4;
     color: #fff;
-    padding: 20px 0;
+    padding: 0px 0;
     border-radius: 25px 25px 0 0; 
 }
 
@@ -228,6 +242,10 @@ footer {
     flex-wrap: wrap;
     margin: 0 25px;
     padding: 5px 0;
+}
+
+.footer-section .nav-link {
+    text-decoration: none; /* Remove sublinhado do rodapé */
 }
 
 /* Estilos para as seções dentro do rodapé */

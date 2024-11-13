@@ -1,4 +1,3 @@
-/* Estilos gerais */
 * {
     padding: 0;
     margin: 0;
@@ -88,18 +87,25 @@ main {
 }
 
 /* Seção */
-section {
+.formularioHistorico {
     background-color: #cfcfcf;
-    border-radius: 15px;
-    margin: 50px;
-    padding: 20px;
+    border-radius: 8px;
+    margin: 20px 50px;
+    padding: 1.5% 1.8% 0%;
+}
+
+.tabelaHistorico {
+    background-color: #cfcfcf;
+    border-radius: 8px;
+    margin: 0px 50px 50px 50px;
+    padding: 1.8%;
 }
 
 /* Layout do formulário */
 .form-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 25px;
+    gap: 2%;
 }
 
 .form-group {
@@ -117,41 +123,45 @@ section {
 .form-group textarea {
     padding: 10px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 8px;
     font-size: 16px;
 }
 
 /* Botão de filtrar */
 .filtrar {
     position: relative;
-    margin-top: 20px;
+    margin-top: 0.8%;
     text-align: right;
+    padding-top: 30px;
 }
 
 .btnFiltrar {
-    width: 15%;
-    padding: 5px 0;
+    width: 10%;
+    padding: 0.3%;
     font-size: 16px;
     border: none;
-    border-radius: 20px;
+    border-radius: 8px;
     cursor: pointer;
     text-align: center;
-    color: #cfcfcf;
+    color: #ffffff;
     background-color: #0253A4;
-    margin: 30px 50px;
+    margin: 1% 2% 2%;
 }
 
 /* Ajustes na tabela */
 table {
     width: 100%; /* A tabela ocupa toda a largura disponível */
     border-collapse: collapse; /* Remove os espaços entre as células da tabela */
-    margin-top: 20px; /* Espaço acima da tabela */
-    margin-bottom: 50px; /* Espaço abaixo da tabela */
+    margin: auto;
+    border: 1px solid #000000; /* Borda azul ao redor da tabela */
+    border-radius: 8px; /* Bordas arredondadas */
+    overflow: hidden; /* Garante que o arredondamento funcione corretamente */
 }
 
+
 table th, table td {
-    padding: 10px 20px; /* Preenchimento nas células */
-    border: 1px solid #000; /* Borda da tabela */
+    padding: 0.6%; /* Preenchimento nas células */
+    border: 2px solid #cfcfcf; /* Borda interna das células */
     text-align: center; /* Centraliza o conteúdo */
     background-color: #ffffff; /* Fundo branco para as células */
     color: #000000; /* Cor do texto */
@@ -164,23 +174,98 @@ table th {
 
 thead {
     display: table-header-group; /* Garante que o cabeçalho seja tratado corretamente */
+
 }
 
 tbody {
     display: table-row-group; /* Garante que o corpo da tabela seja tratado corretamente */
 }
 
-/* Estilo dos botões */
+.icon {
+    margin-right: 9%;
+    margin-left: 9%;
+}
+
+
+/* Estilo do botão voltar */
 .btn {
-    width: 15%;
+    width: 10%;
     font-size: 16px;
-    padding: 5px 0;
-    margin: 30px 50px;
+    padding: 0.3%;
+    margin: 2% 0% 0% 0%;
     color: #0253A4;
-    background-color: #cfcfcf;
-    border-radius: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
     text-align: center;
     cursor: pointer;
+}
+
+.icon {
+    cursor: pointer;
+}
+
+/* Estilos para o Modal */
+.modal {
+    display: none; /* Oculta o modal por padrão */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fundo semitransparente */
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 8px;
+    width: 300px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+.close-btn {
+    float: right;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Título e texto com espaçamento */
+h2 {
+    margin-top: 0;
+    margin-bottom: 15px; /* Espaço abaixo do título */
+}
+
+p {
+    font-size: 15px;
+    margin-bottom: 20px; /* Espaço entre o parágrafo e os botões */
+}
+
+/* Estilos para os botões */
+.btn-confirm {
+    background-color: #d9534f; /* Vermelho para o botão de confirmação */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.btn-cancel {
+    background-color: #ccc; /* Cinza para o botão de cancelamento */
+    color: black;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-confirm:hover, .btn-cancel:hover {
+    opacity: 0.9;
 }
 
 /* Footer */
@@ -204,6 +289,10 @@ footer {
     font-size: 25px;
     font-weight: 600;
     color: #fff;
+}
+
+.footer-section .nav-link {
+    text-decoration: none; /* Remove sublinhado do rodapé */
 }
 
 .footer-section {
