@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="img/Electech Solucions 2.png">
     <title>ES Serviços - Cadastro</title>
     <link rel="stylesheet" href="cadastroUsuario.css">
 </head>
@@ -36,17 +37,23 @@
                     <input type="email" id="email" placeholder="Digite seu email">
                     <span class="error-message" id="email-error"></span>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="senha">Senha</label>
-                    <input type="password" id="senha" placeholder="Digite sua senha">
-                    <span class="error-message" id="senha-error"></span>
+                    <div class="input-container">
+                        <input type="password" id="senha" placeholder="Digite sua senha">
+                        <img id="toggle-senha" src="../CadastroUsuario/img/eye-closed.png" alt="Mostrar senha" class="eye-icon"> <!-- Ícone de olho fechado -->
+                        <span class="error-message" id="senha-error"></span>
+                    </div>
                 </div>
 
                 <div class="form-group">
                     <label for="confirma-senha">Confirmar Senha</label>
-                    <input type="password" id="confirma-senha" placeholder="Digite sua senha novamente">
-                    <span class="error-message" id="confirma-senha-error"></span>
+                    <div class="input-container">
+                        <input type="password" id="confirma-senha" placeholder="Digite sua senha novamente">
+                        <img id="toggle-confirma-senha" src="../CadastroUsuario/img/eye-closed.png" alt="Mostrar senha" class="eye-icon"> <!-- Ícone de olho fechado -->
+                        <span class="error-message" id="confirma-senha-error"></span>
+                    </div>
                 </div>
 
                 <div id="server-message" class="success-message"></div>
@@ -60,6 +67,35 @@
     </div>
 
     <script>
+
+// Função para alternar entre mostrar e esconder senha
+        function togglePassword(inputId, iconId) {
+            const senhaInput = document.getElementById(inputId);
+            const icon = document.getElementById(iconId);
+            const tipoAtual = senhaInput.type;
+
+            // Alterna entre 'password' e 'text'
+            if (tipoAtual === 'password') {
+                senhaInput.type = 'text'; // Mostra a senha
+                icon.src = '../CadastroUsuario/img/eye-open.png'; // Altera para o ícone do olho aberto
+                icon.alt = 'Esconder senha'; // Alterar o texto alternativo para acessibilidade
+            } else {
+                senhaInput.type = 'password'; // Esconde a senha
+                icon.src = '../CadastroUsuario/img/eye-closed.png'; // Altera para o ícone do olho fechado
+                icon.alt = 'Mostrar senha'; // Alterar o texto alternativo para acessibilidade
+            }
+        }
+
+        // Adiciona o evento de click para mostrar/ocultar a senha
+        document.getElementById('toggle-senha').addEventListener('click', function() {
+            togglePassword('senha', 'toggle-senha');
+        });
+
+        document.getElementById('toggle-confirma-senha').addEventListener('click', function() {
+            togglePassword('confirma-senha', 'toggle-confirma-senha');
+        });
+
+
         document.querySelector('.confirm-button').addEventListener('click', async (event) => {
             event.preventDefault(); // Previne o comportamento padrão do link
 

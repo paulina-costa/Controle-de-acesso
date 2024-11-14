@@ -133,6 +133,10 @@ input {
     transition: border-color 0.3s ease;
 }
 
+.input-container{
+    position: relative;
+}
+
 input:focus {
     outline: none;
     border-color: #0047AB;
@@ -183,4 +187,14 @@ input:focus {
     color: green;
     font-size: 1rem;
     margin-top: 10px;
+}
+
+.eye-icon {
+    cursor: pointer; /* Torna o ícone clicável */
+    position: absolute; /* Permite posicionar o ícone relativo ao container */
+    right: 10px; /* Alinha o ícone à direita dentro do container */
+    top: 50%; /* Centraliza verticalmente o ícone no input */
+    transform: translateY(-50%); /* Ajusta o alinhamento para ficar perfeitamente centralizado */
+    width: 20px;  /* Define a largura do ícone */
+    height: 20px; /* Define a altura do ícone */
 }
