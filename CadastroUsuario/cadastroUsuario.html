@@ -6,8 +6,7 @@
     <title>ES Serviços - Cadastro</title>
     <link rel="stylesheet" href="cadastroUsuario.css">
 </head>
-<body>
-    <!-- Container principal dividido em duas partes -->
+<body><!-- Container principal dividido em duas partes -->
     <div class="cadastro-container">
         <!-- Lado esquerdo - Logo e elementos decorativos -->
         <div class="left-side">
@@ -28,23 +27,30 @@
                 
                 <div class="form-group">
                     <label for="nomeUsuario">Nome</label>
-                    <input type="text" id="nome" placeholder="Digite seu nome">
+                    <input type="text" id="nome" placeholder="Digite seu nome e sobrenome">
+                    <span class="error-message" id="nome-error"></span>
                 </div>
                 
                 <div class="form-group">
                     <label for="email">Email</label>
                     <input type="email" id="email" placeholder="Digite seu email">
+                    <span class="error-message" id="email-error"></span>
                 </div>
                 
                 <div class="form-group">
                     <label for="senha">Senha</label>
                     <input type="password" id="senha" placeholder="Digite sua senha">
+                    <span class="error-message" id="senha-error"></span>
                 </div>
 
                 <div class="form-group">
                     <label for="confirma-senha">Confirmar Senha</label>
                     <input type="password" id="confirma-senha" placeholder="Digite sua senha novamente">
+                    <span class="error-message" id="confirma-senha-error"></span>
                 </div>
+
+                <div id="server-message" class="success-message"></div>
+
                 <a href="../paginaLogin/login.html">
                 <button class="confirm-button">Confirmar</button>
                 <button class="cancel-button">Cancelar</button>
@@ -52,62 +58,99 @@
             </div>
         </div>
     </div>
-</body>
 
-<script>
-   document.querySelector('.confirm-button').addEventListener('click', async (event) => {
-    event.preventDefault(); // Previne o comportamento padrão do link
+    <script>
+        document.querySelector('.confirm-button').addEventListener('click', async (event) => {
+            event.preventDefault(); // Previne o comportamento padrão do link
 
-    // Captura os valores dos campos do formulário
-    const nomeUsuario = document.getElementById('nome').value;
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('senha').value;
-    const confirmPassword = document.getElementById('confirma-senha').value;
+            // Captura os valores dos campos do formulário
+            const nomeUsuario = document.getElementById('nome').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('senha').value;
+            const confirmPassword = document.getElementById('confirma-senha').value;
 
-    // Regex para validar o nome
-    const nomeRegex = /^[a-zA-ZÀ-ÿ]+(\s+[a-zA-ZÀ-ÿ]+)+$/;
-    if (!nomeRegex.test(nomeUsuario)) {
-        alert('O nome deve conter pelo menos duas palavras e não pode conter números.');
-        return;
-    }
+            // Limpa mensagens de erro anteriores
+            document.getElementById('nome-error').textContent = '';
+            document.getElementById('email-error').textContent = '';
+            document.getElementById('senha-error').textContent = '';
+            document.getElementById('confirma-senha-error').textContent = '';
+            document.getElementById('server-message').textContent = '';
 
-    // Regex para validar o e-mail
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-        alert('Por favor, insira um e-mail válido.');
-        return;
-    }
+            let hasError = false;
 
-    // Verifica se as senhas coincidem
-    if (password !== confirmPassword) {
-        alert('As senhas não coincidem.');
-        return;
-    }
+            // Regex para validar o nome
+            const nomeRegex = /^[a-zA-ZÀ-ÿ]+(\s+[a-zA-ZÀ-ÿ]+)+$/;
+            if (!nomeRegex.test(nomeUsuario)) {
+                document.getElementById('nome-error').textContent = 'O nome deve conter pelo menos o nome e sobrenome e não pode conter números.';
+                hasError = true;
+            }
 
-    try {
-        // Faz a requisição POST para o endpoint do back-end
-        const response = await fetch('http://localhost:3000/cadastro', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ email, nomeUsuario, password }),
+            // Regex para validar o e-mail
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                document.getElementById('email-error').textContent = 'Por favor, insira um e-mail válido.';
+                hasError = true;
+            }
+
+            // Validação de senha
+            const senhaRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^.&*()_+])[A-Za-z\d!@#$%^.&*()_+]{8,}$/;
+            if (!senhaRegex.test(password)) {
+                document.getElementById('senha-error').textContent = 'A senha deve ter no mínimo 8 caracteres, incluindo uma letra maiúscula, um número e um caractere especial.';
+                hasError = true;
+            }
+
+            // Verifica se as senhas coincidem
+            if (password !== confirmPassword) {
+                document.getElementById('confirma-senha-error').textContent = 'As senhas não coincidem.';
+                hasError = true;
+            }
+
+            // Se houve algum erro, impede o envio do formulário
+            if (hasError) return;
+
+            try {
+                // Faz a requisição POST para o endpoint do back-end
+                const response = await fetch('http://localhost:3000/cadastro', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ email, nomeUsuario, password }),
+                });
+
+                // Analisa a resposta do back-end
+                const result = await response.json();
+
+                if (response.ok) {
+                    document.getElementById('server-message').textContent = 'Usuário criado com sucesso!';
+                    document.getElementById('server-message').style.color = 'green';
+                    // Redireciona para a página de login após 2 segundos
+                    setTimeout(() => {
+                        window.location.href = '../paginaLogin/login.html';
+                    }, 2000);
+                } else {
+                    // Tratamento de erros específicos retornados pelo back-end
+                    if (result.error.includes('E-mail')) {
+                        document.getElementById('email-error').textContent = result.error;
+                    } else if (result.error.includes('Usuário')) {
+                        document.getElementById('nome-error').textContent = result.error;
+                    } else {
+                        document.getElementById('server-message').textContent = result.error;
+                        document.getElementById('server-message').style.color = 'red';
+                    }
+                }
+            } catch (error) {
+                console.error('Erro ao cadastrar:', error);
+                document.getElementById('server-message').textContent = 'Erro no servidor. Tente novamente mais tarde.';
+                document.getElementById('server-message').style.color = 'red';
+            }
         });
 
-        // Analisa a resposta do back-end
-        const result = await response.json();
-
-        if (response.ok) {
-            alert(result.message); // Sucesso
+        // Opção para o botão "Cancelar"
+        document.querySelector('.cancel-button').addEventListener('click', (event) => {
+            event.preventDefault(); // Previne comportamento padrão do link
             window.location.href = '../paginaLogin/login.html'; // Redireciona para a página de login
-        } else {
-            alert(result.error); // Exibe o erro retornado
-        }
-    } catch (error) {
-        console.error('Erro ao cadastrar:', error);
-        alert('Ocorreu um erro ao cadastrar. Tente novamente mais tarde.');
-    }
-});
-</script>
-
+        });
+    </script>
+</body>
 </html>
