@@ -113,9 +113,9 @@ function atualizarTabela(chamados) {
                 <td>${item.resolucao}</td>
                 <td>
                     <a href="../paginaEdicao/edicao.html?id=${item.id}">
-                        <img src="src/img/pencil.png" alt="Editar" class="icon" width="18.4" height="18.4">
+                        <img src="img/pencil2.png" alt="Editar" class="icon" width="18.4" height="18.4">
                     </a>
-                    <img src="src/img/trash-can.png" alt="Excluir" class="icon" width="18.4" height="18.4" onclick="abrirModalExclusao(${item.id})">
+                    <img src="img/trash-can.png" alt="Excluir" class="icon" width="18.4" height="18.4" onclick="abrirModalExclusao(${item.id})">
                 </td>
             </tr>`;
             tableBody.insertAdjacentHTML('beforeend', row);

@@ -6,11 +6,11 @@ function togglePassword(inputId, iconId) {
 
     if (tipoAtual === 'password') {
         senhaInput.type = 'text';
-        icon.src = '../paginaLogin/img/eye-open.png';
+        icon.src = '../assets/icons/eye-open.png';
         icon.alt = 'Esconder senha';
     } else {
         senhaInput.type = 'password';
-        icon.src = '../paginaLogin/img/eye-closed.png';
+        icon.src = '../assets/icons/eye-closed.png';
         icon.alt = 'Mostrar senha';
     }
 }

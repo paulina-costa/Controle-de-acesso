@@ -8,11 +8,11 @@ function togglePassword(inputId, iconId) {
     // Alterna entre 'password' e 'text'
     if (tipoAtual === 'password') {
         senhaInput.type = 'text'; // Mostra a senha
-        icon.src = '../CadastroUsuario/img/eye-open.png'; // Altera para o ícone do olho aberto
+        icon.src = '../assets/icons/eye-open.png'; // Altera para o ícone do olho aberto
         icon.alt = 'Esconder senha'; // Alterar o texto alternativo para acessibilidade
     } else {
         senhaInput.type = 'password'; // Esconde a senha
-        icon.src = '../CadastroUsuario/img/eye-closed.png'; // Altera para o ícone do olho fechado
+        icon.src = '../assets/icons/eye-closed.png'; // Altera para o ícone do olho fechado
         icon.alt = 'Mostrar senha'; // Alterar o texto alternativo para acessibilidade
     }
 }
