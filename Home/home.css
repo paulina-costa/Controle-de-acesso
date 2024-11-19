@@ -217,6 +217,56 @@ header {
     font-size: 14px;
 }
 
+/* Estilos para a imagem do usuário e o menu suspenso */
+.usuario {
+    position: fixed; /* Faz a imagem ficar fixa na tela */
+    top: 400px; /* Ajusta a distância do topo da tela */
+    left: 1290px; /* Ajusta a distância à esquerda da tela */
+    display: inline-block;
+}
+
+.imagem-usuario {
+    width: 50px; /* Ajuste o tamanho da imagem conforme necessário */
+    height: 50px;
+    border-radius: 50%; /* Torna a imagem redonda */
+    cursor: pointer;
+}
+
+/* Estilos para o menu suspenso fixo */
+.menu-suspenso {
+    display: none; /* Inicialmente, o menu é escondido */
+    position: fixed; /* Faz o menu ficar fixo na tela */
+    top: 400px; /* Ajusta a distância do topo da tela, para ficar abaixo da imagem */
+    left: 1240px; /* Ajusta a posição do menu para aparecer à direita da imagem */
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    width: 50px;
+}
+
+.menu-suspenso ul {
+    list-style: none;
+    padding: 10px;
+}
+
+.menu-suspenso ul li a {
+    text-decoration: none;
+    color: #0400ff;
+    font-size: 16px;
+}
+
+.menu-suspenso ul li a:hover {
+    color: #0253A4; /* Cor do link ao passar o mouse */
+}
+
+/* Mostrar o menu ao passar o mouse sobre a imagem do usuário */
+.usuario:hover .menu-suspenso {
+    display: block;
+}
+
+
 /* Estilos para o rodapé */
 footer {
     justify-content: space-evenly;
