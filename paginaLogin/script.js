@@ -42,7 +42,7 @@ async function login() {
         const result = await response.json();
 
         if (response.ok) {
-            // Armazena o token JWT no localStorage para autenticação em outras páginas
+            // Armazena o token JWT no localStorage
             localStorage.setItem('token', result.token);
             window.location.href = '../Home/home.html'; // Redireciona para a página inicial
         } else {
