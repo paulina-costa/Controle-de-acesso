@@ -53,3 +53,32 @@ async function login() {
         alert("Erro ao fazer login. Tente novamente mais tarde.");
     }
 }
+
+// Função para buscar dados de uma rota protegida usando o token JWT
+async function fetchProtectedData() {
+    const token = localStorage.getItem('token');
+    if (!token) {
+        alert("Você precisa estar logado.");
+        return;
+    }
+
+    try {
+        const response = await fetch('http://localhost:3000/protected-route', {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+            }
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+            console.log('Dados protegidos:', data);
+        } else {
+            alert('Erro ao acessar dados protegidos.');
+        }
+    } catch (error) {
+        console.error('Erro ao buscar dados protegidos:', error);
+        alert("Erro ao buscar dados protegidos.");
+    }
+}
