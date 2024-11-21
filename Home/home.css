@@ -218,7 +218,7 @@ header {
 }
 
 /* Estilos para a imagem do usuário e o menu suspenso */
-.usuario {
+.profile-container {
     position: fixed; /* Faz a imagem ficar fixa na tela */
     top: 400px; /* Ajusta a distância do topo da tela */
     left: 1290px; /* Ajusta a distância à esquerda da tela */
@@ -262,7 +262,7 @@ header {
 }
 
 /* Mostrar o menu ao passar o mouse sobre a imagem do usuário */
-.usuario:hover .menu-suspenso {
+.profile-container:hover .menu-suspenso {
     display: block;
 }
 
