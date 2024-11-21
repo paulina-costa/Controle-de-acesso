@@ -9,6 +9,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lemon&display=swap" rel="stylesheet">
     <script src="script.js"></script>
+    <script type="module">
+        import { checkTokenOnLoad } from '../src/auth.js';
+        // Verifica o token ao carregar a página
+        checkTokenOnLoad();
+    </script>
     <title>Área de Cadastro</title>
 </head>
 <body>

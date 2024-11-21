@@ -27,3 +27,9 @@ async function login() {
         alert('Erro ao conectar ao servidor.');
     }
 }
+
+window.onpageshow = function(event) {
+    if (event.persisted) {
+        window.location.reload();
+    }
+};

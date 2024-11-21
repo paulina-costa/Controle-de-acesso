@@ -8,6 +8,11 @@
     <link rel="stylesheet" href="./src/css/style.css">
     <link rel="stylesheet" href="./src/css/reset.css">
     <script src="script.js" defer></script>
+    <script type="module">
+        import { checkTokenOnLoad } from '../src/auth.js';
+        // Verifica o token ao carregar a página
+        checkTokenOnLoad();
+    </script>
     <title>Histórico</title>
 </head>
 <body>

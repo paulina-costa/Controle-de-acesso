@@ -57,3 +57,10 @@ function preencherFormulario(chamado) {
     document.getElementById('FK_tecnicoResponsavelPeloChamado').value = chamado.FK_tecnicoResponsavelPeloChamado;
     document.getElementById('descricao').value = chamado.descricao;
 }
+
+window.onpageshow = function(event) {
+    if (event.persisted) {
+        window.location.reload();
+    }
+};
+

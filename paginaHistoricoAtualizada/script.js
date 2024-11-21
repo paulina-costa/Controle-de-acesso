@@ -233,3 +233,10 @@ function limparFiltros() {
     // Chama a função que carrega todos os chamados
     carregarChamados();
 }
+
+window.onpageshow = function(event) {
+    if (event.persisted) {
+        window.location.reload();
+    }
+};
+
