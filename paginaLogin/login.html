@@ -92,7 +92,6 @@
                 if (response.ok) {
                     // Armazena o token JWT no localStorage para autenticação em outras páginas
                     localStorage.setItem('token', result.token);
-                    alert("Login realizado com sucesso!");
                     window.location.href = '../Home/home.html'; // Redireciona para a página inicial
                 } else {
                     alert(result.error || "Falha no login. Verifique suas credenciais.");

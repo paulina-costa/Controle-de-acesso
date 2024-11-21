@@ -127,6 +127,19 @@ main {
     font-size: 16px;
 }
 
+.btnLimpar{
+    width: 10%;
+    padding: 0.3%;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: center;
+    color: #0253A4;
+    background-color: #ffffff;
+    margin: 1% 1% 2%;
+}
+
 /* Botão de filtrar */
 .filtrar {
     position: relative;
@@ -145,7 +158,7 @@ main {
     text-align: center;
     color: #ffffff;
     background-color: #0253A4;
-    margin: 1% 2% 2%;
+    margin: 1% 2% 2% 0%;
 }
 
 /* Ajustes na tabela */

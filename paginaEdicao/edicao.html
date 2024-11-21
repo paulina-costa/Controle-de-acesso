@@ -1,0 +1,226 @@
+<!DOCTYPE html> 
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="img/logo_elechtech.png">
+    <link rel="stylesheet" type="text/css" href="edicao.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lemon&display=swap" rel="stylesheet">
+    <title>Área de Edição</title>
+</head>
+<body>
+
+    <!--area de navegacao do header -->
+    <header>
+        <nav class="nav-bar">
+            <div class="logoSebas">
+                <img src="img/Logo_Sebas.png" width="50px" right="40px">
+            </div>
+            <div class="nav-list">
+                <ul>
+                    <li class="nav-item"><a href="../Home/home.html" class="nav-link">Início</a></li>
+                    <li class="nav-item"><a href="../paginaCadastro/cadastro.html" class="nav-link">Cadastro</a></li>
+                    <li class="nav-item"><a href="../paginaHistoricoAtualizada/histórico.html" class="nav-link">Histórico</a></li>
+                    <li class="nav-item"><a href="../paginaEdicao/edicao.html" class="nav-link">Edição</a></li>
+                </ul>
+            </div>
+            <div class="logoSite">
+                <img src="img/logo_elechtech.png" width="50px" right="40px">
+            </div>
+        </nav>
+    </header>
+
+    <!--area de navegacao do header-->
+    <main>
+        <!--titulo e descricao-->
+        <section class="diferenciais">
+            <h1>Área de Edição</h1>
+            <br>
+            <p>Área onde você irá fazer a edição do cadastro</p>
+        </section>
+
+        <!--Area de formulario-->
+        <section class="formulario">
+            <form action="#" method="post" id="form-edicao">
+                <!--botoes selects e inputs-->
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="tiposDoChamado">Tipos de chamado <span class="required">*</span></label>
+                        <select id="tiposDoChamado" name="tiposDoChamado" required>
+                            <option disabled selected>Selecione o tipo do chamado</option>
+                            <option value="Substituição">Substituição</option>
+                            <option value="Formatação">Formatação</option>
+                            <option value="Manutenção">Manutenção</option>
+                            <option value="Outros">Outros</option> 
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="nivelDeUrgencia">Nível de Urgência <span class="required">*</span></label>
+                        <select id="nivelDeUrgencia" name="nivelDeUrgencia" class="select-blue" required>
+                            <option disabled selected>Selecione o nível de urgência</option>
+                            <option value="Crítico">Crítico</option>
+                            <option value="Alto">Alto</option>
+                            <option value="Médio">Médio</option>
+                            <option value="Baixo">Baixo</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email <span class="required">*</span></label>
+                        <input type="email" id="email" name="email" placeholder="Insira seu melhor email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="setor">Setor <span class="required">*</span></label>
+                        <select id="setor" name="setor" required>
+                            <option disabled selected> Selecione o setor</option>
+                            <option value="Secretaria">Secretaria</option>
+                            <option value="Pátio">Pátio</option>
+                            <option value="Sala 5">Sala 5</option>
+                            <option value="Sala 2">Sala 2</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="nomeUsuario">Usuário</label>
+                        <input type="text" id="nomeUsuario" name="nomeUsuario" placeholder="Insira seu nome completo">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="nomeEquipamento">Equipamento <span class="required">*</span></label>
+                        <select id="nomeEquipamento" name="nomeEquipamento" required>
+                            <option disabled selected>Selecione o nome do equipamento</option>
+                            <option value="Computador">Computador</option>
+                            <option value="Mouse">Mouse</option>
+                            <option value="Teclado">Teclado</option>
+                            <option value="Alto-falante">Alto-falante</option>
+                            <option value="Estabilizador">Estabilizador</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="datas">Data <span class="required">*</span></label>
+                        <input type="date" id="datas" name="datas" placeholder="Insira a data atual" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="FK_tecnicoResponsavelPeloChamado">Responsável <span class="required">*</span></label>
+                        <select id="FK_tecnicoResponsavelPeloChamado" name="FK_tecnicoResponsavelPeloChamado" required>
+                            <option disabled selected>Selecione o profissional disponível</option>
+                            <option value="1">Paulina</option>
+                            <option value="2">Rafael</option>
+                            <option value="3">Isack</option>
+                            <option value="4">Danyel</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group descricao">
+                        <label for="descricao">Descrição <span class="required">*</span></label>
+                        <textarea id="descricao" name="descricao" maxlength="300" placeholder="Faça um breve resumo sobre o problema (Max. 300 caracteres)" required></textarea>
+                        <span id="char-count">0/300</span>
+                    </div>
+                </div>
+                <a href="../Home/home.html">
+                    <div class="buttons">
+                        <button type="button" class="btn-voltar"> Voltar</button>
+                        <button type="submit" class="btn-salvar">Salvar</button>
+                    </div>
+                </a>
+            </form>
+            <p id="mensagem-envio" style="display: none; color: green; font-weight: bold; margin-top: 10px;">
+                Envio concluído com sucesso!
+            </p>
+        </section>
+    </main>
+
+    <!--rodapé com informacoes de contato-->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section sobre">
+                <h3>Sobre</h3>
+                <p>Um compromisso inabalável com a excelência acadêmica e a formação integral de seus alunos.</p>
+            </div>
+            <div class="footer-section mapa-do-site">
+                <h3>Mapa do Site</h3>
+                <ul>
+                    <li class="naveg-item"><a href="../Home/home.html" class="nav-link">Início</a></li>
+                    <li class="naveg-item"><a href="../paginaCadastro/cadastro.html" class="nav-link">Cadastro</a></li>
+                    <li class="naveg-item"><a href="../paginaHistoricoAtualizada/histórico.html" class="nav-link">Histórico</a></li>
+                    <li class="naveg-item"><a href="../paginaEdicao/edicao.html" class="nav-link">Edição</a></li>
+                </ul>
+            </div>
+            <div class="footer-contato">
+                <h3>Informações de Contato</h3>
+                <p><a href="https://www.google.com/maps/place/E.E.E.F.M.+S%C3%A3o+Sebasti%C3%A3o/@-7.2117707,-35.8804125,21z/data=!4m6!3m5!1s0x7ac1e52917e6839:0xbd4d2c16e15fa8b5!8m2!3d-7.2117012!4d-35.8800973!16s%2Fg%2F1trpldrv?entry=ttu">Estelita Cruz, 307 - Alto Branco, Campina Grande - PB, 58401-470</a></p>
+                <p>83 3342-2529</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const chamadoId = urlParams.get('id');
+
+            if (chamadoId) {
+                try {
+                    const response = await fetch(`http://localhost:3000/filtros/${chamadoId}`);
+                    if (!response.ok) throw new Error('Erro ao carregar os dados do chamado');
+
+                    const chamado = await response.json();
+                    preencherFormulario(chamado);
+                } catch (error) {
+                    console.error('Erro ao carregar dados do chamado:', error);
+                }
+            }
+
+            // Manipulador de evento para salvar as alterações
+            const formEdicao = document.getElementById('form-edicao'); 
+            formEdicao.addEventListener('submit', async (event) => {
+                event.preventDefault(); 
+                const chamadoId = urlParams.get('id');
+                const data = new FormData(formEdicao);
+                const values = Object.fromEntries(data.entries());
+
+                try {
+                    const response = await fetch(`http://localhost:3000/filtros/${chamadoId}`, {
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(values),
+                    });
+
+                    if (response.ok) {
+                        document.getElementById('mensagem-envio').style.display = 'block';
+                        formEdicao.reset();
+                        alert('Chamado atualizado com sucesso!');
+                        window.location.href = '../paginaHistoricoAtualizada/histórico.html';
+                    } else {
+                        throw new Error('Erro ao atualizar chamado');
+                    }
+                } catch (error) {
+                    console.error(error);
+                    alert('Erro ao atualizar o chamado.');
+                }
+            });
+        });
+
+        function preencherFormulario(chamado) {
+            document.getElementById('tiposDoChamado').value = chamado.tiposDoChamado;
+            document.getElementById('nivelDeUrgencia').value = chamado.nivelDeUrgencia;
+            document.getElementById('email').value = chamado.email;
+            document.getElementById('setor').value = chamado.setor;
+            document.getElementById('nomeUsuario').value = chamado.nomeUsuario;
+            document.getElementById('nomeEquipamento').value = chamado.nomeEquipamento;
+            document.getElementById('datas').value = chamado.datas;
+            document.getElementById('FK_tecnicoResponsavelPeloChamado').value = chamado.FK_tecnicoResponsavelPeloChamado;
+            document.getElementById('descricao').value = chamado.descricao;
+        }
+    </script>
+
+</body>
+</html>
