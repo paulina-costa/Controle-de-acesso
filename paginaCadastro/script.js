@@ -104,3 +104,18 @@ document.addEventListener('DOMContentLoaded', () => {
         charCount.textContent = `${descricao.value.length}/300`;
     });
 });
+
+// Script para contar os caracteres na textarea
+const descricao = document.getElementById('descricao');
+const charCount = document.getElementById('char-count');
+
+descricao.addEventListener('input', () => {
+    charCount.textContent = `${descricao.value.length}/300`;
+});
+
+window.onpageshow = function(event) {
+    if (event.persisted) {
+        window.location.reload();
+    }
+};
+

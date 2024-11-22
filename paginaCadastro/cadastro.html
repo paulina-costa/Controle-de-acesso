@@ -3,11 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="img/logo_elechtech.png">
+    <link rel="icon" type="image/x-icon" href="../assets/img/Logo_ElechTech.png">
     <link rel="stylesheet" type="text/css" href="cadastro.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lemon&display=swap" rel="stylesheet">
+    <script src="script.js"></script>
+    <script type="module">
+        import { checkTokenOnLoad } from '../src/auth.js';
+        // Verifica o token ao carregar a página
+        checkTokenOnLoad();
+    </script>
     <title>Área de Cadastro</title>
 </head>
 <body>
@@ -17,7 +23,7 @@
     <header>
         <nav class="nav-bar">
             <div class="logoSebas">
-                <img src="img/Logo_Sebas.png" width="50px" right="40px">
+                <img src="../assets/img/Logo_Sebas.png" width="50px" right="40px">
             </div>
             <div class="nav-list">
                 <ul>
@@ -27,7 +33,7 @@
                 </ul>
             </div>
             <div class="logoSite">
-                <img src="img/logo_elechtech.png" width="50px" right="40px">
+                <img src="../assets/img/Logo_ElechTech.png" width="50px" right="40px">
             </div>
         </nav>
     </header>
@@ -168,18 +174,5 @@
         </div>
     </footer>
     <!--rodapé com informacoes de contato-->
-
-    <script>
-        // Script para contar os caracteres na textarea
-        const descricao = document.getElementById('descricao');
-        const charCount = document.getElementById('char-count');
-
-        descricao.addEventListener('input', () => {
-            charCount.textContent = `${descricao.value.length}/300`;
-        });
-
-    </script>
-
-    <script src="script.js"></script>
 </body>
 </html>
