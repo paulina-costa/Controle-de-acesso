@@ -29,13 +29,12 @@ document.addEventListener('DOMContentLoaded', async () => {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(values),
-            });
-
+            })
             if (response.ok) {
                 document.getElementById('mensagem-envio').style.display = 'block';
                 formEdicao.reset();
-                alert('Chamado atualizado com sucesso!');
-                window.location.href = '../paginaHistoricoAtualizada/histórico.html';
+                setTimeout(() => {
+                window.location.href = '../paginaHistoricoAtualizada/histórico.html';}, 1000);
             } else {
                 throw new Error('Erro ao atualizar chamado');
             }
