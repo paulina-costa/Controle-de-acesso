@@ -121,6 +121,7 @@ h1 {
 }
 
 label {
+    padding-top: 15px;
     display: block;
     margin-bottom: 8px;
     color: #333;
@@ -203,12 +204,48 @@ input:focus {
     margin-top: 10px;
 }
 
-.eye-icon {
-    cursor: pointer; /* Torna o ícone clicável */
-    position: absolute; /* Permite posicionar o ícone relativo ao container */
-    right: 10px; /* Alinha o ícone à direita dentro do container */
-    top: 50%; /* Centraliza verticalmente o ícone no input */
-    transform: translateY(-50%); /* Ajusta o alinhamento para ficar perfeitamente centralizado */
-    width: 20px;  /* Define a largura do ícone */
-    height: 20px; /* Define a altura do ícone */
+/* Modificar o .input-container */
+.input-container {
+    position: relative;
+    width: 100%;
+}
+
+/* Ajustar o input dentro do input-container */
+.input-container input {
+    width: 100%;
+    padding: 8px;
+    padding-right: 35px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+/* Ajustar os ícones */
+.eye-icon,
+.eye-icon1 {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+/* Ajustar as mensagens de erro */
+.error-message {
+    color: red;
+    font-size: 0.875rem;
+    margin-top: 4px;
+    display: block;
+    width: 100%;
+    clear: both; /* Adicionar clear */
+    position: absolute; /* Remover position absolute se estiver definido */
+    left: 0; /* Remover left se estiver definido */
+}
+
+/* Ajustar o espaçamento dos form-groups */
+.form-group {
+    margin-bottom: 30px; /* Aumentar o margin-bottom para acomodar as mensagens de erro */
+    position: relative;
 }

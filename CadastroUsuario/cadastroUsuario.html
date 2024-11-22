@@ -42,7 +42,7 @@
                     <label for="senha">Senha <span class="required">*</span></label>
                     <div class="input-container">
                         <input type="password" id="senha" placeholder="Digite sua senha">
-                        <img id="toggle-senha" src="../CadastroUsuario/img/eye-closed.png" alt="Mostrar senha" class="eye-icon"> <!-- Ícone de olho fechado -->
+                        <img id="toggle-senha" src="../CadastroUsuario/img/eye-closed.png" alt="Mostrar senha" class="eye-icon1"> <!-- Ícone de olho fechado -->
                         <span class="error-message" id="senha-error"></span>
                     </div>
                 </div>
@@ -126,7 +126,7 @@
             // Regex para validar o e-mail
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailRegex.test(email)) {
-                document.getElementById('email-error').textContent = 'Por favor, insira um e-mail válido.';
+                document.getElementById('email-error').textContent = 'Por favor, insira um e-mail válido, ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤPor exemplo: User@example.com';
                 hasError = true;
             }
 
@@ -191,4 +191,4 @@
         });
     </script>
 </body>
-</html>
+</html> 
