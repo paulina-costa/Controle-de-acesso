@@ -114,3 +114,4 @@ document.querySelector('.confirm-button').addEventListener('click', async (event
 document.querySelector('.cancel-button').addEventListener('click', () => {
     window.location.href = '../paginaLogin/login.html';
 });
+
