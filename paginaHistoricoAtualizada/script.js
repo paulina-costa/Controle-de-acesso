@@ -1,13 +1,53 @@
+// Função única para verificar o token
+async function verificarToken() {
+    const token = localStorage.setItem('authToken', token);
+    if (!token) {
+        alert("Sessão expirada. Você será redirecionado para a página de login.");
+        window.location.href = "../paginaLogin/login.html"; // Redireciona para a página de login
+        return false;
+    }
+
+    try {
+        const response = await fetch('/validar-token', {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        });
+
+        if (!response.ok) {
+            alert('Token inválido ou expirado');
+            window.location.href = "../paginaLogin/login.html"; // Redireciona para a página de login
+            return false;
+        }
+
+        return true;
+    } catch (error) {
+        console.error('Erro ao verificar token:', error);
+        alert('Ocorreu um erro ao verificar sua sessão.');
+        window.location.href = "../paginaLogin/login.html"; // Redireciona para a página de login
+        return false;
+    }
+}
+
+// Função para verificar o token ao carregar a página
+async function checkTokenOnLoad() {
+    const tokenValido = await verificarToken();
+    if (!tokenValido) return; // Se o token não for válido, não carrega a página
+}
+
+// Função para filtrar chamados
 async function filtrarChamados() {
+    const tokenValido = await verificarToken();
+    if (!tokenValido) return; // Se o token não for válido, não prossegue com a filtragem
+
     const formData = new FormData(document.getElementById('filterForm'));
     const filterData = {};
-
     formData.forEach((value, key) => {
         filterData[key] = value;
     });
 
     try {
-        const response = await fetch('http://localhost:3000/filtros', {
+        const response = await fetch('/filtros', { // URL relativa
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -52,117 +92,29 @@ async function filtrarChamados() {
     }
 }
 
-// Função para carregar todos os chamados
-async function carregarChamados() {
-    try {
-        // Fazendo a requisição para o backend para buscar todos os chamados
-        const response = await fetch('http://localhost:3000/chamados');  // Substitua pela URL correta do seu backend
-        if (!response.ok) throw new Error('Erro ao carregar os chamados.');
+// Função para limpar filtros
+async function limparFiltros() {
+    const tokenValido = await verificarToken();
+    if (!tokenValido) return; // Se o token não for válido, não prossegue com a limpeza dos filtros
 
-        const chamados = await response.json();  // Recebe os dados no formato JSON
+    const selects = document.querySelectorAll('#filterForm select');
+    selects.forEach(select => select.selectedIndex = 0);  // Limpa os filtros do formulário
 
-        // Limpa a tabela antes de preenchê-la
-        const tableBody = document.getElementById('tableBody');
-        tableBody.innerHTML = '';  // Limpa a tabela
-
-        if (chamados.length > 0) {
-            chamados.forEach(chamado => {
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td>${chamado.tipoChamado}</td>
-                    <td>${chamado.nivelUrgencia}</td>
-                    <td>${chamado.setor}</td>
-                    <td>${chamado.equipamento}</td>
-                    <td>${new Date(chamado.data).toLocaleDateString()}</td>
-                    <td>${chamado.resolucao}</td>
-                    <td>
-                        <a href="edicao.html?id=${chamado.id}" class="btn-editar">Editar</a>
-                        <button class="btn-excluir" onclick="confirmarExclusao(${chamado.id})">Excluir</button>
-                    </td>
-                `;
-                tableBody.appendChild(row);
-            });
-        } else {
-            tableBody.innerHTML = `<tr><td colspan="7">Nenhum chamado encontrado</td></tr>`;
-        }
-    } catch (error) {
-        console.error('Erro ao carregar os chamados:', error);
-    }
-}
-
-// Chamado ao carregar a página
-document.addEventListener('DOMContentLoaded', () => {
-    carregarChamados();
-});
-
-
-// Função para atualizar a tabela com os dados dos chamados
-function atualizarTabela(chamados) {
+    // Limpa a tabela
     const tableBody = document.getElementById('tableBody');
-    tableBody.innerHTML = ''; // Limpa a tabela antes de atualizar
+    tableBody.innerHTML = '';
 
-    if (chamados.length > 0) {
-        chamados.forEach(item => {
-            const row = 
-            `<tr id="chamado-${item.id}">
-                <td>${item.tiposDoChamado}</td>
-                <td>${item.nivelDeUrgencia}</td>
-                <td>${item.setor}</td>
-                <td>${item.nomeEquipamento}</td>
-                <td>${new Date(item.datas).toLocaleDateString()}</td>
-                <td>${item.resolucao}</td>
-                <td>
-                    <a href="../paginaEdicao/edicao.html?id=${item.id}">
-                        <img src="img/pencil2.png" alt="Editar" class="icon" width="18.4" height="18.4">
-                    </a>
-                    <img src="img/trash-can.png" alt="Excluir" class="icon" width="18.4" height="18.4" onclick="abrirModalExclusao(${item.id})">
-                </td>
-            </tr>`;
-            tableBody.insertAdjacentHTML('beforeend', row);
-        });
-    } else {
-        tableBody.innerHTML = `<tr><td colspan="7">Nenhum resultado encontrado</td></tr>`;
-    }
-}
-
-// Chama a função carregarChamados ao carregar a página
-document.addEventListener('DOMContentLoaded', () => {
+    // Chama a função que carrega todos os chamados
     carregarChamados();
-});
-
-function abrirModalExclusao(id) {
-    const modal = document.getElementById('confirmModal');
-    const confirmButton = document.getElementById('confirmDeleteBtn');
-    const cancelButton = document.getElementById('cancelDeleteBtn');
-    const closeButton = document.querySelector('.close-btn');
-    
-    modal.style.display = 'block';
-
-    // Define a ação para o botão de confirmação
-    confirmButton.onclick = async function() {
-        modal.style.display = 'none'; // Fecha o modal após a confirmação
-        await excluirChamado(id);
-    };
-
-    // Ação para cancelar e fechar o modal
-    cancelButton.onclick = closeModal;
-    closeButton.onclick = closeModal;
-
-    // Fechar o modal se clicar fora dele
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            closeModal();
-        }
-    };
-
-    function closeModal() {
-        modal.style.display = 'none';
-    }
 }
 
+// Função para excluir um chamado
 async function excluirChamado(id) {
+    const tokenValido = await verificarToken();
+    if (!tokenValido) return; // Se o token não for válido, não prossegue com a exclusão
+
     try {
-        const response = await fetch(`http://localhost:3000/filtros/${id}`, {
+        const response = await fetch(`/filtros/${id}`, { // URL relativa
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'
@@ -183,60 +135,14 @@ async function excluirChamado(id) {
     }
 }
 
+// Função para abrir o modal de exclusão
+function abrirModalExclusao(id) {
+    // Lógica para abrir o modal de exclusão
+    const modal = document.getElementById('modalExclusao');
+    modal.style.display = 'block';
 
-document.addEventListener('DOMContentLoaded', () => {
-    filtrarChamados();
-});
-
-// Função para carregar os chamados do banco de dados
-async function carregarChamados() {
-    try {
-        const response = await fetch('http://localhost:3000/chamados'); // Substitua pela URL correta do seu backend
-        if (!response.ok) throw new Error('Erro ao carregar os chamados.');
-
-        const chamados = await response.json(); // Recebe os dados no formato JSON
-
-        // Limpa a tabela antes de preenchê-la
-        const tableBody = document.getElementById('tableBody');
-        tableBody.innerHTML = '';
-
-        // Preenche a tabela com os dados dos chamados
-        chamados.forEach(chamado => {
-            const row = document.createElement('tr');
-            row.innerHTML = `
-                <td>${chamado.tipoChamado}</td>
-                <td>${chamado.nivelUrgencia}</td>
-                <td>${chamado.setor}</td>
-                <td>${chamado.equipamento}</td>
-                <td>${new Date(chamado.data).toLocaleDateString()}</td>
-                <td>${chamado.resolucao}</td>
-                <td>
-                    <a href="edicao.html?id=${chamado.id}" class="btn-editar">Editar</a>
-                    <button class="btn-excluir" onclick="confirmarExclusao(${chamado.id})">Excluir</button>
-                </td>
-            `;
-            tableBody.appendChild(row);
-        });
-    } catch (error) {
-        console.error('Erro ao carregar os chamados:', error);
-    }
+    const confirmarButton = document.getElementById('confirmarExclusao');
+    confirmarButton.onclick = () => excluirChamado(id);
 }
 
-function limparFiltros() {
-    const selects = document.querySelectorAll('#filterForm select');
-    selects.forEach(select => select.selectedIndex = 0);  // Limpa os filtros do formulário
-
-    // Limpa a tabela
-    const tableBody = document.getElementById('tableBody');
-    tableBody.innerHTML = '';
-
-    // Chama a função que carrega todos os chamados
-    carregarChamados();
-}
-
-window.onpageshow = function(event) {
-    if (event.persisted) {
-        window.location.reload();
-    }
-};
-
+document.addEventListener('DOMContentLoaded', checkTokenOnLoad); // Verifica o token ao carregar a página

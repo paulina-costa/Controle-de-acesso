@@ -1,14 +1,48 @@
+const token = verificarToken();
+
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.querySelector('form'); // Seleciona o formulário
     const descricao = document.getElementById('descricao'); // Seleciona a descrição do problema
 
+    // Função para verificar o token e sua validade
+    function verificarToken() {
+        const token = localStorage.getItem('token');
+        if (!token) {
+            alert("Você precisa estar logado para acessar esta página.");
+            window.location.href = '../paginaLogin/login.html'; // Redireciona para login caso não haja token
+            return null;
+        }
+
+        try {
+            const payload = JSON.parse(atob(token.split('.')[1])); // Decodifica o payload do token
+            const now = Date.now() / 1000; // Timestamp atual em segundos
+
+            if (payload.exp < now) {
+                alert('Sua sessão expirou. Faça login novamente.');
+                logout(); // Remove o token e redireciona para o login
+                return null;
+            }
+
+            return token; // Retorna o token válido
+        } catch (error) {
+            console.error('Erro ao verificar o token:', error);
+            logout();
+            return null;
+        }
+    }
+
     // Função para enviar os dados do formulário
     const enviarDados = async (dadosFormulario) => {
+        const token = verificarToken(); // Verifica a validade do token antes de enviar
+
+        if (!token) return; // Se o token for inválido, não faz a requisição
+
         try {
             const response = await fetch('http://localhost:3000/chamados', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}` // Adiciona o token no cabeçalho
                 },
                 body: JSON.stringify(dadosFormulario),
             });
@@ -40,11 +74,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Função para buscar e exibir o histórico de chamados
     const buscarHistorico = async () => {
+        const token = verificarToken(); // Verifica o token antes de buscar o histórico
+
+        if (!token) return; // Se o token for inválido, não busca os dados
+
         try {
             const response = await fetch('http://localhost:3000/filtros', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}` // Adiciona o token no cabeçalho
                 },
                 body: JSON.stringify({}) // Envia um filtro vazio para buscar todos os registros
             });
@@ -105,6 +144,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+// Função de logout
+function logout() {
+    localStorage.removeItem('token'); // Remove o token
+    window.location.href = '../paginaLogin/login.html'; // Redireciona para a página de login
+}
+
 // Script para contar os caracteres na textarea
 const descricao = document.getElementById('descricao');
 const charCount = document.getElementById('char-count');
@@ -118,4 +163,3 @@ window.onpageshow = function(event) {
         window.location.reload();
     }
 };
-

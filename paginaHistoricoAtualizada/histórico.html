@@ -105,7 +105,7 @@
                     </div>
                 </div>
                 <div class="filtrar">
-                    <button onclick="carregarChamados()" class="btnLimpar">Limpar Filtros</button>
+                    <button type="button" onclick="limparFiltros()" class="btnLimpar">Limpar Filtros</button>
                     <button type="button" class="btnFiltrar" onclick="filtrarChamados()">Filtrar</button>
                 </div>
             </form>
@@ -137,8 +137,8 @@
                 <span class="close-btn">&times;</span>
                 <h2>Confirmar Exclusão</h2>
                 <p>Tem certeza de que deseja excluir este chamado? Esta ação não pode ser desfeita.</p>
-                <button id="cancelDeleteBtn" class="btn-cancel">Cancelar</button>
                 <button id="confirmDeleteBtn" class="btn-confirm">Confirmar</button>
+                <button id="cancelDeleteBtn" class="btn-cancel">Cancelar</button>
             </div>
         </div>
     </main>
