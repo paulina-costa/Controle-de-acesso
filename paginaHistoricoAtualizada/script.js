@@ -1,4 +1,34 @@
+const token = verificarToken();
+
+function verificarToken() {
+    const token = localStorage.getItem('token');
+    if (!token) {
+        alert("Você precisa estar logado para acessar esta página.");
+        window.location.href = '../paginaLogin/login.html'; // Redireciona para login caso não haja token
+        return null;
+    }
+
+    try {
+        const payload = JSON.parse(atob(token.split('.')[1])); // Decodifica o payload do token
+        const now = Date.now() / 1000; // Timestamp atual em segundos
+
+        if (payload.exp < now) {
+            alert('Sua sessão expirou. Faça login novamente.');
+            logout(); // Remove o token e redireciona para o login
+            return null;
+        }
+
+        return token; // Retorna o token válido
+    } catch (error) {
+        console.error('Erro ao verificar o token:', error);
+        logout();
+        return null;
+    }
+}
+
 async function filtrarChamados() {
+    const token = verificarToken(); // Verifica a validade do token antes de enviar
+        if (!token) return; // Se o token for inválido, não faz a requisição
     const formData = new FormData(document.getElementById('filterForm'));
     const filterData = {};
 
@@ -54,6 +84,8 @@ async function filtrarChamados() {
 
 // Função para carregar todos os chamados
 async function carregarChamados() {
+    const token = verificarToken(); // Verifica a validade do token antes de enviar
+        if (!token) return; // Se o token for inválido, não faz a requisição
     try {
         // Fazendo a requisição para o backend para buscar todos os chamados
         const response = await fetch('http://localhost:3000/chamados');  // Substitua pela URL correta do seu backend
@@ -98,6 +130,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Função para atualizar a tabela com os dados dos chamados
 function atualizarTabela(chamados) {
+    const token = verificarToken(); // Verifica a validade do token antes de enviar
+        if (!token) return; // Se o token for inválido, não faz a requisição
     const tableBody = document.getElementById('tableBody');
     tableBody.innerHTML = ''; // Limpa a tabela antes de atualizar
 
@@ -131,6 +165,8 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function abrirModalExclusao(id) {
+    const token = verificarToken(); // Verifica a validade do token antes de enviar
+        if (!token) return; // Se o token for inválido, não faz a requisição
     const modal = document.getElementById('confirmModal');
     const confirmButton = document.getElementById('confirmDeleteBtn');
     const cancelButton = document.getElementById('cancelDeleteBtn');
@@ -161,6 +197,8 @@ function abrirModalExclusao(id) {
 }
 
 async function excluirChamado(id) {
+    const token = verificarToken(); // Verifica a validade do token antes de enviar
+        if (!token) return; // Se o token for inválido, não faz a requisição
     try {
         const response = await fetch(`http://localhost:3000/filtros/${id}`, {
             method: 'DELETE',
@@ -190,6 +228,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Função para carregar os chamados do banco de dados
 async function carregarChamados() {
+    const token = verificarToken(); // Verifica a validade do token antes de enviar
+        if (!token) return; // Se o token for inválido, não faz a requisição
     try {
         const response = await fetch('http://localhost:3000/chamados'); // Substitua pela URL correta do seu backend
         if (!response.ok) throw new Error('Erro ao carregar os chamados.');
