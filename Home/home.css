@@ -237,13 +237,13 @@ header {
     display: none; /* Inicialmente, o menu é escondido */
     position: fixed; /* Faz o menu ficar fixo na tela */
     top: 400px; /* Ajusta a distância do topo da tela, para ficar abaixo da imagem */
-    left: 1240px; /* Ajusta a posição do menu para aparecer à direita da imagem */
+    left: 940px; /* Ajusta a posição do menu para aparecer à direita da imagem */
     background-color: #ffffff;
     border: 1px solid #ddd;
     border-radius: 5px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     z-index: 10;
-    width: 50px;
+    width: 350px;
 }
 
 .menu-suspenso ul {

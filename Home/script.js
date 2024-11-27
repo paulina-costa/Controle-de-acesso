@@ -70,3 +70,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Caso tenha algum outro comportamento para o menu suspenso ou mais ajustes
 });
+
+// Função para carregar os dados do usuário logado
+function carregarDadosUsuario() {
+    // Recupera os dados do localStorage
+    const nomeUsuario = localStorage.getItem('nomeUsuario');
+    const email = localStorage.getItem('email');
+
+    // Verifica se os dados existem no localStorage
+    if (nomeUsuario && email) {
+        // Atualiza os elementos com os dados
+        document.getElementById('nomeUsuario').textContent = nomeUsuario;
+        document.getElementById('emailUsuario').textContent = email;
+    } else {
+        // Se não houver dados no localStorage, pode exibir uma mensagem de erro ou redirecionar
+        console.log('Usuário não encontrado no localStorage.');
+    }
+}
+
+// Chama a função para carregar os dados ao carregar a página
+document.addEventListener('DOMContentLoaded', carregarDadosUsuario);
