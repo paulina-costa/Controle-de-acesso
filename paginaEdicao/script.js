@@ -98,10 +98,10 @@ function checkTokenOnLoad() {
 
 // Função de logout
 function logout() {
-    // Remove o token do localStorage
-    localStorage.removeItem('token');
-    // Redireciona para a página de login
-    window.location.href = '../paginaLogin/login.html';
+    localStorage.removeItem('token'); // Remove o token
+    localStorage.removeItem('email');
+    localStorage.removeItem('nomeUsuario');
+    window.location.href = '../paginaLogin/login.html'; // Redireciona para a página de login
 }
 
 // Função para verificar a validade do token antes de enviar a requisição

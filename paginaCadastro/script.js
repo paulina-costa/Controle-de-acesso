@@ -1,5 +1,3 @@
-const token = verificarToken();
-
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.querySelector('form'); // Seleciona o formulário
     const descricao = document.getElementById('descricao'); // Seleciona a descrição do problema
@@ -8,21 +6,21 @@ document.addEventListener('DOMContentLoaded', () => {
     function verificarToken() {
         const token = localStorage.getItem('token');
         if (!token) {
-            alert("Você precisa estar logado para acessar esta página.");
-            window.location.href = '../paginaLogin/login.html'; // Redireciona para login caso não haja token
+            alert('Você precisa estar logado para acessar esta página.')
+            window.location.href = '../paginaLogin/login.html';
             return null;
         }
-
+    
         try {
             const payload = JSON.parse(atob(token.split('.')[1])); // Decodifica o payload do token
             const now = Date.now() / 1000; // Timestamp atual em segundos
-
+    
             if (payload.exp < now) {
                 alert('Sua sessão expirou. Faça login novamente.');
                 logout(); // Remove o token e redireciona para o login
                 return null;
             }
-
+    
             return token; // Retorna o token válido
         } catch (error) {
             console.error('Erro ao verificar o token:', error);
@@ -144,9 +142,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+
 // Função de logout
 function logout() {
     localStorage.removeItem('token'); // Remove o token
+    localStorage.removeItem('email');
+    localStorage.removeItem('nomeUsuario');
     window.location.href = '../paginaLogin/login.html'; // Redireciona para a página de login
 }
 
