@@ -52,6 +52,8 @@ function fazerRequisicaoComToken(url, options) {
 // Função de logout
 function logout() {
     localStorage.removeItem('token'); // Remove o token
+    localStorage.removeItem('email');
+    localStorage.removeItem('nomeUsuario');
     window.location.href = '../paginaLogin/login.html'; // Redireciona para a página de login
 }
 
