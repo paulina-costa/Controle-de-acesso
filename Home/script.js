@@ -55,15 +55,16 @@ function logout() {
     window.location.href = '../paginaLogin/login.html'; // Redireciona para a página de login
 }
 
-// Executar verificação de token ao carregar a página
-verificarToken();  // Verifica o token ao carregar a página (já vai fazer logout caso necessário)
+// Garantir que o código seja executado após o carregamento do DOM
+document.addEventListener('DOMContentLoaded', () => {
+    // Verifica o token ao carregar a página
+    verificarToken();  // Verifica o token ao carregar a página (já vai fazer logout caso necessário)
 
-// Adicionar evento de logout ao botão "sair" no menu suspenso
-document.querySelector('.menu-suspenso').addEventListener('click', logout);
-
-// Função para re-carregar a página se o evento de 'pageshow' for disparado
-window.onpageshow = function(event) {
-    if (event.persisted) {
-        window.location.reload();
+    // Adicionar evento de logout ao botão "sair" no menu suspenso
+    const menuSuspenso = document.querySelector('.menu-suspenso');
+    if (menuSuspenso) {
+        menuSuspenso.addEventListener('click', logout);
     }
-};
+
+    // Caso tenha algum outro comportamento para o menu suspenso ou mais ajustes
+});
