@@ -1,3 +1,4 @@
+// Função para alternar a visibilidade da senha
 function togglePassword(inputId, iconId) {
     const senhaInput = document.getElementById(inputId);
     const icon = document.getElementById(iconId);
@@ -5,11 +6,11 @@ function togglePassword(inputId, iconId) {
 
     if (tipoAtual === 'password') {
         senhaInput.type = 'text';
-        icon.src = '../paginaLogin/img/eye-open.png';
+        icon.src = '../assets/icons/eye-open.png';
         icon.alt = 'Esconder senha';
     } else {
         senhaInput.type = 'password';
-        icon.src = '../paginaLogin/img/eye-closed.png';
+        icon.src = '../assets/icons/eye-closed.png';
         icon.alt = 'Mostrar senha';
     }
 }
@@ -41,9 +42,17 @@ async function login() {
         const result = await response.json();
 
         if (response.ok) {
-            // Armazena o token JWT no localStorage para autenticação em outras páginas
-            localStorage.setItem('token', result.token);
-            window.location.href = '../Home/home.html'; // Redireciona para a página inicial
+            // Verificar se os dados necessários estão presentes
+            const { token, email, nomeUsuario } = result;
+            if (token && email && nomeUsuario) {
+                // Armazena os dados no localStorage
+                localStorage.setItem('token', token);
+                localStorage.setItem('email', email);
+                localStorage.setItem('nomeUsuario', nomeUsuario);
+                window.location.href = '../Home/home.html'; // Redireciona para a página inicial
+            } else {
+                alert("Erro: Dados incompletos recebidos.");
+            }
         } else {
             alert(result.error || "Falha no login. Verifique suas credenciais.");
         }
