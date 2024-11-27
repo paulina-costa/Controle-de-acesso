@@ -55,7 +55,7 @@ header {
 }
 
 /* Estilos para os links de navegação */
-.nav-link { /* codigo para outras páginas */
+.nav-link { /* código para outras páginas */
     text-decoration: none;
     font-size: 18px;
     color: #fff;
@@ -63,11 +63,11 @@ header {
     transition: color 0.3s ease;
 }
 
-.nav-link:hover { /* codigo para outras páginas */
+.nav-link:hover { /* código para outras páginas */
     color: #ffcc00; /* Cor do texto ao passar o mouse */
 }
 
-.nav-link[href="../Home/home.html"] { /* codigo para outras páginas */  /* adicionem as outras paginas trocando o nome da sua página */
+.nav-link[href="../Home/home.html"] { /* código para outras páginas */
     text-decoration: underline;
     text-decoration-color: #fff; /* Cor do sublinhado, pode ajustar conforme necessário */
     text-decoration-thickness: 3px; /* Espessura do sublinhado */
@@ -270,7 +270,8 @@ header {
     color: white; /* Cor do link ao passar o mouse */
 }
 
-button{
+/* Estilo específico para o botão de sair */
+.menu-suspenso button {
     border-radius: 6px;
     width: 50px;
     height: 20px;
@@ -287,7 +288,6 @@ button{
 .profile-container:hover .menu-suspenso {
     display: block;
 }
-
 
 /* Estilos para o rodapé */
 footer {
@@ -310,45 +310,8 @@ footer {
 /* Estilos para o contêiner do rodapé */
 .footer-container{
     display: flex;
-    justify-content: space-around;
     flex-wrap: wrap;
-    margin: 0 25px;
-    padding: 5px 0;
-}
-
-.footer-section .nav-link {
-    text-decoration: none; /* Remove sublinhado do rodapé */
-}
-
-/* Estilos para as seções dentro do rodapé */
-.footer-section {
-    flex: 1;
-    margin: 10px;
-}
-
-/* Estilos para a lista desordenada dentro do rodapé */
-.footer-section ul {
-    list-style: none;
-}
-
-/* Estilos para os itens de lista dentro do rodapé */
-.footer-section ul li {
-    margin-bottom: 10px;
-}
-
-/* Estilos para os links dentro dos itens de lista no rodapé */
-.footer-section ul li a {
-    color: #fff;
-    text-decoration: none;
-}
-
-/* Estilos para a seção de contato no rodapé */
-.footer-contato {
-    margin: 10px;
-}
-
-/* Estilos para os links de contato no rodapé */
-.footer-contato a{
-    color: #fff;
-    text-decoration: none;
+    align-items: center;
+    justify-content: space-evenly;
+    text-align: center;
 }

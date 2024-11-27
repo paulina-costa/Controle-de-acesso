@@ -63,9 +63,12 @@ document.addEventListener('DOMContentLoaded', () => {
     verificarToken();  // Verifica o token ao carregar a página (já vai fazer logout caso necessário)
 
     // Adicionar evento de logout ao botão "sair" no menu suspenso
-    const menuSuspenso = document.querySelector('.menu-suspenso');
-    if (menuSuspenso) {
-        menuSuspenso.addEventListener('click', logout);
+    const botaoSair = document.getElementById('botaoSair');  // Seleciona o botão de logout
+    if (botaoSair) {
+        botaoSair.addEventListener('click', function(event) {
+            event.stopPropagation(); // Impede que o clique no botão "Sair" feche o menu
+            logout(); // Chama a função de logout
+        });
     }
 
     // Caso tenha algum outro comportamento para o menu suspenso ou mais ajustes
