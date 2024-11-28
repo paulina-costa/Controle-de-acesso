@@ -34,8 +34,15 @@
                         <li class="nav-item"><a href="../paginaHistoricoAtualizada/histórico.html" class="nav-link">Histórico</a></li>
                     </ul>
                 </div>
-                <div class="logoSite">
-                    <img src="../assets/img/logo_elechtech.png" width="50px" right="40px">
+                <div class="logoSite profile-container">
+                    <img src="../assets/img/logo_elechtech.png" width="50px" right="40px" alt="Usuário" class="imagem-usuario">
+                    <div class="menu-suspenso">
+                        <ul>
+                            <li>Usuario: <span id="nomeUsuario"></span></li>
+                            <li>Email: <span id="emailUsuario"></span></li> <br>
+                            <button id="botaoSair"><li><a href="../paginaLogin/login.html" onclick="logout()">Sair</a></li></button>
+                        </ul>
+                    </div>
                 </div>
             </nav>
         </header>
@@ -94,17 +101,6 @@
                 </div>
     
         </main>
-
-        <div class="profile-container">
-            <img src="../assets/img/profile.png" alt="Usuário" class="imagem-usuario">
-            <div class="menu-suspenso">
-                <ul>
-                    <li>Usuario: <span id="nomeUsuario"></span></li>
-                    <li>Email: <span id="emailUsuario"></span></li> <br>
-                    <button id="botaoSair"><li><a href="../paginaLogin/login.html" onclick="logout()">Sair</a></li></button>
-                </ul>
-            </div>
-        </div>
 
         <footer>
             <div class="footer-container">

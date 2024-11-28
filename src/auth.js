@@ -1,3 +1,11 @@
+// Função de logout
+function logout() {
+    localStorage.removeItem('token'); // Remove o token
+    localStorage.removeItem('email');
+    localStorage.removeItem('nomeUsuario');
+    window.location.href = '../paginaLogin/login.html'; // Redireciona para a página de login
+}
+
 function checkTokenOnLoad() {
     const token = localStorage.getItem('token');
 
@@ -25,13 +33,6 @@ function checkTokenOnLoad() {
     }
 }
 
-// Função de logout
-function logout() {
-    localStorage.removeItem('token'); // Remove o token
-    localStorage.removeItem('email');
-    localStorage.removeItem('nomeUsuario');
-    window.location.href = '../paginaLogin/login.html'; // Redireciona para a página de login
-}
 
 // Previne o acesso às páginas protegidas ao usar a seta "voltar"
 window.onpageshow = function(event) {

@@ -36,6 +36,12 @@ header {
     align-items: right;
 }
 
+/* Mostrar o menu ao passar o mouse sobre a imagem do usuário */
+.profile-container:hover .menu-suspenso {
+    display: block;
+}
+
+
 /* Estilos para a lista de navegação */
 .nav-list {
     display: flex;
@@ -217,14 +223,6 @@ header {
     font-size: 14px;
 }
 
-/* Estilos para a imagem do usuário e o menu suspenso */
-.profile-container {
-    position: fixed; /* Faz a imagem ficar fixa na tela */
-    top: 400px; /* Ajusta a distância do topo da tela */
-    left: 1290px; /* Ajusta a distância à esquerda da tela */
-    display: inline-block;
-}
-
 .imagem-usuario {
     width: 50px; /* Ajuste o tamanho da imagem conforme necessário */
     height: 50px;
@@ -236,8 +234,8 @@ header {
 .menu-suspenso {
     display: none; /* Inicialmente, o menu é escondido */
     position: fixed; /* Faz o menu ficar fixo na tela */
-    top: 400px; /* Ajusta a distância do topo da tela, para ficar abaixo da imagem */
-    left: 940px; /* Ajusta a posição do menu para aparecer à direita da imagem */
+    top: 20px; /* Ajusta a distância do topo da tela, para ficar abaixo da imagem */
+    left: 915px; /* Ajusta a posição do menu para aparecer à direita da imagem */
     background-color: white;
     border: 1px solid #000000;
     border-radius: 5px;
@@ -291,27 +289,93 @@ header {
 
 /* Estilos para o rodapé */
 footer {
-    justify-content: space-evenly;
     background-color: #0253A4;
     color: #fff;
-    padding: 0px 0;
-    border-radius: 25px 25px 0 0; 
+    padding: 20px 0;
+    border-radius: 25px 25px 0 0;
 }
 
-/* Estilos para os títulos dentro do contêiner do rodapé */
-.footer-container h3{
+.footer-container {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    margin: 0 25px;
+    padding: 5px 0;
+}
+
+.footer-container h3 {
     margin: 5px 0;
     font-size: 25px;
     font-weight: 600;
     color: #fff;
-    font-family: Arial, Helvetica, sans-serif;
 }
 
-/* Estilos para o contêiner do rodapé */
-.footer-container{
+.footer-section .nav-link {
+    text-decoration: none; /* Remove sublinhado do rodapé */
+}
+
+.footer-section {
+    flex: 1;
+    margin: 10px;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section ul li {
+    margin-bottom: 10px;
+}
+
+.footer-section ul li a,
+.footer-contato a {
+    color: #fff;
+    text-decoration: none;
+}
+
+
+.custom-select {
+    position: relative;
+    display: inline-block;
+    width: 200px;
+}
+
+.select-box {
     display: flex;
-    flex-wrap: wrap;
+    justify-content: space-between;
     align-items: center;
-    justify-content: space-evenly;
-    text-align: center;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #0253A4;
+    color: white;
+    cursor: pointer;
+}
+
+.dropdown {
+    display: none;
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ccc;
+    width: 100%;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 1;
+}
+
+.dropdown label {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    cursor: pointer;
+    background-color: #fff;
+    color: #333;
+}
+
+.dropdown label:hover {
+    background-color: #ececec;
+}
+
+.dropdown input[type="checkbox"] {
+    margin-right: 10px;
 }

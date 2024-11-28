@@ -1,3 +1,11 @@
+// Função de logout
+function logout() {
+    localStorage.removeItem('token'); // Remove o token
+    localStorage.removeItem('email');
+    localStorage.removeItem('nomeUsuario');
+    window.location.href = '../paginaLogin/login.html'; // Redireciona para a página de login
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.querySelector('form'); // Seleciona o formulário
     const descricao = document.getElementById('descricao'); // Seleciona a descrição do problema
@@ -143,13 +151,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-// Função de logout
-function logout() {
-    localStorage.removeItem('token'); // Remove o token
-    localStorage.removeItem('email');
-    localStorage.removeItem('nomeUsuario');
-    window.location.href = '../paginaLogin/login.html'; // Redireciona para a página de login
-}
 
 // Script para contar os caracteres na textarea
 const descricao = document.getElementById('descricao');
