@@ -36,6 +36,10 @@ header {
     align-items: right;
 }
 
+h5{
+    color: grey;  /* codigo para deixar funcional*/
+}
+
 /* Mostrar o menu ao passar o mouse sobre a imagem do usuário */
 .profile-container:hover .menu-suspenso {
     display: block;
@@ -223,11 +227,23 @@ header {
     font-size: 14px;
 }
 
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0); /* Posição inicial e final */
+    }
+    50% {
+        transform: translateY(-3px); /* Salto para cima */
+    }
+}
+
+/* Adicionar a animação à imagem do usuário */
 .imagem-usuario {
-    width: 50px; /* Ajuste o tamanho da imagem conforme necessário */
+    width: 50px;
     height: 50px;
-    border-radius: 50%; /* Torna a imagem redonda */
+    border-radius: 50%;
     cursor: pointer;
+    animation: bounce 1s infinite; /* Animação saltitante */
+    animation-timing-function: ease-in-out; /* Movimento suave */
 }
 
 /* Estilos para o menu suspenso fixo */
