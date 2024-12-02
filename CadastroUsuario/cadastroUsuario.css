@@ -6,6 +6,12 @@
     font-family: Arial, sans-serif;
 }
 
+
+a{
+    text-decoration: none;
+}
+
+
 /* Configuração do corpo da página */
 body {
     height: 100vh;
@@ -14,6 +20,7 @@ body {
     align-items: center;
     background-color: #f5f5f5;
 }
+
 
 /* Container principal do cadastro */
 .cadastro-container {
@@ -24,6 +31,7 @@ body {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     overflow: hidden;
 }
+
 
 /* Estilização do lado esquerdo */
 .left-side {
@@ -36,6 +44,7 @@ body {
     overflow: hidden;
 }
 
+
 /* Formas decorativas */
 .decoration-shapes {
     position: absolute;
@@ -43,6 +52,7 @@ body {
     height: 100%;
     overflow: hidden;
 }
+
 
 .blue-shape-1 {
     position: absolute;
@@ -55,6 +65,7 @@ body {
     opacity: 0.8;
 }
 
+
 .blue-shape-2 {
     position: absolute;
     width: 300px;
@@ -65,6 +76,7 @@ body {
     right: -100px;
     opacity: 0.8;
 }
+
 
 /* Logo */
 .logo {
@@ -80,10 +92,12 @@ body {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
 
+
 .logo img {
     width: 180px;
     height: auto;
 }
+
 
 /* Estilização do lado direito */
 .right-side {
@@ -94,10 +108,12 @@ body {
     align-items: center;
 }
 
+
 .cadastro-content {
     width: 80%;
     max-width: 400px;
 }
+
 
 /* Títulos e textos */
 h1 {
@@ -106,15 +122,18 @@ h1 {
     margin-bottom: 2px;
 }
 
+
 .subtitle {
     color: #4c4c4c;
     margin-bottom: 25px;
 }
 
+
 /* Grupos de formulário */
 .form-group {
     margin-bottom: 20px;
 }
+
 
 label {
     display: block;
@@ -122,6 +141,7 @@ label {
     color: #333;
     font-weight: 500;
 }
+
 
 input {
     width: 100%;
@@ -132,14 +152,17 @@ input {
     transition: border-color 0.3s ease;
 }
 
+
 .input-container{
     position: relative;
 }
+
 
 input:focus {
     outline: none;
     border-color: #0047AB;
 }
+
 
 .required {
     color: red;
@@ -147,7 +170,9 @@ input:focus {
     font-size: 18px;
 }
 
+
 /* Botões */
+
 
 .button-container {
     display: flex; /* Usa flexbox para organizar os botões em linha */
@@ -155,6 +180,7 @@ input:focus {
     gap: 15px; /* Espaçamento entre os botões */
     margin-top: 20px; /* Margem superior */
 }
+
 
 .confirm-button,
 .cancel-button {
@@ -166,15 +192,18 @@ input:focus {
     transition: background-color 0.3s ease; /* Transição suave */
 }
 
+
 .confirm-button {
     background-color: #0047AB; /* Azul escuro */
     color: white; /* Texto branco */
     border: none; /* Sem borda */
 }
 
+
 .confirm-button:hover {
     background-color: #003380; /* Azul mais escuro no hover */
 }
+
 
 .cancel-button {
     background-color: #e6e5e5; /* Cinza claro */
@@ -182,9 +211,11 @@ input:focus {
     border: none;
 }
 
+
 .cancel-button:hover {
     background-color: #d1d1d1; /* Cinza mais escuro no hover */
 }
+
 
 .error-message {
     color: red;
@@ -193,11 +224,13 @@ input:focus {
     display: block;
 }
 
+
 .success-message {
     color: green;
     font-size: 1rem;
     margin-top: 10px;
 }
+
 
 .eye-icon {
     cursor: pointer; /* Torna o ícone clicável */
@@ -208,3 +241,4 @@ input:focus {
     width: 20px;  /* Define a largura do ícone */
     height: 20px; /* Define a altura do ícone */
 }
+
