@@ -1,6 +1,3 @@
-const token = verificarToken();
-
-
 function verificarToken() {
     const token = localStorage.getItem('token');
     if (!token) {
@@ -91,10 +88,11 @@ async function filtrarChamados() {
     }
 }
 
-// Função para carregar todos os chamados
+// Modificação para garantir que a tabela é recarregada corretamente após limpar os filtros
 async function carregarChamados() {
     const token = verificarToken(); // Verifica a validade do token antes de enviar
-        if (!token) return; // Se o token for inválido, não faz a requisição
+    if (!token) return; // Se o token for inválido, não faz a requisição
+
     try {
         // Fazendo a requisição para o backend para buscar todos os chamados
         const response = await fetch('http://localhost:3000/chamados');  // Substitua pela URL correta do seu backend
@@ -168,11 +166,6 @@ function atualizarTabela(chamados) {
     }
 }
 
-// Chama a função carregarChamados ao carregar a página
-document.addEventListener('DOMContentLoaded', () => {
-    carregarChamados();
-});
-
 function abrirModalExclusao(id) {
     const token = verificarToken(); // Verifica a validade do token antes de enviar
         if (!token) return; // Se o token for inválido, não faz a requisição
@@ -235,45 +228,16 @@ document.addEventListener('DOMContentLoaded', () => {
     filtrarChamados();
 });
 
-// Função para carregar os chamados do banco de dados
-async function carregarChamados() {
-    const token = verificarToken(); // Verifica a validade do token antes de enviar
-        if (!token) return; // Se o token for inválido, não faz a requisição
-    try {
-        const response = await fetch('http://localhost:3000/chamados'); // Substitua pela URL correta do seu backend
-        if (!response.ok) throw new Error('Erro ao carregar os chamados.');
-
-        const chamados = await response.json(); // Recebe os dados no formato JSON
-
-        // Limpa a tabela antes de preenchê-la
-        const tableBody = document.getElementById('tableBody');
-        tableBody.innerHTML = '';
-
-        // Preenche a tabela com os dados dos chamados
-        chamados.forEach(chamado => {
-            const row = document.createElement('tr');
-            row.innerHTML = `
-                <td>${chamado.tipoChamado}</td>
-                <td>${chamado.nivelUrgencia}</td>
-                <td>${chamado.setor}</td>
-                <td>${chamado.equipamento}</td>
-                <td>${new Date(chamado.data).toLocaleDateString()}</td>
-                <td>${chamado.resolucao}</td>
-                <td>
-                    <a href="edicao.html?id=${chamado.id}" class="btn-editar">Editar</a>
-                    <button class="btn-excluir" onclick="confirmarExclusao(${chamado.id})">Excluir</button>
-                </td>
-            `;
-            tableBody.appendChild(row);
-        });
-    } catch (error) {
-        console.error('Erro ao carregar os chamados:', error);
-    }
-}
+// Previne o comportamento de envio do formulário (atualização da página)
+document.getElementById('filterForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Previne que a página seja atualizada
+    filtrarChamados(); // Chama a função para aplicar os filtros
+});
 
 function limparFiltros() {
+    // Limpa os filtros do formulário
     const selects = document.querySelectorAll('#filterForm select');
-    selects.forEach(select => select.selectedIndex = 0);  // Limpa os filtros do formulário
+    selects.forEach(select => select.selectedIndex = 0);  
 
     // Limpa a tabela
     const tableBody = document.getElementById('tableBody');

@@ -1,5 +1,5 @@
 /*Estilo geral para o html*/
-html{
+html {
     background-color: #ECECEC;
     padding: 0;
 }
@@ -25,19 +25,20 @@ header {
 }
 
 /* Estilo para o contêiner do logo Sebas */
-.logoSebas{
+.logoSebas {
     display: flex;
     align-items: left;
 }
 
 /* Estilo para o contêiner do logo do site */
-.logoSite{
+.logoSite {
     display: flex;
     align-items: right;
 }
 
-h5{
-    color: grey;  /* codigo para deixar funcional*/
+h5 {
+    color: grey;
+    /* codigo para deixar funcional*/
 }
 
 /* Mostrar o menu ao passar o mouse sobre a imagem do usuário */
@@ -65,7 +66,8 @@ h5{
 }
 
 /* Estilos para os links de navegação */
-.nav-link { /* código para outras páginas */
+.nav-link {
+    /* código para outras páginas */
     text-decoration: none;
     font-size: 18px;
     color: #fff;
@@ -73,26 +75,34 @@ h5{
     transition: color 0.3s ease;
 }
 
-.nav-link:hover { /* código para outras páginas */
-    color: #ffcc00; /* Cor do texto ao passar o mouse */
+.nav-link:hover {
+    /* código para outras páginas */
+    color: #ffcc00;
+    /* Cor do texto ao passar o mouse */
 }
 
-.nav-link[href="../Home/home.html"] { /* código para outras páginas */
+.nav-link[href="../Home/home.html"] {
+    /* código para outras páginas */
     text-decoration: underline;
-    text-decoration-color: #fff; /* Cor do sublinhado, pode ajustar conforme necessário */
-    text-decoration-thickness: 3px; /* Espessura do sublinhado */
-    text-underline-offset: 6px; /* Ajuste essa distância conforme preferir */
+    text-decoration-color: #fff;
+    /* Cor do sublinhado, pode ajustar conforme necessário */
+    text-decoration-thickness: 3px;
+    /* Espessura do sublinhado */
+    text-underline-offset: 6px;
+    /* Ajuste essa distância conforme preferir */
 }
 
 /* Estilos para as seções diferenciais e informativos */
-.diferenciais, .informativos{
+.diferenciais,
+.informativos {
     text-align: center;
     margin-top: 16px;
     padding: 32px;
 }
 
 /* Estilos para os títulos principais */
-.diferenciais h1, .informativos h1{
+.diferenciais h1,
+.informativos h1 {
     font-size: 36px;
     color: #242424;
     font-family: Arial, Helvetica, sans-serif;
@@ -102,7 +112,8 @@ h5{
 }
 
 /* Estilos para os subtítulos */
-.diferenciais h2, .informativos h2{
+.diferenciais h2,
+.informativos h2 {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 16px;
     font-weight: 600;
@@ -112,7 +123,8 @@ h5{
 }
 
 /* Estilos para os parágrafos */
-.diferenciais p, .informativos p{
+.diferenciais p,
+.informativos p {
     font-size: 20px;
     font-family: Arial, Helvetica, sans-serif;
     color: #4C4C4C;
@@ -123,16 +135,20 @@ h5{
 .botoes {
     margin: auto;
     display: flex;
-    justify-content: center; /* Centraliza os cards no contêiner */
+    justify-content: center;
+    /* Centraliza os cards no contêiner */
     flex-wrap: wrap;
-    gap: 45px; /* Espaçamento entre os cards */
+    gap: 45px;
+    /* Espaçamento entre os cards */
 }
 
-.bordaHistorico, .bordaChamado {
+.bordaHistorico,
+.bordaChamado {
     border: 1px solid #ddd;
     border-radius: 8px;
     box-sizing: border-box;
-    padding: 30px; /* Espaçamento uniforme em todos os lados */
+    padding: 30px;
+    /* Espaçamento uniforme em todos os lados */
     width: 250px;
     height: 260px;
     display: flex;
@@ -142,7 +158,8 @@ h5{
     background-color: white;
 }
 
-.botaoChamado, .botaoHistorico {
+.botaoChamado,
+.botaoHistorico {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -158,7 +175,8 @@ h5{
     height: 100%;
 }
 
-.botaoChamado img, .botaoHistorico img {
+.botaoChamado img,
+.botaoHistorico img {
     margin-bottom: 5px;
 }
 
@@ -179,7 +197,7 @@ h5{
 
 
 /* Estilos para o título de nível 3 nos informativos */
-.informativos h3{
+.informativos h3 {
     text-align: justify;
 }
 
@@ -189,13 +207,13 @@ h5{
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    flex-direction: row; 
+    flex-direction: row;
     height: auto;
-    width: 60%; 
+    width: 60%;
     cursor: pointer;
     background-color: #fff;
     border-radius: 8px;
-    margin: 20px auto; 
+    margin: 20px auto;
     box-shadow: 5px 10px 8px rgba(0, 0, 0, 0.3);
 }
 
@@ -209,7 +227,8 @@ h5{
 /* Remove o sublinhado dos links dentro dos cartões de informações */
 .info-card a {
     text-decoration: none;
-    color: inherit; /* Mantém a cor do texto */
+    color: inherit;
+    /* Mantém a cor do texto */
 }
 
 /* Estilos para os títulos dentro dos cartões de informações */
@@ -217,22 +236,27 @@ h5{
     font-size: 24px;
     color: #222;
     font-weight: bold;
-    margin: 0; 
+    margin: 0;
 }
 
 /* Estilos para os parágrafos dentro dos cartões de informações */
 .info-card p {
-    margin: 5px 0 0; 
+    margin: 5px 0 0;
     color: #666;
     font-size: 14px;
 }
 
 @keyframes bounce {
-    0%, 100% {
-        transform: translateY(0); /* Posição inicial e final */
+
+    0%,
+    100% {
+        transform: translateY(0);
+        /* Posição inicial e final */
     }
+
     50% {
-        transform: translateY(-3px); /* Salto para cima */
+        transform: translateY(-3px);
+        /* Salto para cima */
     }
 }
 
@@ -242,16 +266,22 @@ h5{
     height: 50px;
     border-radius: 50%;
     cursor: pointer;
-    animation: bounce 1s infinite; /* Animação saltitante */
-    animation-timing-function: ease-in-out; /* Movimento suave */
+    animation: bounce 1s infinite;
+    /* Animação saltitante */
+    animation-timing-function: ease-in-out;
+    /* Movimento suave */
 }
 
 /* Estilos para o menu suspenso fixo */
 .menu-suspenso {
-    display: none; /* Inicialmente, o menu é escondido */
-    position: fixed; /* Faz o menu ficar fixo na tela */
-    top: 20px; /* Ajusta a distância do topo da tela, para ficar abaixo da imagem */
-    left: 915px; /* Ajusta a posição do menu para aparecer à direita da imagem */
+    display: none;
+    /* Inicialmente, o menu é escondido */
+    position: fixed;
+    /* Faz o menu ficar fixo na tela */
+    top: 20px;
+    /* Ajusta a distância do topo da tela, para ficar abaixo da imagem */
+    left: 915px;
+    /* Ajusta a posição do menu para aparecer à direita da imagem */
     background-color: white;
     border: 1px solid #000000;
     border-radius: 5px;
@@ -266,11 +296,11 @@ h5{
     color: rgb(255, 255, 255);
 }
 
-.menu-suspenso ul li{
+.menu-suspenso ul li {
     color: rgb(31, 7, 252);
 }
 
-.menu-suspenso ul li span{
+.menu-suspenso ul li span {
     color: rgb(0, 0, 0);
 }
 
@@ -281,7 +311,8 @@ h5{
 }
 
 .menu-suspenso ul li a:hover {
-    color: white; /* Cor do link ao passar o mouse */
+    color: white;
+    /* Cor do link ao passar o mouse */
 }
 
 /* Estilo específico para o botão de sair */
@@ -327,7 +358,8 @@ footer {
 }
 
 .footer-section .nav-link {
-    text-decoration: none; /* Remove sublinhado do rodapé */
+    text-decoration: none;
+    /* Remove sublinhado do rodapé */
 }
 
 .footer-section {

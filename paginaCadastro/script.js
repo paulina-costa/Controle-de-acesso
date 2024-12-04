@@ -1,11 +1,3 @@
-// Função de logout
-function logout() {
-    localStorage.removeItem('token'); // Remove o token
-    localStorage.removeItem('email');
-    localStorage.removeItem('nomeUsuario');
-    window.location.href = '../paginaLogin/login.html'; // Redireciona para a página de login
-}
-
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.querySelector('form'); // Seleciona o formulário
     const descricao = document.getElementById('descricao'); // Seleciona a descrição do problema
