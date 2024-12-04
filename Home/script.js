@@ -1,3 +1,29 @@
+// Função central para verificar a validade do token
+function verificarToken() {
+    const token = localStorage.getItem('token');
+    if (!token) {
+        window.location.href = '../paginaLogin/login.html';
+        return null;
+    }
+
+    try {
+        const payload = JSON.parse(atob(token.split('.')[1])); // Decodifica o payload do token
+        const now = Date.now() / 1000; // Timestamp atual em segundos
+
+        if (payload.exp < now) {
+            alert('Sua sessão expirou. Faça login novamente.');
+            logout(); // Remove o token e redireciona para o login
+            return null;
+        }
+
+        return token; // Retorna o token válido
+    } catch (error) {
+        console.error('Erro ao verificar o token:', error);
+        logout();
+        return null;
+    }
+}
+
 // Função para fazer requisição com verificação do token
 function fazerRequisicaoComToken(url, options) {
     const token = verificarToken(); // Verifica a validade do token
@@ -47,3 +73,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Caso tenha algum outro comportamento para o menu suspenso ou mais ajustes
 });
+
+// Função para carregar os dados do usuário logado
+function carregarDadosUsuario() {
+    // Recupera os dados do localStorage
+    const nomeUsuario = localStorage.getItem('nomeUsuario');
+    const email = localStorage.getItem('email');
+
+    // Verifica se os dados existem no localStorage
+    if (nomeUsuario && email) {
+        // Atualiza os elementos com os dados
+        document.getElementById('nomeUsuario').textContent = nomeUsuario;
+        document.getElementById('emailUsuario').textContent = email;
+    } else {
+        // Se não houver dados no localStorage, pode exibir uma mensagem de erro ou redirecionar
+        console.log('Usuário não encontrado no localStorage.');
+    }
+}
+
+// Chama a função para carregar os dados ao carregar a página
+document.addEventListener('DOMContentLoaded', carregarDadosUsuario);
