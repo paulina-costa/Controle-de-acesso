@@ -24,7 +24,7 @@ function showPopup(message, isError = true, callback = null) {
         if (callback) {
             callback(); // Chama a função de callback após o popup desaparecer
         }
-    }, 5000);
+    }, 2500);
 }
 
 
@@ -53,7 +53,7 @@ async function login() {
                 localStorage.setItem('token', token);
                 localStorage.setItem('email', email);
                 localStorage.setItem('nomeUsuario', nomeUsuario);
-                showPopup("Login bem-sucedido!", false, () => {
+                showPopup("ㅤㅤㅤㅤLogin bem-sucedido!", false, () => {
                     window.location.href = '../Home/home.html'; // Redireciona após o popup desaparecer
                 });
             } else {

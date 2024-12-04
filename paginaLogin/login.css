@@ -180,7 +180,7 @@ button {
     position: fixed;
     top: 20px;
     right: -400px; /* Inicialmente fora da tela */
-    width: 25%;
+    width: 21%;
     padding: 10px;
     color: white;
     border-radius: 5px;
@@ -190,7 +190,6 @@ button {
     display: flex; /* Flexbox para alinhar o texto e o botão lado a lado */
     justify-content: flex-start; /* Alinha o conteúdo à esquerda */
     align-items: center; /* Alinha o conteúdo verticalmente */
-    padding-right: 30px; /* Espaço extra à direita para o botão */
 }
 
 /* Estilos para o popup de sucesso (verde) */
@@ -217,7 +216,6 @@ button {
 .close-btn {
     position: absolute;
     top: 5px;
-    right: 10px;
     background: none;
     border: none;
     color: white;
@@ -225,5 +223,4 @@ button {
     cursor: pointer;
     padding: 0;
     display: flex-end;
-    padding-left: 90%;
 }
