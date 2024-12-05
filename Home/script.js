@@ -1,127 +1,108 @@
-function showPopup(message, isError = true, callback = null) {
+function showPopup(message, type = 'success') {
     const popup = document.getElementById('popup');
     const popupMessage = document.getElementById('popup-message');
-
-    // Limpa as classes anteriores
-    popup.classList.remove('popup-success', 'popup-error');
-
-    // Define a cor de fundo dependendo do tipo de mensagem
-    if (isError) {
-        popup.classList.add('popup-error'); // Vermelho para erro
-    } else {
-        popup.classList.add('popup-success'); // Verde para sucesso
-    }
-
-    // Define a mensagem do popup
+    
     popupMessage.textContent = message;
+    popup.className = `popup show ${type}`;
 
-    // Exibe o popup com transição
-    popup.classList.add('show');
-
-    // Fecha automaticamente após 5 segundos e chama o callback
     setTimeout(() => {
         popup.classList.remove('show');
-        if (callback) {
-            callback(); // Chama a função de callback após o popup desaparecer
-        }
-    }, 2500);
+    }, 3000);
 }
 
-
-// Função central para verificar a validade do token
-function verificarToken() {
+document.addEventListener('DOMContentLoaded', () => {
     const token = localStorage.getItem('token');
     if (!token) {
-        showPopup('Sua sessão expirou. Faça login novamente.', true);
-        window.location.href = '../paginaLogin/login.html';
-        return null;
+        showPopup('Você precisa estar logado para acessar esta página.', 'error');
+        setTimeout(() => {
+            window.location.href = '../paginaLogin/login.html';
+        }, 1500);
+        return;
     }
 
-    try {
-        const payload = JSON.parse(atob(token.split('.')[1])); // Decodifica o payload do token
-        const now = Date.now() / 1000; // Timestamp atual em segundos
-
-        if (payload.exp < now) {
-            showPopup('Sua sessão expirou. Faça login novamente.', true);
-            logout(); // Remove o token e redireciona para o login
-            return null;
-        }
-
-        return token; // Retorna o token válido
-    } catch (error) {
-        console.error('Erro ao verificar o token:', error);
-        logout();
-        return null;
-    }
-}
-
-// Função para fazer requisição com verificação do token
-function fazerRequisicaoComToken(url, options) {
-    const token = verificarToken(); // Verifica a validade do token
-
-    if (!token) {
-        showPopup('Sua sessão expirou. Faça login novamente.', true);
-        return; // Se o token for inválido ou expirado, não faz a requisição
-    }
-
-    // Adiciona o token no cabeçalho da requisição
-    options.headers = {
-        ...options.headers,
-        'Authorization': `Bearer ${token}`,
-    };
-
-    fetch(url, options)
-        .then(response => response.json())
-        .then(data => {
-            console.log('Dados recebidos:', data);
-            // Aqui você pode processar os dados recebidos (ex: atualizar a tabela com os resultados)
-        })
-        .catch(error => {
-            console.error('Erro na requisição:', error);
+    // Interceptar cliques em links para mostrar o popup
+    const links = document.querySelectorAll('a.nav-link');
+    links.forEach(link => {
+        link.addEventListener('click', (event) => {
+            event.preventDefault();
+            const href = link.getAttribute('href');
+            showPopup('Navegando para outra página...', 'success');
+            setTimeout(() => {
+                window.location.href = href;
+            }, 1500); // Redireciona após 1,5s
         });
-}
+    });
 
-// Função de logout
-function logout() {
-    localStorage.removeItem('token'); // Remove o token
-    localStorage.removeItem('email');
-    localStorage.removeItem('nomeUsuario');
-    window.location.href = '../paginaLogin/login.html'; // Redireciona para a página de login
-}
+    // Função para carregar os dados do usuário logado
+    function carregarDadosUsuario() {
+        const nomeUsuario = localStorage.getItem('nomeUsuario');
+        const email = localStorage.getItem('email');
 
-// Garantir que o código seja executado após o carregamento do DOM
-document.addEventListener('DOMContentLoaded', () => {
-    // Verifica o token ao carregar a página
-    verificarToken();  // Verifica o token ao carregar a página (já vai fazer logout caso necessário)
+        if (nomeUsuario && email) {
+            document.getElementById('nomeUsuario').textContent = nomeUsuario;
+            document.getElementById('emailUsuario').textContent = email;
+        } else {
+            showPopup('Usuário não encontrado no localStorage.', 'error');
+        }
+    }
+
+    // Chama a função para carregar os dados ao carregar a página
+    carregarDadosUsuario();
 
     // Adicionar evento de logout ao botão "sair" no menu suspenso
-    const botaoSair = document.getElementById('botaoSair');  // Seleciona o botão de logout
+    const botaoSair = document.getElementById('botaoSair');
     if (botaoSair) {
         botaoSair.addEventListener('click', function(event) {
             event.stopPropagation(); // Impede que o clique no botão "Sair" feche o menu
-            logout(); // Chama a função de logout
+            localStorage.removeItem('token'); // Remove o token
+            localStorage.removeItem('email');
+            localStorage.removeItem('nomeUsuario');
+            showPopup('Você foi desconectado.', 'success');
+            setTimeout(() => {
+                window.location.href = '../paginaLogin/login.html'; // Redireciona para o login
+            }, 1500);
         });
     }
 
-    // Caso tenha algum outro comportamento para o menu suspenso ou mais ajustes
-});
+    // Função para verificar a validade do token
+    function verificarToken() {
+        const token = localStorage.getItem('token');
+        if (!token) {
+            showPopup('Sua sessão expirou. Faça login novamente.', 'error');
+            window.location.href = '../paginaLogin/login.html';
+            return null;
+        }
 
-// Função para carregar os dados do usuário logado
-function carregarDadosUsuario() {
-    // Recupera os dados do localStorage
-    const nomeUsuario = localStorage.getItem('nomeUsuario');
-    const email = localStorage.getItem('email');
+        try {
+            const payload = JSON.parse(atob(token.split('.')[1])); // Decodifica o payload do token
+            const now = Date.now() / 1000; // Timestamp atual em segundos
 
-    // Verifica se os dados existem no localStorage
-    if (nomeUsuario && email) {
-        // Atualiza os elementos com os dados
-        document.getElementById('nomeUsuario').textContent = nomeUsuario;
-        document.getElementById('emailUsuario').textContent = email;
-    } else {
-        // Se não houver dados no localStorage, pode exibir uma mensagem de erro ou redirecionar
-        console.log('Usuário não encontrado no localStorage.');
+            if (payload.exp < now) {
+                showPopup('Sua sessão expirou. Faça login novamente.', 'error');
+                logout(); // Remove o token e redireciona para o login
+                return null;
+            }
+
+            return token; // Retorna o token válido
+        } catch (error) {
+            console.error('Erro ao verificar o token:', error);
+            logout();
+            return null;
+        }
     }
-}
 
-// Chama a função para carregar os dados ao carregar a página
-document.addEventListener('DOMContentLoaded', carregarDadosUsuario);
+    // Função de logout
+    function logout() {
+        localStorage.removeItem('token');
+        localStorage.removeItem('email');
+        localStorage.removeItem('nomeUsuario');
+        showPopup('Você foi desconectado.', 'success');
+        setTimeout(() => {
+            window.location.href = '../paginaLogin/login.html'; // Redireciona para o login
+        }, 1500);
+    }
+
+    // Verifica a validade do token ao carregar a página
+    verificarToken();  // Verifica o token ao carregar a página (já vai fazer logout caso necessário)
+
+});

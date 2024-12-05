@@ -334,43 +334,32 @@ h5 {
     display: block;
 }
 
-
 #popup {
     position: fixed;
     top: 20px;
     right: -400px; /* Inicialmente fora da tela */
-    width: 21%;
-    padding: 10px;
-    color: white;
+    width: 300px;
+    padding: 15px;
+    background-color: #333;
+    color: #fff;
     border-radius: 5px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     transition: right 0.5s ease; /* Transição para aparecer */
-    z-index: 1000; /* Acima de todos os outros elementos */
-    display: flex; /* Flexbox para alinhar o texto e o botão lado a lado */
-    justify-content: flex-start; /* Alinha o conteúdo à esquerda */
-    align-items: center; /* Alinha o conteúdo verticalmente */
-}
-
-/* Estilos para o popup de sucesso (verde) */
-#popup.show.popup-success {
-    background-color: #4caf50; /* Verde para sucesso */
-}
-
-/* Estilos para o popup de erro (vermelho) */
-#popup.show.popup-error {
-    background-color: #f44336; /* Vermelho para erro */
+    z-index: 1000;
 }
 
 #popup.show {
-    right: 20px; /* Mostra 20px da borda direita */
+    right: 20px; /* Mostra o popup */
 }
 
-#popup p {
-    margin: 0;
-    flex-grow: 1; /* Faz o texto ocupar o espaço restante */
-    white-space: nowrap;
-    overflow: hidden;
+#popup.success {
+    background-color: #4caf50; /* Verde para sucesso */
 }
+
+#popup.error {
+    background-color: #f44336; /* Vermelho para erro */
+}
+
 
 
 /* Estilos para o rodapé */

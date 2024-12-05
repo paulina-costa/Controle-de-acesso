@@ -20,12 +20,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
 
-    // Exibir popup de boas-vindas apenas uma vez por login
-    if (!sessionStorage.getItem('welcomeMessageShown')) {
-        showPopup('Bem-vindo à página de cadastro!', 'success');
-        sessionStorage.setItem('welcomeMessageShown', 'true');
-    }
-
     // Interceptar cliques em links para mostrar o popup
     const links = document.querySelectorAll('a.nav-link');
     links.forEach(link => {
@@ -42,6 +36,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // Manipulação do formulário
     const form = document.getElementById('cadastroForm');
     form.addEventListener('submit', (event) => {
+        if (!token) {
+            showPopup('Você precisa estar logado para acessar esta página.', 'error');
+            setTimeout(() => {
+                window.location.href = '../paginaLogin/login.html';
+            }, 1500);
+            return;
+        }
         event.preventDefault();
 
         fetch('/api/chamados', {
@@ -63,6 +64,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 }, 1500);
             } else {
                 showPopup('Erro ao cadastrar o chamado.', 'error');
+                setTimeout(() => {
+                    window.location.href = '../paginaLogin/login.html';
+                }, 1500);
             }
         })
         .catch(() => showPopup('Erro ao conectar ao servidor.', 'error'));
