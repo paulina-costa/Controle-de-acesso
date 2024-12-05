@@ -212,15 +212,3 @@ button {
     white-space: nowrap;
     overflow: hidden;
 }
-
-.close-btn {
-    position: absolute;
-    top: 5px;
-    background: none;
-    border: none;
-    color: white;
-    font-size: 20px;
-    cursor: pointer;
-    padding: 0;
-    display: flex-end;
-}

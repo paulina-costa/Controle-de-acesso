@@ -1,7 +1,38 @@
+function showPopup(message, isError = true, callback = null) {
+    const popup = document.getElementById('popup');
+    const popupMessage = document.getElementById('popup-message');
+
+    // Limpa as classes anteriores
+    popup.classList.remove('popup-success', 'popup-error');
+
+    // Define a cor de fundo dependendo do tipo de mensagem
+    if (isError) {
+        popup.classList.add('popup-error'); // Vermelho para erro
+    } else {
+        popup.classList.add('popup-success'); // Verde para sucesso
+    }
+
+    // Define a mensagem do popup
+    popupMessage.textContent = message;
+
+    // Exibe o popup com transição
+    popup.classList.add('show');
+
+    // Fecha automaticamente após 5 segundos e chama o callback
+    setTimeout(() => {
+        popup.classList.remove('show');
+        if (callback) {
+            callback(); // Chama a função de callback após o popup desaparecer
+        }
+    }, 2500);
+}
+
+
 // Função central para verificar a validade do token
 function verificarToken() {
     const token = localStorage.getItem('token');
     if (!token) {
+        showPopup('Sua sessão expirou. Faça login novamente.', true);
         window.location.href = '../paginaLogin/login.html';
         return null;
     }
@@ -11,7 +42,7 @@ function verificarToken() {
         const now = Date.now() / 1000; // Timestamp atual em segundos
 
         if (payload.exp < now) {
-            alert('Sua sessão expirou. Faça login novamente.');
+            showPopup('Sua sessão expirou. Faça login novamente.', true);
             logout(); // Remove o token e redireciona para o login
             return null;
         }
@@ -29,6 +60,7 @@ function fazerRequisicaoComToken(url, options) {
     const token = verificarToken(); // Verifica a validade do token
 
     if (!token) {
+        showPopup('Sua sessão expirou. Faça login novamente.', true);
         return; // Se o token for inválido ou expirado, não faz a requisição
     }
 
