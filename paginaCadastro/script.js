@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const token = localStorage.getItem('token');
     if (!token) {
         showPopup('Você precisa estar logado para acessar esta página.', 'error');
+        logout();
         setTimeout(() => {
             window.location.href = '../paginaLogin/login.html';
         }, 1500);
@@ -38,6 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
     form.addEventListener('submit', (event) => {
         if (!token) {
             showPopup('Você precisa estar logado para acessar esta página.', 'error');
+            logout();
             setTimeout(() => {
                 window.location.href = '../paginaLogin/login.html';
             }, 1500);
@@ -59,6 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
             } else if (response.status === 401) {
                 localStorage.removeItem('token');
                 showPopup('Sessão expirada. Faça login novamente.', 'error');
+                logout();
                 setTimeout(() => {
                     window.location.href = '../paginaLogin/login.html';
                 }, 1500);
@@ -73,6 +76,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+
+    // Função de logout
+    function logout() {
+        localStorage.removeItem('token');
+        localStorage.removeItem('email');
+        localStorage.removeItem('nomeUsuario');
+        showPopup('Você foi desconectado.', 'success');
+        setTimeout(() => {
+            window.location.href = '../paginaLogin/login.html'; // Redireciona para o login
+        }, 1500);
+    }
 // Script para contar os caracteres na textarea
 const descricao = document.getElementById('descricao');
 const charCount = document.getElementById('char-count');
