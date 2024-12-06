@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const token = localStorage.getItem('token');
     if (!token) {
         showPopup('Você precisa estar logado para acessar esta página.', 'error');
+        logout();
         setTimeout(() => {
             window.location.href = '../paginaLogin/login.html';
         }, 1500);
@@ -50,25 +51,27 @@ document.addEventListener('DOMContentLoaded', () => {
     carregarDadosUsuario();
 
     // Adicionar evento de logout ao botão "sair" no menu suspenso
-    const botaoSair = document.getElementById('botaoSair');
-    if (botaoSair) {
-        botaoSair.addEventListener('click', function(event) {
-            event.stopPropagation(); // Impede que o clique no botão "Sair" feche o menu
-            localStorage.removeItem('token'); // Remove o token
-            localStorage.removeItem('email');
-            localStorage.removeItem('nomeUsuario');
-            showPopup('Você foi desconectado.', 'success');
-            setTimeout(() => {
-                window.location.href = '../paginaLogin/login.html'; // Redireciona para o login
-            }, 1500);
-        });
-    }
+const botaoSair = document.getElementById('botaoSair');
+if (botaoSair) {
+    botaoSair.addEventListener('click', function(event) {
+        event.preventDefault(); // Impede o link de redirecionar imediatamente
+        showPopup('Você foi desconectado.', 'success'); // Exibe o popup
+        localStorage.removeItem('token'); // Remove o token
+        localStorage.removeItem('email');
+        localStorage.removeItem('nomeUsuario');
+        setTimeout(() => {
+            window.location.href = '../paginaLogin/login.html'; // Redireciona após o popup
+        }, 1500); // Atraso de 1,5 segundos para mostrar o popup
+    });
+}
+
 
     // Função para verificar a validade do token
     function verificarToken() {
         const token = localStorage.getItem('token');
         if (!token) {
             showPopup('Sua sessão expirou. Faça login novamente.', 'error');
+            logout();
             window.location.href = '../paginaLogin/login.html';
             return null;
         }
