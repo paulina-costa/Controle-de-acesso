@@ -1,3 +1,20 @@
+function togglePassword(inputId, iconId) {
+    const senhaInput = document.getElementById(inputId);
+    const icon = document.getElementById(iconId);
+
+    const tipoAtual = senhaInput.type;
+
+    if (tipoAtual === 'password') {
+        senhaInput.type = 'text';
+        icon.src = 'img/eye-open.png';
+        icon.alt = 'Esconder senha';
+    } else {
+        senhaInput.type = 'password';
+        icon.src = 'img/eye-closed.png';
+        icon.alt = 'Mostrar senha';
+    }
+}
+
 function showPopup(message, isError = true, callback = null) {
     const popup = document.getElementById('popup');
     const popupMessage = document.getElementById('popup-message');
@@ -26,7 +43,6 @@ function showPopup(message, isError = true, callback = null) {
         }
     }, 2500);
 }
-
 
 // Função de login com popup personalizado
 async function login() {
