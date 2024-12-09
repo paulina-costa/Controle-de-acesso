@@ -169,6 +169,7 @@ a{
 }
 
 
+
 #popup {
     position: fixed;
     top: 20px;
@@ -194,7 +195,6 @@ a{
 #popup.error {
     background-color: #f44336; /* Vermelho para erro */
 }
-
 
 
 footer {

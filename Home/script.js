@@ -1,7 +1,7 @@
 function showPopup(message, type = 'success') {
     const popup = document.getElementById('popup');
     const popupMessage = document.getElementById('popup-message');
-    
+
     popupMessage.textContent = message;
     popup.className = `popup show ${type}`;
 
@@ -51,19 +51,19 @@ document.addEventListener('DOMContentLoaded', () => {
     carregarDadosUsuario();
 
     // Adicionar evento de logout ao botão "sair" no menu suspenso
-const botaoSair = document.getElementById('botaoSair');
-if (botaoSair) {
-    botaoSair.addEventListener('click', function(event) {
-        event.preventDefault(); // Impede o link de redirecionar imediatamente
-        showPopup('Você foi desconectado.', 'success'); // Exibe o popup
-        localStorage.removeItem('token'); // Remove o token
-        localStorage.removeItem('email');
-        localStorage.removeItem('nomeUsuario');
-        setTimeout(() => {
-            window.location.href = '../paginaLogin/login.html'; // Redireciona após o popup
-        }, 1500); // Atraso de 1,5 segundos para mostrar o popup
-    });
-}
+    const botaoSair = document.getElementById('botaoSair');
+    if (botaoSair) {
+        botaoSair.addEventListener('click', function (event) {
+            event.preventDefault(); // Impede o link de redirecionar imediatamente
+            showPopup('Você foi desconectado.', 'success'); // Exibe o popup
+            localStorage.removeItem('token'); // Remove o token
+            localStorage.removeItem('email');
+            localStorage.removeItem('nomeUsuario');
+            setTimeout(() => {
+                window.location.href = '../paginaLogin/login.html'; // Redireciona após o popup
+            }, 1500); // Atraso de 1,5 segundos para mostrar o popup
+        });
+    }
 
 
     // Função para verificar a validade do token

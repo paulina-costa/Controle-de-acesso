@@ -4,40 +4,64 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="../assets/img/Logo_ElechTech.png">
-    <link rel="stylesheet" href="cadastro.css">
-    <script src="script.js" defer></script>
+    <link rel="stylesheet" type="text/css" href="cadastro.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lemon&display=swap" rel="stylesheet">
+    <script src="script.js"></script>
     <title>Área de Cadastro</title>
 </head>
 <body>
+
+
+    <!--area de navegacao do header -->
+
+
     <header>
         <nav class="nav-bar">
             <div class="logoSebas">
-                <img src="../assets/img/Logo_Sebas.png" width="50px">
+                <img src="../assets/img/Logo_Sebas.png" width="50px" right="40px">
             </div>
             <div class="nav-list">
                 <ul>
                     <li class="nav-item"><a href="../Home/home.html" class="nav-link">Início</a></li>
-                    <li class="nav-item"><a href="cadastro.html" class="nav-link">Cadastro</a></li>
+                    <li class="nav-item"><a href="../paginaCadastro/cadastro.html" class="nav-link">Cadastro</a></li>
                     <li class="nav-item"><a href="../paginaHistoricoAtualizada/histórico.html" class="nav-link">Histórico</a></li>
                 </ul>
             </div>
             <div class="logoSite">
-                <img src="../assets/img/Logo_ElechTech.png" width="50px">
+                <img src="../assets/img/Logo_ElechTech.png" width="50px" right="40px">
             </div>
         </nav>
     </header>
 
+
+    <!--area de navegacao do header-->
+
+
     <main>
+
+
+        <!--titulo e descricao-->
+
+
         <section class="diferenciais">
             <h1>Área de Cadastro</h1>
-            <p>Área onde você irá fazer o cadastro do equipamento e descrever o problema.</p>
+            <br>
+            <p>Área onde você irá fazer o cadastro do equipamento <br> fazendo uma breve descrição sobre o ocorrido com o dispositivo.</p>
         </section>
 
+
+        <!--titulo e descricao-->
+
+
+        <!--Area de formulario-->
         <section class="formulario">
-            <form id="cadastroForm">
+            <form action="#" method="post">
+                <!--botoes selects e inputs-->
                 <div class="form-grid">
                     <div class="form-group">
-                        <label for="tipo-chamado">Tipo de Chamado <span class="required">*</span></label>
+                        <label for="tipo-chamado">Tipos de chamado <span class="required">*</span></label>
                         <select id="tipo-chamado" name="tipo-chamado" required>
                             <option disabled selected>Selecione o tipo do chamado</option>
                             <option value="Substituição">Substituição</option>
@@ -46,10 +70,10 @@
                             <option value="Outros">Outros</option>
                         </select>
                     </div>
-
+       
                     <div class="form-group">
                         <label for="nivel-urgencia">Nível de Urgência <span class="required">*</span></label>
-                        <select id="nivel-urgencia" name="nivel-urgencia" required>
+                        <select id="nivel-urgencia" name="nivel-urgencia" class="select-blue" required>
                             <option disabled selected>Selecione o nível de urgência</option>
                             <option value="Crítico">Crítico</option>
                             <option value="Alto">Alto</option>
@@ -57,32 +81,32 @@
                             <option value="Baixo">Baixo</option>
                         </select>
                     </div>
-
+       
                     <div class="form-group">
                         <label for="email">Email <span class="required">*</span></label>
-                        <input type="email" id="email" name="email" required placeholder="Insira seu melhor email">
+                        <input type="email" id="email" name="email" placeholder="Insira seu melhor email" required>
                     </div>
-
+       
                     <div class="form-group">
                         <label for="setor">Setor <span class="required">*</span></label>
                         <select id="setor" name="setor" required>
-                            <option disabled selected>Selecione o setor</option>
+                            <option disabled selected> Selecione o setor</option>
                             <option value="Secretaria">Secretaria</option>
                             <option value="Pátio">Pátio</option>
                             <option value="Sala 5">Sala 5</option>
                             <option value="Sala 2">Sala 2</option>
                         </select>
                     </div>
-        
+       
                     <div class="form-group">
                         <label for="usuario">Usuário</label>
                         <input type="text" id="usuario" name="usuario" placeholder="Insira seu nome completo">
                     </div>
-
+       
                     <div class="form-group">
                         <label for="equipamento">Equipamento <span class="required">*</span></label>
                         <select id="equipamento" name="equipamento" required>
-                            <option disabled selected>Selecione o equipamento</option>
+                            <option disabled selected>Selecione o nome do equipamento</option>
                             <option value="Computador">Computador</option>
                             <option value="Mouse">Mouse</option>
                             <option value="Teclado">Teclado</option>
@@ -90,12 +114,12 @@
                             <option value="Estabilizador">Estabilizador</option>
                         </select>
                     </div>
-
+       
                     <div class="form-group">
                         <label for="data">Data <span class="required">*</span></label>
-                        <input type="date" id="data" name="data" required>
+                        <input type="date" id="data" name="data" placeholder="Insira a data atual" required>
                     </div>
-        
+       
                     <div class="form-group">
                         <label for="responsavel">Responsável <span class="required">*</span></label>
                         <select id="responsavel" name="responsavel" required>
@@ -106,25 +130,37 @@
                             <option value="4">Danyel</option>
                         </select>
                     </div>
-
+       
                     <div class="form-group descricao">
                         <label for="descricao">Descrição <span class="required">*</span></label>
-                        <textarea id="descricao" name="descricao" maxlength="300" required></textarea>
+                        <textarea id="descricao" name="descricao" maxlength="300" placeholder="Faça um breve resumo sobre o problema (Max. 300 caracteres)" required></textarea>
                         <span id="char-count">0/300</span>
                     </div>
                 </div>
-
-                <div class="buttons">
-                    <button type="button" class="btn-voltar"><a href="../Home/home.html">Voltar</a></button>
-                    <button type="submit" class="btn-salvar">Salvar</button>
-                </div>
+                <a href="../Home/home.html">
+                    <div class="buttons">
+                        <button type="button" class="btn-voltar"> Voltar</button>
+                        <button type="submit" class="btn-salvar">Salvar</button>
+                    </div>
+                </a>
+                <!--botoes selects e inputs-->
             </form>
-            <div id="popup" class="popup">
-                <p id="popup-message"></p>
-            </div>
+            <p id="mensagem-envio" style="display: none; color: green; font-weight: bold; margin-top: 10px;">
+                Envio concluído com sucesso!
+            </p>
         </section>
-    </main>
 
+
+        <!--Area de formulario-->
+
+
+    </main>
+    <!-- Elemento de popup -->
+    <div id="popup" class="popup">
+        <p id="popup-message"></p>
+    </div>
+
+    <!--rodapé com informacoes de contato-->
     <footer>
         <div class="footer-container">
             <div class="footer-section sobre">
@@ -134,20 +170,21 @@
             <div class="footer-section mapa-do-site">
                 <h3>Mapa do Site</h3>
                 <ul>
-                    <li class="naveg-item"><a href="../Home/home.html" class="nav-link">Início</a></li>
+                    <li class="naveg-item"><a href="../Home/home.html" class="nav-link" >Início</a></li>
                     <li class="naveg-item"><a href="../paginaCadastro/cadastro.html" class="nav-link">Cadastro</a></li>
-                    <li class="naveg-item"><a href="../paginaHistoricoAtualizada/histórico.html"
-                            class="nav-link">Histórico</a></li>
+                    <li class="naveg-item"><a href="../paginaHistoricoAtualizada/histórico.html" class="nav-link">Histórico</a></li>
                 </ul>
             </div>
             <div class="footer-contato">
                 <h3>Informações de Contato</h3>
-                <p> <a
-                        href="https://www.google.com/maps/place/E.E.E.F.M.+S%C3%A3o+Sebasti%C3%A3o/@-7.2117707,-35.8804125,21z/data=!4m6!3m5!1s0x7ac1e52917e6839:0xbd4d2c16e15fa8b5!8m2!3d-7.2117012!4d-35.8800973!16s%2Fg%2F1trpldrv?entry=ttu">
-                        Estelita Cruz, 307 - Alto Branco, Campina Grande - PB, 58401-470</a></p>
+                <p><a href="https://www.google.com/maps/place/E.E.E.F.M.+S%C3%A3o+Sebasti%C3%A3o/@-7.2117707,-35.8804125,21z/data=!4m6!3m5!1s0x7ac1e52917e6839:0xbd4d2c16e15fa8b5!8m2!3d-7.2117012!4d-35.8800973!16s%2Fg%2F1trpldrv?entry=ttu">Estelita Cruz, 307 - Alto Branco, Campina Grande - PB, 58401-470</a></p>
                 <p>83 3342-2529</p>
             </div>
         </div>
     </footer>
+    <!--rodapé com informacoes de contato-->
 </body>
 </html>
+
+
+
