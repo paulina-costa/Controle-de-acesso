@@ -50,7 +50,6 @@ function verificarToken() {
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.querySelector('form');
     const descricao = document.getElementById('descricao');
-    const token = localStorage.getItem('token');
 
     verificarToken();
 

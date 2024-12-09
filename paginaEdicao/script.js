@@ -1,4 +1,66 @@
+// Função para exibir o popup
+function showPopup(message, type = 'success') {
+    const popup = document.getElementById('popup');
+    popup.textContent = message;
+    popup.className = `show ${type}`; // Adiciona as classes apropriadas
+
+    setTimeout(() => {
+        popup.classList.remove('show'); // Remove a exibição do popup após 3 segundos
+    }, 3000);
+}
+
+// Função para logout do usuário
+function logout() {
+    showPopup('Você foi desconectado.', 'success');
+    localStorage.removeItem('token');
+    localStorage.removeItem('email');
+    localStorage.removeItem('nomeUsuario');
+    setTimeout(() => {
+        window.location.href = '../paginaLogin/login.html'; // Redireciona para a página de login
+    }, 1500);
+}
+
+// Função para verificar a validade do token
+function verificarToken() {
+    const token = localStorage.getItem('token');
+    if (!token) {
+        showPopup('Sua sessão expirou. Faça login novamente.', 'error');
+        logout();
+        return null;
+    }
+
+    try {
+        const payload = JSON.parse(atob(token.split('.')[1])); // Decodifica o payload do token
+        const now = Date.now() / 1000; // Timestamp atual em segundos
+
+        if (payload.exp < now) {
+            showPopup('Sua sessão expirou. Faça login novamente.', 'error');
+            logout();
+            return null;
+        }
+
+        return token; // Retorna o token válido
+    } catch (error) {
+        console.error('Erro ao verificar o token:', error);
+        logout();
+        return null;
+    }
+}
+
 document.addEventListener('DOMContentLoaded', async () => {
+
+     // Interceptar cliques em links
+     const links = document.querySelectorAll('a.nav-link');
+     links.forEach(link => {
+         link.addEventListener('click', (event) => {
+             event.preventDefault();
+             const href = link.getAttribute('href');
+             showPopup('Navegando para outra página...', 'success');
+             setTimeout(() => {
+                 window.location.href = href;
+             }, 1500);
+         });
+     });
     // Verificar se o token está presente e é válido antes de carregar os dados
     if (!checkTokenOnLoad()) return; // Se o token não for válido, a execução é interrompida
 
@@ -12,8 +74,10 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             const chamado = await response.json();
             preencherFormulario(chamado);
+            showPopup('Dados do chamado carregados com sucesso.', 'success'); // Exibe o popup após carregar os dados
         } catch (error) {
             console.error('Erro ao carregar dados do chamado:', error);
+            showPopup('Erro ao carregar dados do chamado.', 'error'); // Exibe o popup de erro
         }
     }
 
@@ -38,6 +102,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 body: JSON.stringify(values),
             });
             if (response.ok) {
+                showPopup('Chamado atualizado com sucesso.', 'success'); // Exibe o popup de sucesso
                 document.getElementById('mensagem-envio').style.display = 'block';
                 formEdicao.reset();
                 setTimeout(() => {
@@ -48,7 +113,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             }
         } catch (error) {
             console.error(error);
-            alert('Erro ao atualizar o chamado.');
+            showPopup('Erro ao atualizar o chamado.', 'error'); // Exibe o popup de erro
         }
     });
 });
@@ -72,8 +137,9 @@ function checkTokenOnLoad() {
 
     // Se não houver token, redireciona para login
     if (!token) {
-        alert('Você precisa estar logado para acessar esta página.');
+        showPopup('Você precisa estar logado para acessar esta página.', 'error');
         window.location.href = '../paginaLogin/login.html';
+        logout();
         return false; // Retorna falso para interromper a execução do código
     }
 
@@ -83,7 +149,7 @@ function checkTokenOnLoad() {
         const now = Date.now() / 1000; // Timestamp atual em segundos
 
         if (payload.exp < now) {
-            alert('Sua sessão expirou. Faça login novamente.');
+            showPopup('Sua sessão expirou. Faça login novamente.', 'error');
             logout(); // Remove o token e redireciona para o login
             return false;
         }
@@ -96,22 +162,17 @@ function checkTokenOnLoad() {
     return true; // Retorna verdadeiro caso o token seja válido
 }
 
-// Função de logout
-function logout() {
-    localStorage.removeItem('token'); // Remove o token
-    localStorage.removeItem('email');
-    localStorage.removeItem('nomeUsuario');
-    window.location.href = '../paginaLogin/login.html'; // Redireciona para a página de login
-}
-
 // Função para verificar a validade do token antes de enviar a requisição
 function checkTokenBeforeRequest() {
     const token = localStorage.getItem('token');
 
     // Se não houver token, exibe mensagem de erro e interrompe a requisição
     if (!token) {
-        alert('Você precisa estar logado para salvar as alterações.');
-        window.location.href = '../paginaLogin/login.html'; // Redireciona para login
+        showPopup('Você precisa estar logado para salvar as alterações.', 'error');
+        logout();
+        setTimeout(() => {
+            window.location.href = '../paginaLogin/login.html'; // Redireciona para login após mostrar o popup
+        }, 1500); // Tempo suficiente para o popup aparecer
         return false;
     }
 
@@ -121,18 +182,23 @@ function checkTokenBeforeRequest() {
         const now = Date.now() / 1000; // Timestamp atual em segundos
 
         if (payload.exp < now) {
-            alert('Sua sessão expirou. Faça login novamente.');
-            logout(); // Remove o token e redireciona para o login
+            showPopup('Sua sessão expirou. Faça login novamente.', 'error');
+            setTimeout(() => {
+                logout(); // Remove o token e redireciona para o login
+            }, 1500); // Tempo suficiente para o popup aparecer
             return false;
         }
     } catch (error) {
         console.error('Erro ao verificar o token:', error);
-        logout();
+        setTimeout(() => {
+            logout(); // Remove o token e redireciona para o login
+        }, 1500); // Tempo suficiente para o popup aparecer
         return false;
     }
 
     return true; // Retorna verdadeiro caso o token seja válido
 }
+
 
 window.onpageshow = function(event) {
     if (event.persisted) {
