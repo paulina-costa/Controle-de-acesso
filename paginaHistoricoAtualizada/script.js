@@ -1,8 +1,31 @@
+// Função para exibir o popup
+function showPopup(message, type = 'success') {
+    const popup = document.getElementById('popup');
+    popup.textContent = message;
+    popup.className = `show ${type}`; // Adiciona as classes apropriadas
+
+    setTimeout(() => {
+        popup.classList.remove('show'); // Remove a exibição do popup após 3 segundos
+    }, 3000);
+}
+
+// Função para logout do usuário
+function logout() {
+    showPopup('Você foi desconectado.', 'success');  // Exibe popup de sucesso
+    localStorage.removeItem('token');
+    localStorage.removeItem('email');
+    localStorage.removeItem('nomeUsuario');
+    setTimeout(() => {
+        window.location.href = '../paginaLogin/login.html'; // Redireciona para a página de login
+    }, 1500);
+}
+
+// Função para verificar a validade do token
 function verificarToken() {
     const token = localStorage.getItem('token');
     if (!token) {
-        alert("Você precisa estar logado para acessar esta página.");
-        window.location.href = '../paginaLogin/login.html'; // Redireciona para login caso não haja token
+        showPopup('Sua sessão expirou. Faça login novamente.', 'error');  // Exibe popup de erro
+        logout();
         return null;
     }
 
@@ -11,8 +34,8 @@ function verificarToken() {
         const now = Date.now() / 1000; // Timestamp atual em segundos
 
         if (payload.exp < now) {
-            alert('Sua sessão expirou. Faça login novamente.');
-            logout(); // Remove o token e redireciona para o login
+            showPopup('Sua sessão expirou. Faça login novamente.', 'error');  // Exibe popup de erro
+            logout();
             return null;
         }
 
@@ -24,13 +47,18 @@ function verificarToken() {
     }
 }
 
-// Função de logout
-function logout() {
-    localStorage.removeItem('token'); // Remove o token
-    localStorage.removeItem('email');
-    localStorage.removeItem('nomeUsuario');
-    window.location.href = '../paginaLogin/login.html'; // Redireciona para a página de login
-}
+// Interceptar cliques em links
+const links = document.querySelectorAll('a.nav-link');
+links.forEach(link => {
+    link.addEventListener('click', (event) => {
+        event.preventDefault();
+        const href = link.getAttribute('href');
+        showPopup('Navegando para outra página...', 'success');
+        setTimeout(() => {
+            window.location.href = href;
+        }, 1500);
+    });
+});
 
 async function filtrarChamados() {
     const token = verificarToken(); // Verifica a validade do token antes de enviar

@@ -8,11 +8,6 @@
     <link rel="stylesheet" href="./src/css/style.css">
     <link rel="stylesheet" href="./src/css/reset.css">
     <script src="script.js" defer></script>
-    <script type="module">
-        import { checkTokenOnLoad } from '../src/auth.js';
-        // Verifica o token ao carregar a página
-        checkTokenOnLoad();
-    </script>
     <title>Histórico</title>
 </head>
 <body>
@@ -141,7 +136,13 @@
                 <button id="cancelDeleteBtn" class="btn-cancel">Cancelar</button>
             </div>
         </div>
+
+        <div id="popup" class="popup">
+            <p id="popup-message"></p>
+        </div>
     </main>
+
+    
     <footer>
         <div class="footer-container">
             <div class="footer-section sobre">
