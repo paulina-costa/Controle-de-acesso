@@ -254,7 +254,7 @@ h2 {
 
 p {
     font-size: 15px;
-    margin-bottom: 20px; /* Espaço entre o parágrafo e os botões */
+    margin-bottom: 0px; /* Espaço entre o parágrafo e os botões */
 }
 
 /* Estilos para os botões */

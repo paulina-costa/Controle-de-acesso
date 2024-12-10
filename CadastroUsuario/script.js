@@ -13,7 +13,6 @@ function togglePassword(inputId, iconId) {
     }
 }
 
-
 // Adiciona eventos aos botões de exibir/esconder senha
 document.getElementById('toggle-senha').addEventListener('click', () => togglePassword('senha', 'toggle-senha'));
 document.getElementById('toggle-confirma-senha').addEventListener('click', () => togglePassword('confirma-senha', 'toggle-confirma-senha'));

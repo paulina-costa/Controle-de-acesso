@@ -28,6 +28,7 @@
                 <div class="form-group">
                     <label for="email">Email</label>
                     <input type="email" id="email" placeholder="Digite seu email">
+                    <span id="email-error" class="error-message"></span>
                 </div>
                 
                 <div class="form-group">
@@ -36,8 +37,8 @@
                         <input type="password" id="senha" placeholder="Digite sua senha">
                         <img id="toggle-senha" src="img/eye-closed.png" alt="Mostrar senha" class="eye-icon" onclick="togglePassword('senha', 'toggle-senha')">
                     </div>
+                    <span id="senha-error" class="error-message"></span>
                 </div>
-                
                 
                 <a href="#" class="forgot-password">Esqueceu a senha?</a>
                 <button class="confirm-button" onclick="login()">Login</button>
@@ -50,6 +51,5 @@
     <div id="popup" class="popup">
         <p id="popup-message"></p>
     </div>
-    
 </body>
 </html>

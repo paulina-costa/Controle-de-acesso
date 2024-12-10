@@ -241,7 +241,7 @@ async function excluirChamado(id) {
             // Se a exclusão for bem-sucedida, removemos a linha da tabela
             const row = document.getElementById(`chamado-${id}`);
             row.remove();
-            showPopup('Chamdado excluído com sucesso', 'success');
+            showPopup('Chamado excluído com sucesso', 'success');
         } else {
             throw new Error('Erro ao excluir chamado');
         }
