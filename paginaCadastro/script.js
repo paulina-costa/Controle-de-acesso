@@ -78,31 +78,22 @@ document.addEventListener('DOMContentLoaded', () => {
             const mensagemEnvio = document.getElementById('mensagem-envio');
     
             if (response.ok) {
-                mensagemEnvio.textContent = 'Cadastro enviado com sucesso!';
-                mensagemEnvio.style.display = 'block';
-    
+                showPopup('Cadastro realizado com sucesso!', 'success'); // Mostra o popup de sucesso
+            
                 setTimeout(() => {
                     window.location.href = '../Home/home.html'; // Caminho para a página inicial
                 }, 2000);
-    
+            
                 form.reset(); // Limpa o formulário
-            } else {
-                mensagemEnvio.textContent = `Erro: ${resultado.erro || 'Erro desconhecido'}`;
-                mensagemEnvio.style.display = 'block';
+            }
+            else {
+                const errorData = await response.json(); // Obtém detalhes do erro
+                const errorMessage = errorData.message || 'Erro no envio do cadastro!'; // Mensagem padrão
+                showPopup(errorMessage, 'error'); // Mostra popup de erro
             }
         } catch (error) {
-            console.error('Erro ao enviar os dados:', error);
-    
-            // Se o token for removido durante o envio, exibe mensagem de erro e faz logout
-            if (!localStorage.getItem('token')) {
-                showPopup('Sessão inválida ou expirada durante o envio. Faça login novamente.', 'error');
-                logout();
-                return;
-            }
-    
-            const mensagemEnvio = document.getElementById('mensagem-envio');
-            mensagemEnvio.textContent = 'Erro na conexão com o servidor.';
-            mensagemEnvio.style.display = 'block';
+            showPopup('Erro ao conectar com o servidor!', 'error'); // Mostra popup para falha de conexão
+            console.error('Erro:', error); // Log no console
         }
     };
     
