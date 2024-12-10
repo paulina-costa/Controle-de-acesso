@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (botaoSair) {
         botaoSair.addEventListener('click', function (event) {
             event.preventDefault(); // Impede o link de redirecionar imediatamente
-            showPopup('Você foi desconectado.', 'success'); // Exibe o popup
+            showPopup('Você foi desconectado.', 'error'); // Exibe o popup
             localStorage.removeItem('token'); // Remove o token
             localStorage.removeItem('email');
             localStorage.removeItem('nomeUsuario');

@@ -11,7 +11,7 @@ function showPopup(message, type = 'success') {
 
 // Função para logout do usuário
 function logout() {
-    showPopup('Você foi desconectado.', 'success');
+    showPopup('Você foi desconectado.', 'error');
     localStorage.removeItem('token');
     localStorage.removeItem('email');
     localStorage.removeItem('nomeUsuario');
