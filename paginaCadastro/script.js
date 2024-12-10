@@ -53,18 +53,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     verificarToken();
 
-    // Interceptar cliques em links
-    const links = document.querySelectorAll('a.nav-link');
-    links.forEach(link => {
-        link.addEventListener('click', (event) => {
-            event.preventDefault();
-            const href = link.getAttribute('href');
-            showPopup('Navegando para outra página...', 'success');
-            setTimeout(() => {
-                window.location.href = href;
-            }, 1500);
-        });
-    });
 
     // Função para enviar os dados do formulário
     const enviarDados = async (dadosFormulario) => {

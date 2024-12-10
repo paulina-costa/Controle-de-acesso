@@ -21,19 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
 
-    // Interceptar cliques em links para mostrar o popup
-    const links = document.querySelectorAll('a.nav-link');
-    links.forEach(link => {
-        link.addEventListener('click', (event) => {
-            event.preventDefault();
-            const href = link.getAttribute('href');
-            showPopup('Navegando para outra página...', 'success');
-            setTimeout(() => {
-                window.location.href = href;
-            }, 1500); // Redireciona após 1,5s
-        });
-    });
-
     // Função para carregar os dados do usuário logado
     function carregarDadosUsuario() {
         const nomeUsuario = localStorage.getItem('nomeUsuario');
